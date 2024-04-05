@@ -1,10 +1,11 @@
 # Contrib
 
-### Commit convention
+## Commit convention
 
 **Don't overthink it, we can edit the final commit message if it doesn't describe the changes correctly!**
 
 Types:
+
 - feat: The new feature you're adding to a particular application
 - fix: To fix a bug
 - style: Feature and updates related to styling
@@ -18,10 +19,10 @@ A scope is a phrase descibing parts of the code affected by the changes. For exa
 Body (optional) can provide additional contextual information. For breaking changes the body MUST start with "BREAKING CHANGE".
 
 Footer (optional) is used to reference issues effected bt the code changes. For example "Fixes #13". Can also be used to indicate breaking changes by starting with "BREAKING CHANGE".
-#### Structure
 
+### Structure
 
-```
+```example
 <type>(scope): <description>
 
 [optional body]
@@ -30,39 +31,41 @@ Footer (optional) is used to reference issues effected bt the code changes. For 
 ```
 
 #### Examples
+
 - `feat(order): add purchase order button`
 - `docs(readme): document coding conventions`
 
+## C++ Coding Standards
 
-# C++ Coding Standards
-## Naming Style
+### Naming Style
 
-Avoid Hun-garian notation. 
+Avoid Hun-garian notation.
 This means, we never want to use variable names that contain the type.
 
-| Entities | Naming | Preview |
-| ----------- | ----------- | ---------- |
-| NameSpaces | snake_case | namespace `ex_namespace` |
-| Classes and Structs | snake_case | Class `ex_class` |
-| Enums | UpperCamelCase | Enum `ExEnum` |
-| Enum Members | ALL_UPPER | ExNum::`NONE`; ExNum::`FIRST_HALF`; ...
-| Global Variables| g_snake_case | bool `g_running` |
-| Macros | ALL_UPPER | #define `USE_OPENGL` |
-| Template Parameter | UpperCamelCase | template<`typename T`> |
-| Parameters | snake_case | ex_method(int `number`) |
-| Local Variables | snake_case | int `number{}` |
-| Member Variables | m_snake_case | int `m_number` |
-| Member Methods | snake_case | void `ex_method`(int param1, int param2); |
+| Entities            | Naming         | Preview                                   |
+| ------------------- | -------------- | ----------------------------------------- |
+| NameSpaces          | snake_case     | namespace `ex_namespace`                  |
+| Classes and Structs | snake_case     | Class `ex_class`                          |
+| Enums               | UpperCamelCase | Enum `ExEnum`                             |
+| Enum Members        | ALL_UPPER      | ExNum::`NONE`; ExNum::`FIRST_HALF`; ...   |
+| Global Variables    | g_snake_case   | bool `g_running`                          |
+| Macros              | ALL_UPPER      | #define `USE_OPENGL`                      |
+| Template Parameter  | UpperCamelCase | template<`typename T`>                    |
+| Parameters          | snake_case     | ex_method(int `number`)                   |
+| Local Variables     | snake_case     | int `number{}`                            |
+| Member Variables    | m_snake_case   | int `m_number`                            |
+| Member Methods      | snake_case     | void `ex_method`(int param1, int param2); |
 
-<br><br><br>
+### Formatting Style
 
-## Formatting Style
-### **Indents**
+#### **Indents**
+
 prefer Tabs for indents
 
-### **Braces**  
+#### **Braces**  
 
 With `if` statements and `for` loops we drop the brackets if it only has to execute 1 line of code or if it calls a method
+
 ```c++
 if (true)
     execute_method();
@@ -78,8 +81,8 @@ for (;;)
     num += 5;
 ```
 
-
 Example for namespaces, classes, etc...
+
 ```c++
 namespace ex_namesspace
 {
@@ -129,11 +132,13 @@ ex_namesspace::ex_class::ex_method()
     } while (true);
 }
 ```
-### **Regarding if statements**  
+
+#### **Regarding if statements**  
 
 Prefer default initialized variables that will be set in an if
-	
+
 Bad example:
+
 ```c++
 int value;
 if(true)
@@ -145,7 +150,9 @@ else
     value = 2
 }
 ```
+
 Instead we prefer this:
+
 ```c++
 int value{2};
 if(true)
@@ -154,11 +161,11 @@ if(true)
 }
 ```
 
-
 Prefer using guarding `if` statements for readability
 
 Bad Example:
-```c++ 
+
+```c++
 void method()
 {
     bool val1 = true;
@@ -183,6 +190,7 @@ void method()
 ```
 
 Guarded if Example:
+
 ```c++
 void method()
 {
@@ -203,12 +211,12 @@ void method()
 }
 ```
 
-### **Member variables in classes**
+#### **Member variables in classes**
 
 1. Seperate every variable to a single line
 2. Initialize all member variables
 3. Use the same order of initialization as in the header file
-4. Order data types from big to low 
+4. Order data types from big to low
 
 ```c++
 // Header File
@@ -233,11 +241,13 @@ ex_class::ex_class() :
 }
 ```
 
-### use of auto
+#### use of auto
+
 1. Not for numeric types: `int, bool, char, float, ...`
 2. When methods return a value
 3. Only when r-value type is evident
 4. Prefer using `auto&` to avoid copies
+
 ```c++
 // 1.
 int a{ 0 };        
@@ -247,13 +257,14 @@ const auto& data = exClass->GetData();
 // 3.
 auto timer = new TimerClass();
 ```
-    
-### using keyword
 
- - **Never use `using namespace std`!** 
- - Never use `using namespace` in a header file. This can mess with code that includes the header file wich contains `using namespace`.
- - Never use `using namespace` before any `#include`s. This can mess with the meaning of code in someone else's header.
- - Use `using` instead of typedef! Modernized c++
+#### using keyword
+
+- **Never use `using namespace std`!**
+- Never use `using namespace` in a header file. This can mess with code that includes the header file wich contains `using namespace`.
+- Never use `using namespace` before any `#include`s. This can mess with the meaning of code in someone else's header.
+- Use `using` instead of typedef! Modernized c++
+
 ```c++
 // bad example
 typedef int my_int;
@@ -261,11 +272,13 @@ typedef int my_int;
 // good example
 using my_float = float;
 ```
- - Prefer specified using over namespace using.
+
+- Prefer specified using over namespace using.
+
 ```c++
 // bad example
 using namepace std::chrono;
-	
+ 
 // good examples
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
@@ -273,18 +286,20 @@ using std::chrono::duration;
 
 Nested Namespaces  
 Example:
+
 ```c++
 // bad example
 namespace a
 {
-	namespace b {}
+ namespace b {}
 }
 
 // good example
 namespace a::b {}
 ```
 
-### overriding methods
+#### overriding methods
+
 1. Use `virtual` in Base classes
 2. Use `virtual` and `override` in Derived classes
 3. Use `virtual` and `= 0` for an abstract(instantiable) class

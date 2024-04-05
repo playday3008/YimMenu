@@ -1,6 +1,7 @@
 # YimMenu
 
-![](https://img.shields.io/badge/dynamic/json?color=ffab00&label=Online%20Version&query=%24.game.online&url=https%3A%2F%2Fraw.githubusercontent.com%2FYimMenu%2FYimMenu%2Fmaster%2Fmetadata.json&style=flat-square&labelColor=000000) ![](https://img.shields.io/badge/dynamic/json?color=ffab00&label=Game%20Build&query=%24.game.build&url=https%3A%2F%2Fraw.githubusercontent.com%2FYimMenu%2FYimMenu%2Fmaster%2Fmetadata.json&style=flat-square&labelColor=000000)
+<!-- Keep up to date with metadata.json-->
+![Online Version: 1.68](https://img.shields.io/badge/dynamic/json?color=ffab00&label=Online%20Version&query=%24.game.online&url=https%3A%2F%2Fraw.githubusercontent.com%2FYimMenu%2FYimMenu%2Fmaster%2Fmetadata.json&style=flat-square&labelColor=000000) ![Game Version: 3095](https://img.shields.io/badge/dynamic/json?color=ffab00&label=Game%20Build&query=%24.game.build&url=https%3A%2F%2Fraw.githubusercontent.com%2FYimMenu%2FYimMenu%2Fmaster%2Fmetadata.json&style=flat-square&labelColor=000000)
 
 A mod menu base for Grand Theft Auto V.
 Strictly for educational purposes.
@@ -10,22 +11,22 @@ So here I am with an up-to-date menu focusing on protecting the user from toxic 
 
 ## Table of contents
 
- * [How to build](#how-to-build)
- * [Make your own flavour of YimMenu](#make-your-own-flavour-of-yimmenu)
- * [Staying Up To Date](#staying-up-to-date)
- * [Project Structure](#project-structure)
- * [Contributing](#contributing)
- 
+* [How to build](#how-to-compile-yimmenu)
+* [Make your own flavour of YimMenu](#make-your-own-flavour-of-yimmenu)
+* [Staying Up To Date](#staying-up-to-date)
+* [Project Structure](#project-structure)
+* [Contributing](#contributing)
+
 ## How to compile YimMenu
 
 Read the [SETUP](https://github.com/YimMenu/YimMenu/wiki/Setup-your-PC-for-YimMenu-Development) guide.
 
 ## Make your own flavour of YimMenu
 
-Fork YimMenu and git clone that repository instead of https://github.com/YimMenu/YimMenu.git
+Fork YimMenu and git clone that repository instead of <https://github.com/YimMenu/YimMenu.git>
 
 Click the below link to make your own fork of YimMenu:
-https://github.com/YimMenu/YimMenu/fork
+<https://github.com/YimMenu/YimMenu/fork>
   
 ## Staying Up To Date
 
@@ -45,12 +46,12 @@ If you are doing custom modifications to the codebase and have a fork you are on
 
 ## Project Structure
 
-- `backend/` all features that should be ran in a loop are in here sorted by category
-- `gui/` includes everything related to UI elements
-- `hooks/` function hooks
-- `native_hooks/` hooks to natives
-- `services/` service files to interact and maintain stuff
-- `util/` general utility functions to keep code as compact and as much in one place as possible
+* `backend/` all features that should be ran in a loop are in here sorted by category
+* `gui/` includes everything related to UI elements
+* `hooks/` function hooks
+* `native_hooks/` hooks to natives
+* `services/` service files to interact and maintain stuff
+* `util/` general utility functions to keep code as compact and as much in one place as possible
 
 ## Contributing
 
