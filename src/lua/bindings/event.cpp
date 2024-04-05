@@ -16,6 +16,7 @@ namespace lua::event
 	// Field: PlayerLeave: integer
 	// Event that is triggered when a player leave the game session.
 	// **Example Usage:**
+	// 
 	// ```lua
 	// event.register_handler(menu_event.PlayerLeave, function (player_name)
 	//     log.info(player_name)
@@ -27,6 +28,7 @@ namespace lua::event
 	// Field: PlayerJoin: integer
 	// Event that is triggered when a player join the game session.
 	// **Example Usage:**
+	// 
 	// ```lua
 	// event.register_handler(menu_event.PlayerJoin, function (player_name, player_id)
 	//     log.info(player_name)
@@ -39,6 +41,7 @@ namespace lua::event
 	// Field: PlayerMgrInit: integer
 	// Event that is triggered when the player manager initialize. Usually called when we are joining a session.
 	// **Example Usage:**
+	// 
 	// ```lua
 	// event.register_handler(menu_event.PlayerMgrInit, function ()
 	//     log.info("Player manager inited, we just joined a session.")
@@ -50,6 +53,7 @@ namespace lua::event
 	// Field: PlayerMgrShutdown: integer
 	// Event that is triggered when the player manager shutdown. Usually called when we are leaving a session.
 	// **Example Usage:**
+	// 
 	// ```lua
 	// event.register_handler(menu_event.PlayerMgrShutdown, function ()
 	//     log.info("Player manager inited, we just left a session.")
@@ -61,6 +65,7 @@ namespace lua::event
 	// Field: ChatMessageReceived: integer
 	// Event that is triggered when we receive a in-game chat message.
 	// **Example Usage:**
+	// 
 	// ```lua
 	// event.register_handler(menu_event.ChatMessageReceived, function (player_id, chat_message)
 	//     log.info(player_id)
@@ -73,6 +78,7 @@ namespace lua::event
 	// Field: ScriptedGameEventReceived: integer
 	// Event that is triggered when we receive a scripted game event.
 	// **Example Usage:**
+	// 
 	// ```lua
 	// event.register_handler(menu_event.ScriptedGameEventReceived, function (player_id, script_event_args)
 	//     log.info(player_id)
@@ -85,6 +91,7 @@ namespace lua::event
 	// Field: MenuUnloaded: integer
 	// Event that is triggered when we unload YimMenu.
 	// **Example Usage:**
+	// 
 	// ```lua
 	// event.register_handler(menu_event.MenuUnloaded, function ()
 	//     log.info("Menu unloaded.")
@@ -96,6 +103,7 @@ namespace lua::event
 	// Field: ScriptsReloaded: integer
 	// Event that is triggered when we reload the Lua scripts.
 	// **Example Usage:**
+	// 
 	// ```lua
 	// event.register_handler(menu_event.ScriptsReloaded, function ()
 	//     log.info("Scripts reloaded.")

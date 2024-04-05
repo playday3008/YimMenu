@@ -4,7 +4,7 @@ This directory contains a collection of scripts used to generate certain parts o
 
 ## Doc Gen
 
-`doc_gen.py` is used to generate the Lua documentation that's provided by YimMenu.
+`lua_doc_gen.py` is used to generate the Lua documentation that's provided by YimMenu.
 It relies on specifically formatted code comments to generate Lua documentation.
 
 ## Generate Natives

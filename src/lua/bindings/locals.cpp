@@ -65,7 +65,7 @@ namespace lua::locals
 
 	// Lua API: Function
 	// Table: locals
-	// Name: set_int
+	// Name: set_uint
 	// Param: script: string: The name of the script
 	// Param: index: index: Index of the script local.
 	// Param: val: unsigned integer: The new value of the given local.
