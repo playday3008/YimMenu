@@ -34,7 +34,7 @@ Returns a vector that contains the x, y, and z values.
   - `z` (float): z component of the vector.
 
 **Example Usage:**
+
 ```lua
 myInstance = vec3:new(x, y, z)
 ```
-

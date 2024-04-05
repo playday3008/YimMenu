@@ -13,6 +13,7 @@ Table containing functions for modifying the menu GUI.
   - `tab`: A tab instance which corresponds to the tab in the GUI.
 
 **Example Usage:**
+
 ```lua
 tab = gui.get_tab(tab_name)
 ```
@@ -26,6 +27,7 @@ tab = gui.get_tab(tab_name)
   - `tab`: A tab instance which corresponds to the new tab in the GUI.
 
 **Example Usage:**
+
 ```lua
 tab = gui.add_tab(tab_name)
 ```
@@ -39,6 +41,7 @@ Shows a message to the user with the given title and message.
   - `message` (string)
 
 **Example Usage:**
+
 ```lua
 gui.show_message(title, message)
 ```
@@ -52,6 +55,7 @@ Shows a warning to the user with the given title and message.
   - `message` (string)
 
 **Example Usage:**
+
 ```lua
 gui.show_warning(title, message)
 ```
@@ -65,6 +69,7 @@ Shows an error to the user with the given title and message.
   - `message` (string)
 
 **Example Usage:**
+
 ```lua
 gui.show_error(title, message)
 ```
@@ -75,6 +80,7 @@ gui.show_error(title, message)
   - `bool`: Returns true if the GUI is open.
 
 **Example Usage:**
+
 ```lua
 bool = gui.is_open()
 ```
@@ -83,6 +89,7 @@ bool = gui.is_open()
 
 Registers a function that will be called every rendering frame, you can call ImGui functions in it, please check the ImGui.md documentation file for more info.
 **Example Usage:**
+
 ```lua
 gui.add_imgui(function()
    if ImGui.Begin("My Custom Window") then
@@ -101,8 +108,7 @@ end)
   - `imgui_rendering` (function): Function that will be called every rendering frame, you can call ImGui functions in it, please check the ImGui.md documentation file for more info.
 
 **Example Usage:**
+
 ```lua
 gui.add_imgui(imgui_rendering)
 ```
-
-

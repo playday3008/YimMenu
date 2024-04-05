@@ -15,6 +15,7 @@ Retrieves an int global value.
   - `integer`: value of the global
 
 **Example Usage:**
+
 ```lua
 integer = globals.get_int(global)
 ```
@@ -30,6 +31,7 @@ Retrieves an uint global value.
   - `integer`: value of the global
 
 **Example Usage:**
+
 ```lua
 integer = globals.get_uint(global)
 ```
@@ -45,6 +47,7 @@ Retrieves a float global value.
   - `float`: value of the global
 
 **Example Usage:**
+
 ```lua
 float = globals.get_float(global)
 ```
@@ -60,6 +63,7 @@ Retrieves a string global value.
   - `string`: value of the global
 
 **Example Usage:**
+
 ```lua
 string = globals.get_string(global)
 ```
@@ -75,6 +79,7 @@ Retrieves a Vector3 global value.
   - `Vector3`: value of the global
 
 **Example Usage:**
+
 ```lua
 Vector3 = globals.get_vec3(global)
 ```
@@ -88,6 +93,7 @@ Sets an int global value.
   - `val` (integer): new value for the global
 
 **Example Usage:**
+
 ```lua
 globals.set_int(global, val)
 ```
@@ -101,6 +107,7 @@ Sets an uint global value.
   - `val` (integer): new value for the global
 
 **Example Usage:**
+
 ```lua
 globals.set_uint(global, val)
 ```
@@ -114,6 +121,7 @@ Sets a float global value.
   - `val` (float): new value for the global
 
 **Example Usage:**
+
 ```lua
 globals.set_float(global, val)
 ```
@@ -127,6 +135,7 @@ Sets a string global value.
   - `str` (string): new value for the global
 
 **Example Usage:**
+
 ```lua
 globals.set_string(global, str)
 ```
@@ -140,6 +149,7 @@ Sets a Vector3 global value.
   - `param` (Vector3): new value for the global
 
 **Example Usage:**
+
 ```lua
 globals.set_vec3(global, param)
 ```
@@ -155,8 +165,7 @@ Retrieves a pointer global.
   - `pointer`: value of the global
 
 **Example Usage:**
+
 ```lua
 pointer = globals.get_pointer(global)
 ```
-
-

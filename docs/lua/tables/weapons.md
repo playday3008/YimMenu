@@ -7,6 +7,7 @@ Table containing functions for getting information about weapons in GTA V.
 ### `get_weapon_display_name(weapon_hash)`
 
 - **Example Usage:**
+
 ```lua
 log.info(weapons.get_weapon_display_name(joaat('WEAPON_REVOLVER')))
 ```
@@ -18,6 +19,7 @@ log.info(weapons.get_weapon_display_name(joaat('WEAPON_REVOLVER')))
   - `weapon_display_name`: String: the in-game display string. If the weapon is not found, or the call is made too early, a blank string will be returned. It is guranteed to return a safe value.
 
 **Example Usage:**
+
 ```lua
 weapon_display_name = weapons.get_weapon_display_name(weapon_hash)
 ```
@@ -25,6 +27,7 @@ weapon_display_name = weapons.get_weapon_display_name(weapon_hash)
 ### `get_weapon_display_name(weapon_name)`
 
 - **Example Usage:**
+
 ```lua
 log.info(weapons.get_weapon_display_name('WEAPON_REVOLVER'))
 ```
@@ -36,6 +39,7 @@ log.info(weapons.get_weapon_display_name('WEAPON_REVOLVER'))
   - `weapon_display_name`: String: the in-game display string. If the weapon is not found, or the call is made too early, a blank string will be returned. It is guranteed to return a safe value.
 
 **Example Usage:**
+
 ```lua
 weapon_display_name = weapons.get_weapon_display_name(weapon_name)
 ```
@@ -43,6 +47,7 @@ weapon_display_name = weapons.get_weapon_display_name(weapon_name)
 ### `get_all_weapons_of_group_type(group_hash)`
 
 - **Example Usage:**
+
 ```lua
 local pistols = weapons.get_all_weapons_of_group_type(joaat('GROUP_PISTOL'))
 for i = 1, #pistols do
@@ -57,6 +62,7 @@ end
   - `weapons_of_group_type`: table<int, String>: a list of all weapons that match the group hash passed in. The list can contain anything from 0 to n elements.
 
 **Example Usage:**
+
 ```lua
 weapons_of_group_type = weapons.get_all_weapons_of_group_type(group_hash)
 ```
@@ -64,15 +70,16 @@ weapons_of_group_type = weapons.get_all_weapons_of_group_type(group_hash)
 ### `get_all_weapons_of_group_type(group_name)`
 
 - **Example Usage:**
+
 ```lua
 local pistols = weapons.get_all_weapons_of_group_type('GROUP_PISTOL')
 for i = 1, #pistols do
-	log.info(pistols[i])
+  log.info(pistols[i])
 end
 
 local pistols = weapons.get_all_weapons_of_group_type('PISTOL')
 for i = 1, #pistols do
-	log.info(pistols[i])
+  log.info(pistols[i])
 end
 ```
 
@@ -83,6 +90,7 @@ end
   - `weapons_of_group_type`: table<int, String>: a list of all weapons that match the group hash passed in. The list can contain anything from 0 to n elements.
 
 **Example Usage:**
+
 ```lua
 weapons_of_group_type = weapons.get_all_weapons_of_group_type(group_name)
 ```
@@ -90,10 +98,11 @@ weapons_of_group_type = weapons.get_all_weapons_of_group_type(group_name)
 ### `get_all_weapon_components(weapon_hash)`
 
 - **Example Usage:**
+
 ```lua
 local pistol_attachments = weapons.get_all_weapon_components(joaat('WEAPON_PISTOL'))
 for i = 1, #pistol_attachments do
-	log.info(pistol_attachments[i])
+  log.info(pistol_attachments[i])
 end
 ```
 
@@ -104,6 +113,7 @@ end
   - `weapon_components`: table<int, String>: a list of all components that match the weapon passed in. The list can contain anything from 0 to n elements.
 
 **Example Usage:**
+
 ```lua
 weapon_components = weapons.get_all_weapon_components(weapon_hash)
 ```
@@ -111,10 +121,11 @@ weapon_components = weapons.get_all_weapon_components(weapon_hash)
 ### `get_all_weapon_components(weapon_name)`
 
 - **Example Usage:**
+
 ```lua
 local pistol_attachments = weapons.get_all_weapon_components('WEAPON_PISTOL')
 for i = 1, #pistol_attachments do
-	log.info(pistol_attachments[i])
+  log.info(pistol_attachments[i])
 end
 ```
 
@@ -125,6 +136,7 @@ end
   - `weapon_components`: table<int, String>: a list of all components that match the weapon passed in. The list can contain anything from 0 to n elements.
 
 **Example Usage:**
+
 ```lua
 weapon_components = weapons.get_all_weapon_components(weapon_name)
 ```
@@ -132,6 +144,7 @@ weapon_components = weapons.get_all_weapon_components(weapon_name)
 ### `get_weapon_component_display_name(weapon_component_hash)`
 
 - **Example Usage:**
+
 ```lua
 log.info(weapons.get_weapon_component_display_name(joaat('COMPONENT_PISTOL_CLIP_01')))
 ```
@@ -143,6 +156,7 @@ log.info(weapons.get_weapon_component_display_name(joaat('COMPONENT_PISTOL_CLIP_
   - `component_display_name`: String: the in-game display string. If the component is not found, or the call is made too early, a blank string will be returned. It is guranteed to return a safe value.
 
 **Example Usage:**
+
 ```lua
 component_display_name = weapons.get_weapon_component_display_name(weapon_component_hash)
 ```
@@ -150,6 +164,7 @@ component_display_name = weapons.get_weapon_component_display_name(weapon_compon
 ### `get_weapon_component_display_name(weapon_component)`
 
 - **Example Usage:**
+
 ```lua
 log.info(weapons.get_weapon_component_display_name('COMPONENT_PISTOL_CLIP_01'))
 ```
@@ -161,6 +176,7 @@ log.info(weapons.get_weapon_component_display_name('COMPONENT_PISTOL_CLIP_01'))
   - `component_display_name`: String: the in-game display string. If the component is not found, or the call is made too early, a blank string will be returned. It is guranteed to return a safe value.
 
 **Example Usage:**
+
 ```lua
 component_display_name = weapons.get_weapon_component_display_name(weapon_component)
 ```
@@ -168,6 +184,7 @@ component_display_name = weapons.get_weapon_component_display_name(weapon_compon
 ### `get_weapon_component_display_desc(weapon_component_hash)`
 
 - **Example Usage:**
+
 ```lua
 log.info(weapons.get_weapon_component_display_desc(joaat('COMPONENT_PISTOL_CLIP_01')))
 ```
@@ -179,6 +196,7 @@ log.info(weapons.get_weapon_component_display_desc(joaat('COMPONENT_PISTOL_CLIP_
   - `component_display_desc`: String: the in-game display string. If the component is not found, or the call is made too early, a blank string will be returned. It is guranteed to return a safe value.
 
 **Example Usage:**
+
 ```lua
 component_display_desc = weapons.get_weapon_component_display_desc(weapon_component_hash)
 ```
@@ -186,6 +204,7 @@ component_display_desc = weapons.get_weapon_component_display_desc(weapon_compon
 ### `get_weapon_component_display_desc(weapon_component)`
 
 - **Example Usage:**
+
 ```lua
 log.info(weapons.get_weapon_component_display_desc('COMPONENT_PISTOL_CLIP_01'))
 ```
@@ -197,8 +216,7 @@ log.info(weapons.get_weapon_component_display_desc('COMPONENT_PISTOL_CLIP_01'))
   - `component_display_desc`: String: the in-game display string. If the component is not found, or the call is made too early, a blank string will be returned. It is guranteed to return a safe value.
 
 **Example Usage:**
+
 ```lua
 component_display_desc = weapons.get_weapon_component_display_desc(weapon_component)
 ```
-
-

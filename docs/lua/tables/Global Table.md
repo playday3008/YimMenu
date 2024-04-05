@@ -13,8 +13,7 @@ Custom fields, functions, etc added to The Lua [Global Table](https://www.lua.or
   - `integer`: The joaat hashed input string.
 
 **Example Usage:**
+
 ```lua
 integer = joaat(str)
 ```
-
-

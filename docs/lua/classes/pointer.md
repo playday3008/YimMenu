@@ -12,6 +12,7 @@ Returns a memory instance, with the given address.
   - `address` (integer): Address
 
 **Example Usage:**
+
 ```lua
 myInstance = pointer:new(address)
 ```
@@ -29,6 +30,7 @@ Adds an offset to the current memory address and returns a new pointer object.
   - `pointer`: new pointer object.
 
 **Example Usage:**
+
 ```lua
 pointer = pointer:add(offset)
 ```
@@ -44,6 +46,7 @@ Subs an offset to the current memory address and returns a new pointer object.
   - `pointer`: new pointer object.
 
 **Example Usage:**
+
 ```lua
 pointer = pointer:sub(offset)
 ```
@@ -59,6 +62,7 @@ Rips the current memory address and returns a new pointer object.
   - `pointer`: new pointer object.
 
 **Example Usage:**
+
 ```lua
 pointer = pointer:rip(offset)
 ```
@@ -71,6 +75,7 @@ Retrieves the value stored at the memory address as the specified type.
   - `number`: the value stored at the memory address as the specified type.
 
 **Example Usage:**
+
 ```lua
 number = pointer:get_byte()
 ```
@@ -83,6 +88,7 @@ Retrieves the value stored at the memory address as the specified type.
   - `number`: the value stored at the memory address as the specified type.
 
 **Example Usage:**
+
 ```lua
 number = pointer:get_word()
 ```
@@ -95,6 +101,7 @@ Retrieves the value stored at the memory address as the specified type.
   - `number`: the value stored at the memory address as the specified type.
 
 **Example Usage:**
+
 ```lua
 number = pointer:get_dword()
 ```
@@ -107,6 +114,7 @@ Retrieves the value stored at the memory address as the specified type.
   - `float`: the value stored at the memory address as the specified type.
 
 **Example Usage:**
+
 ```lua
 float = pointer:get_float()
 ```
@@ -119,6 +127,7 @@ Retrieves the value stored at the memory address as the specified type.
   - `number`: the value stored at the memory address as the specified type.
 
 **Example Usage:**
+
 ```lua
 number = pointer:get_qword()
 ```
@@ -131,6 +140,7 @@ Sets the value at the memory address to the specified value of the given type.
   - `value` (number): new value.
 
 **Example Usage:**
+
 ```lua
 pointer:set_byte(value)
 ```
@@ -143,6 +153,7 @@ Sets the value at the memory address to the specified value of the given type.
   - `value` (number): new value.
 
 **Example Usage:**
+
 ```lua
 pointer:set_word(value)
 ```
@@ -155,6 +166,7 @@ Sets the value at the memory address to the specified value of the given type.
   - `value` (number): new value.
 
 **Example Usage:**
+
 ```lua
 pointer:set_dword(value)
 ```
@@ -167,6 +179,7 @@ Sets the value at the memory address to the specified value of the given type.
   - `value` (float): new value.
 
 **Example Usage:**
+
 ```lua
 pointer:set_float(value)
 ```
@@ -179,6 +192,7 @@ Sets the value at the memory address to the specified value of the given type.
   - `value` (number): new value.
 
 **Example Usage:**
+
 ```lua
 pointer:set_qword(value)
 ```
@@ -191,6 +205,7 @@ Retrieves the value stored at the memory address as the specified type.
   - `string`: the value stored at the memory address as the specified type.
 
 **Example Usage:**
+
 ```lua
 string = pointer:get_string()
 ```
@@ -203,6 +218,7 @@ Sets the value at the memory address to the specified value of the given type.
   - `value` (string): new value.
 
 **Example Usage:**
+
 ```lua
 pointer:set_string(value)
 ```
@@ -220,6 +236,7 @@ The original value is restored when you call the restore function on the lua_pat
   - `lua_patch`: memory patch instance for modifying the value at the memory address with the specified value. Can call apply / restore on the object.
 
 **Example Usage:**
+
 ```lua
 lua_patch = pointer:patch_byte(value)
 ```
@@ -237,6 +254,7 @@ The original value is restored when you call the restore function on the lua_pat
   - `lua_patch`: memory patch instance for modifying the value at the memory address with the specified value. Can call apply / restore on the object.
 
 **Example Usage:**
+
 ```lua
 lua_patch = pointer:patch_word(value)
 ```
@@ -254,6 +272,7 @@ The original value is restored when you call the restore function on the lua_pat
   - `lua_patch`: memory patch instance for modifying the value at the memory address with the specified value. Can call apply / restore on the object.
 
 **Example Usage:**
+
 ```lua
 lua_patch = pointer:patch_dword(value)
 ```
@@ -271,6 +290,7 @@ The original value is restored when you call the restore function on the lua_pat
   - `lua_patch`: memory patch instance for modifying the value at the memory address with the specified value. Can call apply / restore on the object.
 
 **Example Usage:**
+
 ```lua
 lua_patch = pointer:patch_qword(value)
 ```
@@ -281,6 +301,7 @@ lua_patch = pointer:patch_qword(value)
   - `boolean`: Returns true if the address is null.
 
 **Example Usage:**
+
 ```lua
 boolean = pointer:is_null()
 ```
@@ -291,6 +312,7 @@ boolean = pointer:is_null()
   - `boolean`: Returns true if the address is not null.
 
 **Example Usage:**
+
 ```lua
 boolean = pointer:is_valid()
 ```
@@ -303,6 +325,7 @@ Dereferences the memory address and returns a new pointer object pointing to the
   - `pointer`: A new pointer object pointing to the value at that address.
 
 **Example Usage:**
+
 ```lua
 pointer = pointer:deref()
 ```
@@ -315,8 +338,7 @@ Retrieves the memory address stored in the pointer object.
   - `number`: The memory address stored in the pointer object as a number.
 
 **Example Usage:**
+
 ```lua
 number = pointer:get_address()
 ```
-
-

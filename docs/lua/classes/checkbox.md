@@ -12,6 +12,7 @@ Class representing a gui checkbox.
   - `boolean`: Is the checkbox checked?
 
 **Example Usage:**
+
 ```lua
 boolean = checkbox:is_enabled()
 ```
@@ -22,8 +23,7 @@ boolean = checkbox:is_enabled()
   - `enabled` (boolean): The desired enabled state of the checkbox.
 
 **Example Usage:**
+
 ```lua
 checkbox:set_enabled(enabled)
 ```
-
-

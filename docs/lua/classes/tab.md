@@ -10,6 +10,7 @@ Class for representing a tab within the GUI.
   - `boolean`: Returns true if this tab is the one currently selected in the GUI.
 
 **Example Usage:**
+
 ```lua
 boolean = tab:is_selected()
 ```
@@ -19,6 +20,7 @@ boolean = tab:is_selected()
 Clear the tab of all its custom lua content that you own.
 
 **Example Usage:**
+
 ```lua
 tab:clear()
 ```
@@ -28,6 +30,7 @@ tab:clear()
 Add a sub tab to this tab.
 
 **Example Usage:**
+
 ```lua
 tab:add_tab()
 ```
@@ -41,6 +44,7 @@ Add a button to the gui tab.
   - `callback` (function): function that will be called when the button is clicked.
 
 **Example Usage:**
+
 ```lua
 tab:add_button(name, callback)
 ```
@@ -56,6 +60,7 @@ Add text to the gui tab.
   - `text`: The text object instance.
 
 **Example Usage:**
+
 ```lua
 text = tab:add_text(name)
 ```
@@ -71,6 +76,7 @@ Add a checkbox widget to the gui tab.
   - `checkbox`: The checkbox object instance.
 
 **Example Usage:**
+
 ```lua
 checkbox = tab:add_checkbox(name)
 ```
@@ -83,6 +89,7 @@ Add a ImGui::SameLine.
   - `sameline`: The sameline object instance.
 
 **Example Usage:**
+
 ```lua
 sameline = tab:add_sameline()
 ```
@@ -95,6 +102,7 @@ Add a ImGui::Separator.
   - `separator`: The separator object instance.
 
 **Example Usage:**
+
 ```lua
 separator = tab:add_separator()
 ```
@@ -110,6 +118,7 @@ Add a ImGui::InputInt.
   - `input_int`: The input_int object instance.
 
 **Example Usage:**
+
 ```lua
 input_int = tab:add_input_int(name)
 ```
@@ -125,6 +134,7 @@ Add a ImGui::InputFloat.
   - `input_float`: The input_float object instance.
 
 **Example Usage:**
+
 ```lua
 input_float = tab:add_input_float(name)
 ```
@@ -140,6 +150,7 @@ Add a ImGui::InputText.
   - `input_string`: The input_string object instance.
 
 **Example Usage:**
+
 ```lua
 input_string = tab:add_input_string(name)
 ```
@@ -148,6 +159,7 @@ input_string = tab:add_input_string(name)
 
 Registers a function that will be called every rendering frame, you can call ImGui functions in it, please check the ImGui.md documentation file for more info.
 **Example Usage:**
+
 ```lua
 tab:add_imgui(function()
    if ImGui.Begin("My Custom Window") then
@@ -166,8 +178,7 @@ end)
   - `imgui_rendering` (function): Function that will be called every rendering frame, you can call ImGui functions in it, please check the ImGui.md documentation file for more info.
 
 **Example Usage:**
+
 ```lua
 tab:add_imgui(imgui_rendering)
 ```
-
-

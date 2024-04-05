@@ -13,6 +13,7 @@ Call a menu command.
   - `_args` (table): Optional. List of arguments for the command.
 
 **Example Usage:**
+
 ```lua
 command.call(command_name, _args)
 ```
@@ -27,8 +28,7 @@ Call a menu command on a given player.
   - `_args` (table): Optional. List of arguments for the command.
 
 **Example Usage:**
+
 ```lua
 command.call_player(player_idx, command_name, _args)
 ```
-
-

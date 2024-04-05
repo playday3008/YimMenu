@@ -12,6 +12,7 @@ Class for representing an input field for editing a float value within the GUI.
   - `float`: Get the value currently written inside the input field.
 
 **Example Usage:**
+
 ```lua
 float = input_float:get_value()
 ```
@@ -22,8 +23,7 @@ float = input_float:get_value()
   - `val` (float): Set the value currently written inside the input field.
 
 **Example Usage:**
+
 ```lua
 input_float:set_value(val)
 ```
-
-

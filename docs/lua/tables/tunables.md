@@ -13,6 +13,7 @@ Table for manipulating gta tunables.
   - `integer`: The value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 integer = tunables.get_int(tunable_name)
 ```
@@ -26,6 +27,7 @@ integer = tunables.get_int(tunable_name)
   - `float`: The value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 float = tunables.get_float(tunable_name)
 ```
@@ -39,6 +41,7 @@ float = tunables.get_float(tunable_name)
   - `boolean`: The value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 boolean = tunables.get_bool(tunable_name)
 ```
@@ -52,6 +55,7 @@ boolean = tunables.get_bool(tunable_name)
   - `integer`: The value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 integer = tunables.get_int(tunable_joaated_value)
 ```
@@ -65,6 +69,7 @@ integer = tunables.get_int(tunable_joaated_value)
   - `float`: The value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 float = tunables.get_float(tunable_joaated_value)
 ```
@@ -78,6 +83,7 @@ float = tunables.get_float(tunable_joaated_value)
   - `boolean`: The value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 boolean = tunables.get_bool(tunable_joaated_value)
 ```
@@ -89,6 +95,7 @@ boolean = tunables.get_bool(tunable_joaated_value)
   - `val` (integer): The new value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 tunables.set_int(tunable_name, val)
 ```
@@ -100,6 +107,7 @@ tunables.set_int(tunable_name, val)
   - `val` (float): The new value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 tunables.set_float(tunable_name, val)
 ```
@@ -111,6 +119,7 @@ tunables.set_float(tunable_name, val)
   - `val` (boolean): The new value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 tunables.set_bool(tunable_name, val)
 ```
@@ -122,6 +131,7 @@ tunables.set_bool(tunable_name, val)
   - `val` (integer): The new value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 tunables.set_int(tunable_joaated_value, val)
 ```
@@ -133,6 +143,7 @@ tunables.set_int(tunable_joaated_value, val)
   - `val` (float): The new value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 tunables.set_float(tunable_joaated_value, val)
 ```
@@ -144,8 +155,7 @@ tunables.set_float(tunable_joaated_value, val)
   - `val` (boolean): The new value of the given tunable.
 
 **Example Usage:**
+
 ```lua
 tunables.set_bool(tunable_joaated_value, val)
 ```
-
-

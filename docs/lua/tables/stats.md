@@ -11,6 +11,7 @@ For stats that get prefixed by either `MP0` or `MP1`, you can use `MPX` instead 
   - `integer`: The current multiplayer character index (0 or 1).
 
 **Example Usage:**
+
 ```lua
 integer = stats.get_character_index()
 ```
@@ -24,6 +25,7 @@ integer = stats.get_character_index()
   - `boolean`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.get_bool(stat_hash)
 ```
@@ -37,6 +39,7 @@ boolean = stats.get_bool(stat_hash)
   - `boolean`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.get_bool(stat_name)
 ```
@@ -51,6 +54,7 @@ boolean = stats.get_bool(stat_name)
   - `boolean`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.get_bool_masked(stat_hash, bit_index)
 ```
@@ -65,6 +69,7 @@ boolean = stats.get_bool_masked(stat_hash, bit_index)
   - `boolean`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.get_bool_masked(stat_name, bit_index)
 ```
@@ -78,6 +83,7 @@ boolean = stats.get_bool_masked(stat_name, bit_index)
   - `float`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 float = stats.get_float(stat_hash)
 ```
@@ -91,6 +97,7 @@ float = stats.get_float(stat_hash)
   - `float`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 float = stats.get_float(stat_name)
 ```
@@ -104,6 +111,7 @@ float = stats.get_float(stat_name)
   - `integer`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 integer = stats.get_int(stat_hash)
 ```
@@ -117,6 +125,7 @@ integer = stats.get_int(stat_hash)
   - `integer`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 integer = stats.get_int(stat_name)
 ```
@@ -132,6 +141,7 @@ integer = stats.get_int(stat_name)
   - `integer`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 integer = stats.get_masked_int(stat_hash, bit_start, bit_size)
 ```
@@ -147,6 +157,7 @@ integer = stats.get_masked_int(stat_hash, bit_start, bit_size)
   - `integer`: The value of the given stat.
 
 **Example Usage:**
+
 ```lua
 integer = stats.get_masked_int(stat_name, bit_index, bit_size)
 ```
@@ -161,6 +172,7 @@ integer = stats.get_masked_int(stat_name, bit_index, bit_size)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_bool(stat_hash, new_value)
 ```
@@ -175,6 +187,7 @@ boolean = stats.set_bool(stat_hash, new_value)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_bool(stat_name, new_value)
 ```
@@ -190,6 +203,7 @@ boolean = stats.set_bool(stat_name, new_value)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_bool_masked(stat_hash, new_value, bit_index)
 ```
@@ -205,6 +219,7 @@ boolean = stats.set_bool_masked(stat_hash, new_value, bit_index)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_bool_masked(stat_name, new_value, bit_index)
 ```
@@ -219,6 +234,7 @@ boolean = stats.set_bool_masked(stat_name, new_value, bit_index)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_float(stat_hash, new_value)
 ```
@@ -233,6 +249,7 @@ boolean = stats.set_float(stat_hash, new_value)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_float(stat_name, new_value)
 ```
@@ -247,6 +264,7 @@ boolean = stats.set_float(stat_name, new_value)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_int(stat_hash, new_value)
 ```
@@ -261,6 +279,7 @@ boolean = stats.set_int(stat_hash, new_value)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_int(stat_name, new_value)
 ```
@@ -277,6 +296,7 @@ boolean = stats.set_int(stat_name, new_value)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_masked_int(stat_hash, new_value, bit_start, bit_size)
 ```
@@ -293,6 +313,7 @@ boolean = stats.set_masked_int(stat_hash, new_value, bit_start, bit_size)
   - `boolean`: True if succeeded.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.set_masked_int(stat_name, new_value, bit_start, bit_size)
 ```
@@ -306,6 +327,7 @@ boolean = stats.set_masked_int(stat_name, new_value, bit_start, bit_size)
   - `boolean`: Value of the stat.
 
 **Example Usage:**
+
 ```lua
 boolean = stats.get_packed_stat_bool(index)
 ```
@@ -317,6 +339,7 @@ boolean = stats.get_packed_stat_bool(index)
   - `value` (bool): value to set the packed stat to.
 
 **Example Usage:**
+
 ```lua
 stats.set_packed_stat_bool(index, value)
 ```
@@ -330,6 +353,7 @@ stats.set_packed_stat_bool(index, value)
   - `int`: Value of the stat.
 
 **Example Usage:**
+
 ```lua
 int = stats.get_packed_stat_int(index)
 ```
@@ -341,8 +365,7 @@ int = stats.get_packed_stat_int(index)
   - `value` (int): value to set the packed stat to.
 
 **Example Usage:**
+
 ```lua
 stats.set_packed_stat_int(index, value)
 ```
-
-

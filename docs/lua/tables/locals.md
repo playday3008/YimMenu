@@ -14,6 +14,7 @@ Table for manipulating GTA scripts locals.
   - `integer`: The value of the given local.
 
 **Example Usage:**
+
 ```lua
 integer = locals.get_int(script, index)
 ```
@@ -28,6 +29,7 @@ integer = locals.get_int(script, index)
   - `unsigned integer`: The value of the given local.
 
 **Example Usage:**
+
 ```lua
 unsigned integer = locals.get_uint(script, index)
 ```
@@ -42,6 +44,7 @@ unsigned integer = locals.get_uint(script, index)
   - `float`: The value of the given local.
 
 **Example Usage:**
+
 ```lua
 float = locals.get_float(script, index)
 ```
@@ -56,6 +59,7 @@ float = locals.get_float(script, index)
   - `Vector3`: The value of the given local.
 
 **Example Usage:**
+
 ```lua
 Vector3 = locals.get_vec3(script, index)
 ```
@@ -68,11 +72,12 @@ Vector3 = locals.get_vec3(script, index)
   - `val` (integer): The new value of the given local.
 
 **Example Usage:**
+
 ```lua
 locals.set_int(script, index, val)
 ```
 
-### `set_int(script, index, val)`
+### `set_uint(script, index, val)`
 
 - **Parameters:**
   - `script` (string): The name of the script
@@ -80,8 +85,9 @@ locals.set_int(script, index, val)
   - `val` (unsigned integer): The new value of the given local.
 
 **Example Usage:**
+
 ```lua
-locals.set_int(script, index, val)
+locals.set_uint(script, index, val)
 ```
 
 ### `set_float(script, index, val)`
@@ -92,6 +98,7 @@ locals.set_int(script, index, val)
   - `val` (float): The new value of the given local.
 
 **Example Usage:**
+
 ```lua
 locals.set_float(script, index, val)
 ```
@@ -104,6 +111,7 @@ locals.set_float(script, index, val)
   - `val` (Vector3): The new value of the given local.
 
 **Example Usage:**
+
 ```lua
 locals.set_vec3(script, index, val)
 ```
@@ -118,8 +126,7 @@ locals.set_vec3(script, index, val)
   - `pointer`: The pointer to the given local.
 
 **Example Usage:**
+
 ```lua
 pointer = locals.get_pointer(script, index)
 ```
-
-

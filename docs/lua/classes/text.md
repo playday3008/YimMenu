@@ -12,8 +12,7 @@ Class representing an imgui text element.
   - `font` (string): The new font name for that imgui text element.
 
 **Example Usage:**
+
 ```lua
 text:set_font(font)
 ```
-
-

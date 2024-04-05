@@ -12,6 +12,7 @@ Class for representing an input field for editing a string value within the GUI.
   - `string`: Get the value currently written inside the input field.
 
 **Example Usage:**
+
 ```lua
 string = input_string:get_value()
 ```
@@ -22,8 +23,7 @@ string = input_string:get_value()
   - `val` (string): Set the value currently written inside the input field.
 
 **Example Usage:**
+
 ```lua
 input_string:set_value(val)
 ```
-
-

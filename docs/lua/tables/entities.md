@@ -10,6 +10,7 @@ Table for manipulating GTA entities.
   - `table<int, int>`: Returns all vehicles as script handles
 
 **Example Usage:**
+
 ```lua
 table<int, int> = entities.get_all_vehicles_as_handles()
 ```
@@ -20,6 +21,7 @@ table<int, int> = entities.get_all_vehicles_as_handles()
   - `table<int, int>`: Returns all peds as script handles
 
 **Example Usage:**
+
 ```lua
 table<int, int> = entities.get_all_peds_as_handles()
 ```
@@ -30,6 +32,7 @@ table<int, int> = entities.get_all_peds_as_handles()
   - `table<int, int>`: Returns all objects as script handles
 
 **Example Usage:**
+
 ```lua
 table<int, int> = entities.get_all_objects_as_handles()
 ```
@@ -46,8 +49,7 @@ Must be called from a script (script.run_in_fiber for example)
   - `boolean`: Returns true if we successfully got control of the entity.
 
 **Example Usage:**
+
 ```lua
 boolean = entities.take_control_of(entity, try_count)
 ```
-
-

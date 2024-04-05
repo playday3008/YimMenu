@@ -10,6 +10,7 @@ Table for file manipulation. Modified for security purposes.
   - `file_handle`: file handle or nil if can't read / write to the given path.
 
 **Example Usage:**
+
 ```lua
 file_handle = io.open()
 ```
@@ -20,8 +21,7 @@ file_handle = io.open()
   - `boolean`: True if the passed file path exists
 
 **Example Usage:**
+
 ```lua
 boolean = io.exists()
 ```
-
-

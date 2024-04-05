@@ -13,8 +13,7 @@ Register a function that will be called each time the corresponding menu_event i
   - `func` (function): The function that will be called.
 
 **Example Usage:**
+
 ```lua
 event.register_handler(menu_event, func)
 ```
-
-
