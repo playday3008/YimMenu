@@ -1,12 +1,11 @@
 include(FetchContent)
 
-message("Lua")
 FetchContent_Declare(
     Lua
     GIT_REPOSITORY https://github.com/walterschell/Lua.git
-    GIT_TAG a2e0125df529894f5e25d7d477b2df4e37690e0f
-    GIT_PROGRESS TRUE
+    GIT_TAG        88246d621abf7b6fba9332f49229d507f020e450
+    GIT_PROGRESS   TRUE
 )
+message("Lua")
 FetchContent_MakeAvailable(Lua)
-
-set_property(TARGET lua_static PROPERTY CXX_STANDARD 23)
+set_property(TARGET lua_static PROPERTY C_STANDARD 99)

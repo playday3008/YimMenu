@@ -2,10 +2,10 @@ include(FetchContent)
 
 FetchContent_Declare(
     minhook
-    GIT_REPOSITORY https://github.com/YimMenu/minhook.git
-    GIT_TAG        902ab63e0a771547961e132ccc0700d62e2a1423
-    GIT_PROGRESS TRUE
+    GIT_REPOSITORY https://github.com/TsudaKageyu/minhook.git
+    GIT_TAG        1cc46107ee522d7a5c73656c519ca16addf2c23a # Last release is heavily outdated, use commit instead
+    GIT_PROGRESS   TRUE
 )
 message("MinHook")
 FetchContent_MakeAvailable(minhook)
-set_property(TARGET minhook PROPERTY CXX_STANDARD 23)
+set_property(TARGET minhook PROPERTY C_STANDARD 11)

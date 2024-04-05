@@ -1,9 +1,10 @@
 include(FetchContent)
+
 FetchContent_Declare(
     imgui
     GIT_REPOSITORY https://github.com/ocornut/imgui.git
-    GIT_TAG        v1.90
-    GIT_PROGRESS TRUE
+    GIT_TAG        v1.90.4
+    GIT_PROGRESS   TRUE
 )
 message("ImGui")
 FetchContent_GetProperties(imgui)
@@ -25,4 +26,4 @@ if(NOT imgui_POPULATED)
         "${imgui_SOURCE_DIR}/misc/cpp"
     )
 endif()
-set_property(TARGET imgui PROPERTY CXX_STANDARD 23)
+set_property(TARGET imgui PROPERTY CXX_STANDARD 11)

@@ -5,6 +5,7 @@ This folder contains all external dependencies that YimMenu requires, this READM
 ## Updating dependencies
 
 Most cmake files in this folder will look a bit as follows:
+
 ```cmake
 include(FetchContent)
 
@@ -12,7 +13,7 @@ FetchContent_Declare(
     dependency_name
     GIT_REPOSITORY https://github.com/example/repo.git
     GIT_TAG        902ab63e0a771547961e132ccc0700d62e2a1423
-    GIT_PROGRESS TRUE
+    GIT_PROGRESS   TRUE
 )
 message("<dependency_name>")
 FetchContent_MakeAvailable(dependency_name)
