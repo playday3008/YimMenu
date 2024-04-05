@@ -1,0 +1,3 @@
+[submodule "scripts/gta5-nativedb-data"]
+	path = scripts/gta5-nativedb-data
+	url = https://github.com/alloc8or/gta5-nativedb-data.git
