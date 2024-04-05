@@ -1,9 +1,11 @@
 # Table: ImGui
 
-# Documentation
+## Documentation
+
 You can find all the supported functions and overloads below.
 
 ## Windows
+
 ```lua
   -- ImGui.Begin(...)
   -- Parameters: text (name), bool (open) [O], ImGuiWindowFlags (flags) [O]
@@ -20,6 +22,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Child Windows
+
 ```lua
   -- ImGui.BeginChild(...)
   -- Parameters: text (name), float (size_x) [O], float (size_y) [O], bool (border) [O], ImGuiWindowFlags (flags) [O]
@@ -36,6 +39,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Windows Utilities
+
 ```lua
   -- ImGui.IsWindowAppearing()
   -- Returns: bool (appearing)
@@ -162,6 +166,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Content Region
+
 ```lua
   -- ImGui.GetContentRegionMax()
   -- Returns: float (x), float (y)
@@ -185,6 +190,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Windows Scrolling
+
 ```lua
   -- ImGui.GetScrollX()
   -- Returns: float (x)
@@ -236,6 +242,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Parameters Stacks (Shared)
+
 ```lua
   -- ImGui.PushStyleColor(...)
   -- Parameters A: ImGuiCol (idx), int (color_u32)
@@ -286,6 +293,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Parameter Stacks (Current Window)
+
 ```lua
   -- ImGui.PushItemWidth(...)
   -- Parameters: float (width)
@@ -327,6 +335,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Cursor / Layout
+
 ```lua
   -- ImGui.Separator()
   ImGui.Separator
@@ -421,6 +430,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## ID Stack / Scopes
+
 ```lua
   -- ImGui.PushID(...)
   -- Parameters A: text (str_id)
@@ -440,6 +450,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Text
+
 ```lua
   -- ImGui.TextUnformatted(...)
   -- Parameters: text (text)
@@ -472,6 +483,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Main
+
 ```lua
   -- ImGui.Button(...)
   -- Parameters: text (label), float (size_x) [O], float (size_y) [O]
@@ -521,6 +533,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Combo Box
+
 ```lua
   -- ImGui.BeginCombo(...)
   -- Parameters: text (label), text (previewValue), ImGuiComboFlags (flags) [O]
@@ -544,6 +557,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Drags
+
 ```lua
   -- ImGui.DragFloat(...)
   -- Parameters: text (label), float (value), float (value_speed) [O], float (value_min) [O], float (value_max) [O], text (format) [O], ImGuiSliderFlags (flags) [O]
@@ -635,6 +649,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Sliders
+
 ```lua
   -- ImGui.SliderFloat(...)
   -- Parameters: text (label), float (value), float (value_min), float (value_max), text (format) [O], ImGuiSliderFlags (flags) [O]
@@ -728,6 +743,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Input with Keyboard
+
 ```lua
   -- ImGui.InputText(...)
   -- Parameters: text (label), text (text), int (buf_size), ImGuiInputTextFlags (flags) [O]
@@ -827,6 +843,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Color Editor / Picker
+
 ```lua
   -- ImGui.ColorEdit3(...)
   -- Parameters: text (label), table (col), ImGuiColorEditFlags (flags) [O]
@@ -870,6 +887,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Trees
+
 ```lua
   -- ImGui.TreeNode(...)
   -- Parameters: text (label), text (fmt) [O]
@@ -916,6 +934,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Selectables
+
 ```lua
   -- ImGui.Selectable(...)
   -- Parameters: text (label), bool (selected) [O], ImGuiSelectableFlags (flags) [O], float (size_x) [O], float (size_y) [O]
@@ -928,6 +947,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: List Boxes
+
 ```lua
   -- ImGui.ListBox(...)
   -- Parameters: text (label), int (current_item), table (items), int (items_count), int (height_in_items) [O]
@@ -948,6 +968,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Value() Helpers
+
 ```lua
   -- ImGui.Value(...)
   -- Parameters: text (prefix) bool/int/unsigned int/float (value), text (float_format) [O] -- format only available with float
@@ -960,6 +981,7 @@ You can find all the supported functions and overloads below.
 ```
 
 ## Widgets: Menus
+
 ```lua
 -- ImGui.BeginMenuBar()
 -- Returns: bool (shouldDraw)
@@ -998,6 +1020,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Tooltips
+
 ```lua
   -- ImGui.BeginTooltip()
   ImGui.BeginTooltip()
@@ -1011,6 +1034,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Popups, Modals
+
 ```lua
   -- ImGui.BeginPopup(...)
   -- Parameters: text (str_id), ImGuiWindowFlags (flags) [O]
@@ -1080,6 +1104,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Tables
+
 ```lua
   -- ImGui.BeginTable(...)
   -- Parameters: string (str_id), int (column), ImGuiTableFlags (flags) [O], float (outer_size_x) [O], float (outer_size_y) [O], float (inner_width) [O]
@@ -1161,8 +1186,8 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
   ImGui.TableSetBgColor(ImGuiTableBgTarget.CellBg, 1, 0, 0, 1, 2)
 ```
 
-
 ## Columns (Legacy API, prefer using Tables!)
+
 ```lua
   -- ImGui.Columns(...)
   -- Parameters: int (count) [O], text (id) [O], bool (border) [O]
@@ -1207,6 +1232,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Tab Bars, Tabs
+
 ```lua
   -- ImGui.BeginTabBar(...)
   -- Parameters: text (str_id), ImGuiTabBarFlags (flags)
@@ -1238,6 +1264,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Disabling
+
 ```lua
   -- ImGui.BeginDisabled()
   -- ImGui.BeginDisabled(disabled) -- bool: disabled
@@ -1248,6 +1275,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Clipping
+
 ```lua
   -- ImGui.PushClipRect(...)
   -- Parameters: float (min_x), float (min_y), float (max_x), float (max_y), bool (intersect_current)
@@ -1258,6 +1286,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Focus, Activation
+
 ```lua
   -- ImGui.SetItemDefaultFocus()
   ImGui.SetItemDefaultFocus()
@@ -1270,6 +1299,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Item / Widgets Utilities
+
 ```lua
   -- ImGui.IsItemHovered(...)
   -- Parameters: ImGuiHoveredFlags (flags) [O]
@@ -1346,6 +1376,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Miscellaneous Utilities
+
 ```lua
   -- ImGui.IsRectVisible(...)
   -- Parameters A: float (size_x), float (size_y)
@@ -1380,6 +1411,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Text Utilities
+
 ```lua
   -- ImGui.CalcTextSize(...)
   -- Parameters: text (text), bool (hide_text_after_double_hash) [O], float (wrap_width) [O]
@@ -1391,6 +1423,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Color Utilities
+
 ```lua
   -- ImGui.ColorConvertRGBtoHSV(...)
   -- Parameters: float (r), float (g), float (b)
@@ -1415,6 +1448,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Inputs Utilities: Mouse
+
 ```lua
   -- ImGui.IsMouseHoveringRect(...)
   -- Parameters: float (min_x), float (min_y), float(max_x), float(max_y), bool (clip) [O]
@@ -1453,6 +1487,7 @@ selected, activated = ImGui.MenuItem("Label", "ALT+F4", selected, true)
 ```
 
 ## Clipboard Utilities
+
 ```lua
   -- ImGui.GetClipboardText()
   -- Returns: text (text)
