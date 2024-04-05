@@ -1,7 +1,6 @@
 #pragma once
 #include "invoker/invoker.hpp"
 
-// clang-format off
 enum class NativeIndex
 {
 	WAIT = 0,
@@ -6571,9 +6570,10 @@ enum class NativeIndex
 	GET_ZONE_SCUMMINESS = 6564,
 	OVERRIDE_POPSCHEDULE_VEHICLE_MODEL = 6565,
 	CLEAR_POPSCHEDULE_OVERRIDE_VEHICLE_MODEL = 6566,
-	GET_HASH_OF_MAP_AREA_AT_COORDS = 6567,
+	GET_HASH_OF_MAP_AREA_AT_COORDS = 6567
 };
 
+// clang-format off
 namespace SYSTEM
 {
 	FORCEINLINE constexpr void WAIT(int ms) { return big::native_invoker::invoke<0, false, void>(ms); }
