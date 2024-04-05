@@ -12,11 +12,13 @@ It relies on specifically formatted code comments to generate Lua documentation.
 `generate_natives.py` is responsible for generating the `src/natives.hpp` and `src/invoker/crossmap.hpp` files.
 
 It takes a `natives.json` from [here](https://github.com/alloc8or/gta5-nativedb-data) and a `crossmap.txt` file which needs follow a certain format of:
+
 ```csv
 [first_seen_native_hash]<comma>[current_native_hash]
 ```
 
 Example:
+
 ```csv
 0xE1A0450ED46A7812,0x11FD21BA1B765FE2
 0x39BE7CEA8D9CC8E6,0x5F7C6361179DFFC4
@@ -35,5 +37,5 @@ Example:
 
 ## Natives Gen
 
-`natives_gen.py` is used to generate the Lua bindings for all the natives currently present in the menu.
+`lua_natives_gen.py` is used to generate the Lua bindings for all the natives currently present in the menu.
 It'll read through the `src/natives.hpp` file and generate the appropriate bindings under `src/lua/natives/`.

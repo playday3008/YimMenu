@@ -1,55 +1,67 @@
 # working dir: scripts
-# python ./natives_gen.py
+# python ./lua_natives_gen.py
 
+import io
 import os
 
-natives_hpp = open("../src/natives.hpp", "r")
+# Source file
+NATIVES_HPP_FILE = "../src/natives.hpp"
+LUA_NATIVES_FOLDER = "../src/lua/natives/"
 
-cpp_print_buf = ""
-hpp_print_buf = ""
+cpp_file_buf = ""
+hpp_file_buf = ""
 
-hpp_lua_native_wrappers_print_buf = ""
-
-
-def print_cpp(text):
-    global cpp_print_buf
-    cpp_print_buf += text + "\n"
+hpp_lua_native_wrappers_file_buf = ""
 
 
-def print_hpp(text):
-    global hpp_print_buf
-    hpp_print_buf += text + "\n"
+def write_cpp(text: str) -> None:
+    global cpp_file_buf
+    cpp_file_buf += text + "\n"
+
+
+def write_hpp(text: str) -> None:
+    global hpp_file_buf
+    hpp_file_buf += text + "\n"
 
 
 class Arg:
-    def __init__(self, name, type_):
+    def __init__(self, name: str, type: str) -> None:
         self.name = name
-        self.type_ = type_.replace("BOOL", "bool").replace("Any*", "uintptr_t")
-        if self.type_ == "uintptr_t":
+        self.type = type.replace("BOOL", "bool").replace("Any*", "uintptr_t")
+        if self.type == "uintptr_t":
             self.is_any_ptr = True
         else:
             self.is_any_ptr = False
-        if self.type_ == "const char*":
-            self.type_ = self.type_.replace("const char*", "sol::stack_object")
+        if self.type == "const char*":
+            self.type = self.type.replace("const char*", "sol::stack_object")
             self.is_string = True
         else:
             self.is_string = False
-        self.is_pointer_arg = "*" in self.type_ and "const char" not in self.type_
-        self.type_no_star = self.type_.replace("*", "")
+        self.is_pointer_arg = "*" in self.type and "const char" not in self.type
+        self.type_no_star = self.type.replace("*", "")
 
     def __str__(self) -> str:
-        return str(self.type_) + " " + str(self.name)
+        return f"{self.type} {self.name}"
 
 
-class NativeFunc:
-    def __init__(self, namespace, lua_name, cpp_name, args, return_type):
+class NativeFunction:
+    def __init__(
+        self,
+        namespace: str,
+        lua_name: str,
+        cpp_name: str,
+        args: list[Arg],
+        return_type: str,
+    ) -> None:
         self.namespace = namespace
         self.lua_name = lua_name
         self.cpp_name = cpp_name
         self.args = args
-        self.return_type = return_type.replace("BOOL", "bool").replace("Any*", "uintptr_t")
+        self.return_type = return_type.replace("BOOL", "bool").replace(
+            "Any*", "uintptr_t"
+        )
 
-        self.out_params = []
+        self.out_params: list[Arg] = []
         if self.return_type != "void":
             retvalArg = Arg("retval", self.return_type)
             # Any* case: this is incorrect but
@@ -73,7 +85,9 @@ class NativeFunc:
                 if out_param.is_pointer_arg:
                     fixed_return += out_param.type_no_star + ", "
                 else:
-                    fixed_return += ("const char*" if out_param.is_string else out_param.type_) + ", "
+                    fixed_return += (
+                        "const char*" if out_param.is_string else out_param.type
+                    ) + ", "
             fixed_return = fixed_return[:-2] + ">"
             returning_multiple_values = True
             tuple_type = fixed_return
@@ -81,13 +95,17 @@ class NativeFunc:
             if self.out_params[0].is_pointer_arg:
                 fixed_return = self.out_params[0].type_no_star
             else:
-                fixed_return = ("const char*" if self.out_params[0].is_string else self.out_params[0].type_)
+                fixed_return = (
+                    "const char*"
+                    if self.out_params[0].is_string
+                    else self.out_params[0].type
+                )
 
         fixed_params = ""
         if len(self.args) > 0:
             for arg in self.args:
                 if not arg.is_pointer_arg:
-                    fixed_params += arg.type_ + " " + arg.name + ", "
+                    fixed_params += arg.type + " " + arg.name + ", "
                 else:
                     fixed_params += arg.type_no_star + " " + arg.name + ", "
             fixed_params = fixed_params[:-2]
@@ -108,7 +126,7 @@ class NativeFunc:
         s += "\t{\n"
 
         if self.cpp_name == "ADD_OWNED_EXPLOSION":
-            s+= "\t\tbig::explosion_anti_cheat_bypass::apply();\n\n"
+            s += "\t\tbig::explosion_anti_cheat_bypass::apply();\n\n"
 
         call_native = "\t\t"
         if len(self.out_params) > 0:
@@ -134,13 +152,12 @@ class NativeFunc:
                     call_native += "(Any*)"
 
                 if arg.is_pointer_arg:
-                    if arg.type_ == "bool*":
+                    if arg.type == "bool*":
                         call_native += "(BOOL*)"
                     call_native += "&"
-                    
 
                 if arg.is_string:
-                    call_native += f'{arg.name}.is<const char*>() ? {arg.name}.as<const char*>() : nullptr, '
+                    call_native += f"{arg.name}.is<const char*>() ? {arg.name}.as<const char*>() : nullptr, "
                 else:
                     call_native += arg.name + ", "
             call_native = call_native[:-2]
@@ -150,7 +167,7 @@ class NativeFunc:
         s += call_native
 
         if self.cpp_name == "ADD_OWNED_EXPLOSION":
-            s+= "\n\n\t\tbig::explosion_anti_cheat_bypass::restore();"
+            s += "\n\n\t\tbig::explosion_anti_cheat_bypass::restore();"
 
         if returning_multiple_values:
             assign_return_values = "\n"
@@ -190,8 +207,10 @@ class NativeFunc:
         return s
 
 
-def get_natives_func_from_natives_hpp_file(natives_hpp):
-    functions_per_namespaces = {}
+def get_natives_func_from_natives_hpp_file(
+    natives_hpp: io.TextIOWrapper,
+) -> dict[str, list[NativeFunction]]:
+    functions_per_namespaces: dict[str, list[NativeFunction]] = {}
     current_namespace = ""
     start_parsing = False
     for line in natives_hpp.readlines():
@@ -225,7 +244,7 @@ def get_natives_func_from_natives_hpp_file(natives_hpp):
             if func_name == "DRAW_TEXTURED_POLY_WITH_THREE_COLOURS":
                 continue
 
-            args = []
+            args: list[Arg] = []
             args_start = line.split("(")[1]
             if args_start[0] == ")":
                 # no args
@@ -244,50 +263,54 @@ def get_natives_func_from_natives_hpp_file(natives_hpp):
             )
 
             lua_name = func_name
-            if lua_name.startswith('_'):
+            if lua_name.startswith("_"):
                 lua_name = lua_name.removeprefix("_")
                 lua_name = lua_name + "_"
 
-            native_func = NativeFunc(current_namespace, lua_name, func_name, args, return_type)
+            native_func = NativeFunction(
+                current_namespace, lua_name, func_name, args, return_type
+            )
 
             functions_per_namespaces[current_namespace].append(native_func)
 
     return functions_per_namespaces
 
 
-functions_per_namespaces = get_natives_func_from_natives_hpp_file(natives_hpp)
-
-def generate_native_binding_cpp_and_hpp_files(functions_per_namespaces):
+def generate_native_binding_cpp_and_hpp_files(
+    functions_per_namespaces: dict[str, list[NativeFunction]]
+) -> None:
     generated_function_name = "void init_native_binding(sol::state& L)"
 
-    print_hpp("#pragma once")
-    # print_hpp('#include "lua/sol.hpp"')
-    print_hpp("")
-    print_hpp("namespace lua::native")
-    print_hpp("{")
-    print_hpp("\t" + generated_function_name + ";")
-    print_hpp("")
+    write_hpp("#pragma once")
+    # send_hpp('#include <lua/sol.hpp>')
+    write_hpp("")
+    write_hpp("namespace lua::native")
+    write_hpp("{")
+    write_hpp("\t" + generated_function_name + ";")
+    write_hpp("")
     for namespace_name, native_funcs in functions_per_namespaces.items():
-        print_hpp("\t" + "void init_native_binding_" + namespace_name + "(sol::state& L);")
-    print_hpp("}")
+        write_hpp(
+            "\t" + "void init_native_binding_" + namespace_name + "(sol::state& L);"
+        )
+    write_hpp("}")
 
-    print_cpp('#include "lua_native_binding.hpp"')
-    print_cpp("")
-    print_cpp("namespace lua::native")
-    print_cpp("{")
+    write_cpp('#include "lua_native_binding.hpp"')
+    write_cpp("")
+    write_cpp("namespace lua::native")
+    write_cpp("{")
 
     i = 0
 
     for namespace_name, native_funcs in functions_per_namespaces.items():
 
-
-        file_name_cpp = "../src/lua/natives/lua_native_binding_" + namespace_name + ".cpp"
+        file_name_cpp = (
+            LUA_NATIVES_FOLDER + "lua_native_binding_" + namespace_name + ".cpp"
+        )
         if os.path.exists(file_name_cpp):
             os.remove(file_name_cpp)
         f = open(file_name_cpp, "a")
 
         file_buffer = ""
-
 
         file_buffer += '#include "lua_native_binding.hpp"\n'
         file_buffer += '#include "natives.hpp"\n'
@@ -300,54 +323,80 @@ def generate_native_binding_cpp_and_hpp_files(functions_per_namespaces):
         for native_func in native_funcs:
             file_buffer += "\tstatic " + str(native_func) + "\n\n"
 
-        file_buffer += "\t" + "void init_native_binding_" + namespace_name + "(sol::state& L)\n"
+        file_buffer += (
+            "\t" + "void init_native_binding_" + namespace_name + "(sol::state& L)\n"
+        )
         file_buffer += "\t{\n"
 
-        file_buffer +=  "\t\tauto " + namespace_name + ' = L["' + namespace_name + '"].get_or_create<sol::table>();\n'
+        file_buffer += (
+            "\t\tauto "
+            + namespace_name
+            + ' = L["'
+            + namespace_name
+            + '"].get_or_create<sol::table>();\n'
+        )
 
         for native_func in native_funcs:
             i += 1
-            file_buffer += "\t\t"+ namespace_name+ '.set_function("'+ native_func.lua_name+ '", '+ "LUA_NATIVE_"+ native_func.namespace+ "_"+ native_func.lua_name+ ");\n"
+            file_buffer += (
+                "\t\t"
+                + namespace_name
+                + '.set_function("'
+                + native_func.lua_name
+                + '", '
+                + "LUA_NATIVE_"
+                + native_func.namespace
+                + "_"
+                + native_func.lua_name
+                + ");\n"
+            )
 
-        file_buffer+= "\t}\n" 
-        file_buffer+= "}\n"
+        file_buffer += "\t}\n"
+        file_buffer += "}\n"
 
         f.write(file_buffer)
         f.close()
 
-    print_cpp("\t" + generated_function_name)
-    print_cpp("\t{")
+    write_cpp("\t" + generated_function_name)
+    write_cpp("\t{")
 
     for namespace_name, native_funcs in functions_per_namespaces.items():
         # call each binding functions inside generated_function_name
 
-        print_cpp("\t\t" + "init_native_binding_" + namespace_name + "(L);")
+        write_cpp("\t\t" + "init_native_binding_" + namespace_name + "(L);")
 
-    print_cpp("\t}")
-    print_cpp("}")
+    write_cpp("\t}")
+    write_cpp("}")
 
     print(f"Wrote binding for {i} native functions")
 
 
-generate_native_binding_cpp_and_hpp_files(functions_per_namespaces)
-
-def write_cpp_code(cpp_print_buf):
-    file_name = "../src/lua/natives/lua_native_binding.cpp"
+def write_cpp_code(cpp_file_buf: str) -> None:
+    file_name = LUA_NATIVES_FOLDER + "lua_native_binding.cpp"
     if os.path.exists(file_name):
         os.remove(file_name)
     f = open(file_name, "a")
-    f.write(cpp_print_buf)
+    f.write(cpp_file_buf)
     f.close()
 
 
-def write_hpp_code(hpp_print_buf):
-    file_name = "../src/lua/natives/lua_native_binding.hpp"
+def write_hpp_code(hpp_file_buf: str) -> None:
+    file_name = LUA_NATIVES_FOLDER + "lua_native_binding.hpp"
     if os.path.exists(file_name):
         os.remove(file_name)
     f = open(file_name, "a")
-    f.write(hpp_print_buf)
+    f.write(hpp_file_buf)
     f.close()
 
-write_cpp_code(cpp_print_buf)
-write_hpp_code(hpp_print_buf)
 
+def main() -> None:
+    natives_hpp = open(NATIVES_HPP_FILE, "r")
+    functions_per_namespaces = get_natives_func_from_natives_hpp_file(natives_hpp)
+    generate_native_binding_cpp_and_hpp_files(functions_per_namespaces)
+
+    write_cpp_code(cpp_file_buf)
+    write_hpp_code(hpp_file_buf)
+
+
+if __name__ == "__main__":
+    main()
