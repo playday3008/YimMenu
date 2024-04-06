@@ -18,7 +18,7 @@ namespace big
 		static char name_buf[32];
 		static char search[64];
 		static char session_info[0x100]{};
-		ImGui::Text(std::format("{}: {}", "VIEW_SESSION_TOTAL_SESSIONS_FOUND"_T.data(), g_matchmaking_service->get_num_found_sessions()).c_str());
+		ImGui::Text(std::format("{}: {}", "VIEW_SESSION_TOTAL_SESSIONS_FOUND"_T, g_matchmaking_service->get_num_found_sessions()).c_str());
 
 		ImGui::SetNextItemWidth(300.f);
 
@@ -153,7 +153,7 @@ namespace big
 			if (g.session_browser.pool_filter_enabled)
 			{
 				ImGui::SameLine();
-				static const std::string pool_filter_options = std::string("NORMAL"_T.data()) + '\0' + std::string("BAD_SPORT"_T.data());
+				static const std::string pool_filter_options = std::string("NORMAL"_T) + '\0' + std::string("BAD_SPORT"_T);
 				ImGui::Combo("###pooltype", &g.session_browser.pool_filter, pool_filter_options.c_str());
 			}
 
@@ -162,8 +162,8 @@ namespace big
 
 		if (ImGui::TreeNode("SORTING"_T.data()))
 		{
-			static const std::string sort_by_options = std::string("OFF"_T.data()) + '\0' + std::string("PLAYER_COUNT"_T.data());
-			static const std::string sort_direction_options = std::string("ASCENDING"_T.data()) + '\0' + std::string("DESCENDING"_T.data());
+			static const std::string sort_by_options = std::string("OFF"_T) + '\0' + std::string("PLAYER_COUNT"_T);
+			static const std::string sort_direction_options = std::string("ASCENDING"_T) + '\0' + std::string("DESCENDING"_T);
 			ImGui::Combo("SORT_BY"_T.data(), &g.session_browser.sort_method, sort_by_options.c_str());
 			if (g.session_browser.sort_method != 0)
 				ImGui::Combo("DIRECTION"_T.data(), &g.session_browser.sort_direction, sort_direction_options.c_str());

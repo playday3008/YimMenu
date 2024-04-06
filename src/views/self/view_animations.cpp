@@ -40,7 +40,7 @@ namespace big
 		ImGui::PushItemWidth(250);
 		components::input_text_with_hint("##dict", "DICT"_T, g_ped_animation_service.current_animation.dict);
 		components::options_modal(
-		    "VIEW_SELF_ANIMATIONS_DEBUG_ANIMATIONS"_T.data(),
+		    "VIEW_SELF_ANIMATIONS_DEBUG_ANIMATIONS"_T,
 		    [] {
 			    debug::animations(&g_ped_animation_service.current_animation.dict, &g_ped_animation_service.current_animation.anim);
 		    },
@@ -49,11 +49,11 @@ namespace big
 		components::input_text_with_hint("##anim", "ANIMATION"_T, g_ped_animation_service.current_animation.anim);
 
 		ImGui::SameLine();
-		components::button("VIEW_DEBUG_ANIMATIONS_PLAY"_T.data(), [] {
+		components::button("VIEW_DEBUG_ANIMATIONS_PLAY"_T, [] {
 			g_ped_animation_service.play_saved_ped_animation(g_ped_animation_service.current_animation, self::ped);
 		});
 		ImGui::SameLine();
-		components::button("VIEW_DEBUG_ANIMATIONS_STOP"_T.data(), [] {
+		components::button("VIEW_DEBUG_ANIMATIONS_STOP"_T, [] {
 			TASK::CLEAR_PED_TASKS(self::ped);
 		});
 
@@ -248,7 +248,7 @@ namespace big
 						if (p.name.length() > 25)
 							ImGui::Text(p.name.data());
 
-						ImGui::Text(std::format("{}: {}\n{}: {}", "DICT"_T.data(), p.dict, "ANIMATION"_T.data(), p.anim).c_str());
+						ImGui::Text(std::format("{}: {}\n{}: {}", "DICT"_T, p.dict, "ANIMATION"_T, p.anim).c_str());
 
 						if (p.ambient)
 							ImGui::BulletText("VIEW_SELF_ANIMATIONS_AMBIENT_ANIMATION"_T.data());

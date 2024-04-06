@@ -315,7 +315,7 @@ namespace big
 						std::string characters = (PCHAR)ptr;
 						try
 						{
-							components::input_text("VIEW_DEBUG_GLOBAL_VALUE"_T.data(), (PCHAR)ptr, 255);
+							components::input_text("VIEW_DEBUG_GLOBAL_VALUE"_T, (PCHAR)ptr, 255);
 						} catch (...){ } //This can crash if the user tries to edit the invalid ??? scenario from ImGui, so to prevent that, just silently do nothing.
 						break;
 					}

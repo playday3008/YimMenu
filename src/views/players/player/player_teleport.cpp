@@ -27,7 +27,7 @@ namespace big
 			});
 
 			components::options_modal(
-			    "VIEW_PLAYER_TELEPORT_INTERIOR_TELEPORT"_T.data(),
+			    "VIEW_PLAYER_TELEPORT_INTERIOR_TELEPORT"_T,
 			    [] {
 				    components::player_command_button<"intkick">(g_player_service->get_selected(), {});
 				    if (ImGui::BeginCombo("##apartment", apartment_names[g.session.send_to_apartment_idx]))

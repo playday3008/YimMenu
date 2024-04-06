@@ -51,7 +51,7 @@ namespace big
 		components::command_checkbox<"rapidfire">();
 
 		ImGui::Checkbox("ENABLE_SPECIAL_AMMO"_T.data(), &g.weapons.ammo_special.toggle);
-		components::options_modal("SPECIAL_AMMO"_T.data(), [] {
+		components::options_modal("SPECIAL_AMMO"_T, [] {
 			eAmmoSpecialType selected_ammo   = g.weapons.ammo_special.type;
 			eExplosionTag selected_explosion = g.weapons.ammo_special.explosion_tag;
 

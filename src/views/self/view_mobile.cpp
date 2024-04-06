@@ -62,7 +62,7 @@ namespace big
 			g_notification_service.push_success("MOBILE"_T.data(),
 			    std::vformat("VEHICLE_FIX_AMOUNT"_T,
 			        std::make_format_args(amount_fixed,
-			            amount_fixed == 1 ? "VEHICLE_FIX_HAS"_T.data() : "VEHICLE_FIX_HAVE"_T.data())));
+			            amount_fixed == 1 ? "VEHICLE_FIX_HAS"_T : "VEHICLE_FIX_HAVE"_T)));
 		});
 	}
 }

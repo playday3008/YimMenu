@@ -105,7 +105,7 @@ namespace big
 					{
 						g.vehicle.auto_drive_style = (AutoDriveStyle)i;
 						g_notification_service.push_success("AUTO_DRIVE"_T.data(),
-						    std::vformat("DRIVING_STYLE_SET_TO"_T.data(), std::make_format_args(driving_style_names[i])));
+						    std::vformat("DRIVING_STYLE_SET_TO"_T, std::make_format_args(driving_style_names[i])));
 					}
 
 					if (g.vehicle.auto_drive_style == (AutoDriveStyle)i)
@@ -251,7 +251,7 @@ namespace big
 
 			float fly_speed_user_unit = vehicle::mps_to_speed(g.vehicle.fly.speed, g.vehicle.speed_unit);
 			if (ImGui::SliderFloat(
-			        std::vformat("FUN_VEHICLE_SPEED"_T.data(), std::make_format_args(speed_unit_strings[(int)g.vehicle.speed_unit]))
+			        std::vformat("FUN_VEHICLE_SPEED"_T, std::make_format_args(speed_unit_strings[(int)g.vehicle.speed_unit]))
 			            .c_str(),
 			        &fly_speed_user_unit,
 			        vehicle::mps_to_speed(0.f, g.vehicle.speed_unit),
@@ -264,7 +264,7 @@ namespace big
 		ImGui::SeparatorText("CUSTOM_VEH_WEAPONS"_T.data());
 		{
 			components::command_checkbox<"customvehweaps">(std::format("{}##customvehweaps", "ENABLED"_T));
-			components::options_modal("CUSTOM_VEH_WEAPONS"_T.data(), [] {
+			components::options_modal("CUSTOM_VEH_WEAPONS"_T, [] {
 				eAmmoSpecialType selected_ammo          = g.vehicle.vehicle_ammo_special.type;
 				eExplosionTag selected_explosion        = g.vehicle.vehicle_ammo_special.explosion_tag;
 				eExplosionTag selected_rocket_explosion = g.vehicle.vehicle_ammo_special.rocket_explosion_tag;

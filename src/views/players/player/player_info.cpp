@@ -63,7 +63,7 @@ namespace big
 			}
 
 			components::options_modal(
-			    "VIEW_PLAYER_INFO_EXTRA_INFO"_T.data(),
+			    "VIEW_PLAYER_INFO_EXTRA_INFO"_T,
 			    [ped_health, ped_maxhealth] {
 				    ImGui::BeginGroup();
 

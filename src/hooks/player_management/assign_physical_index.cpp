@@ -134,14 +134,14 @@ namespace big
 						if ((plyr->is_friend() && g.session.allow_friends_into_locked_session) || plyr->is_trusted)
 						{
 							g_notification_service.push_success("LOBBY_LOCK"_T.data(),
-							    std::vformat("LOBBY_LOCK_ALLOWED"_T.data(),
+							    std::vformat("LOBBY_LOCK_ALLOWED"_T,
 							        std::make_format_args(plyr->get_net_data()->m_name)));
 						}
 						else
 						{
 							dynamic_cast<player_command*>(command::get("multikick"_J))->call(plyr, {});
 							g_notification_service.push_warning("LOBBY_LOCK"_T.data(),
-							    std::vformat("LOBBY_LOCK_DENIED"_T.data(), std::make_format_args(plyr->get_net_data()->m_name)));
+							    std::vformat("LOBBY_LOCK_DENIED"_T, std::make_format_args(plyr->get_net_data()->m_name)));
 						}
 					}
 

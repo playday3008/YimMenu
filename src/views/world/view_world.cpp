@@ -63,7 +63,7 @@ namespace big
 		components::command_checkbox<"pedrush">();
 		ImGui::SameLine();
 		components::command_checkbox<"autodisarm">();
-		components::options_modal("VIEW_WORLD_AUTO_DISARM"_T.data(), [] {
+		components::options_modal("VIEW_WORLD_AUTO_DISARM"_T, [] {
 			ImGui::Checkbox("VIEW_WORLD_NEUTRALIZE"_T.data(), &g.world.nearby.auto_disarm.neutralize);
 		});
 

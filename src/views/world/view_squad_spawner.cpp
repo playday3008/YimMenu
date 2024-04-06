@@ -168,7 +168,7 @@ namespace big
 			}
 		}
 
-		components::input_text_with_hint("##weapmodel", "VIEW_SQUAD_SPAWNER_WEAPON_MODEL"_T.data(), new_template.m_weapon_model);
+		components::input_text_with_hint("##weapmodel", "VIEW_SQUAD_SPAWNER_WEAPON_MODEL"_T, new_template.m_weapon_model);
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("VIEW_SQUAD_SPAWNER_WEAPON_MODEL_TOOLTIP"_T.data());
 
@@ -229,7 +229,7 @@ namespace big
 			new_template.m_ped_model.clear();
 			new_template.m_vehicle_model.clear();
 			new_template.m_weapon_model.clear();
-			new_template.m_persistent_vehicle = "VIEW_SQUAD_SPAWN_PERSISTENT_VEHICLE_NONE"_T.data();
+			new_template.m_persistent_vehicle = "VIEW_SQUAD_SPAWN_PERSISTENT_VEHICLE_NONE"_T;
 			new_template.m_squad_size         = 1;
 			new_template.m_ped_invincibility  = 0;
 			new_template.m_veh_invincibility  = 0;
@@ -314,7 +314,7 @@ namespace big
 			if (ImGui::BeginCombo("##persistent_vehicle", new_template.m_persistent_vehicle.data()))
 			{
 				if (ImGui::Selectable("VIEW_SQUAD_SPAWN_PERSISTENT_VEHICLE_NONE"_T.data(), new_template.m_persistent_vehicle == "VIEW_SQUAD_SPAWN_PERSISTENT_VEHICLE_NONE"_T.data()))
-					new_template.m_persistent_vehicle = "VIEW_SQUAD_SPAWN_PERSISTENT_VEHICLE_NONE"_T.data();
+					new_template.m_persistent_vehicle = "VIEW_SQUAD_SPAWN_PERSISTENT_VEHICLE_NONE"_T;
 				for (auto& p : persist_car_service::list_files())
 				{
 					if (ImGui::Selectable(p.data(), p == new_template.m_persistent_vehicle))

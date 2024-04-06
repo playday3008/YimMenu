@@ -160,10 +160,10 @@ namespace big
 
 			components::script_patch_checkbox("REVEAL_OTR_PLAYERS"_T,
 			    &g.session.decloak_players,
-			    "REVEAL_OTR_PLAYERS_DESC"_T.data());
+			    "REVEAL_OTR_PLAYERS_DESC"_T);
 			components::script_patch_checkbox("REVEAL_HIDDEN_PLAYERS"_T,
 			    &g.session.unhide_players_from_player_list,
-			    "REVEAL_HIDDEN_PLAYERS_DESC"_T.data());
+			    "REVEAL_HIDDEN_PLAYERS_DESC"_T);
 
 			components::command_button<"sextall">({}, "SEND_SEXT"_T);
 			ImGui::SameLine();
@@ -179,7 +179,7 @@ namespace big
 	{
 		ImGui::BeginGroup();
 
-		components::sub_title("CHAT"_T.data());
+		components::sub_title("CHAT"_T);
 		if (ImGui::BeginListBox("##chat", get_listbox_dimensions()))
 		{
 			static char msg[256];
@@ -353,7 +353,7 @@ namespace big
 
 		components::sub_title("PLAYERS"_T);
 		components::options_modal(
-		    "GRIEFING"_T.data(),
+		    "GRIEFING"_T,
 		    [] {
 			    components::command_button<"killall">({}, "KILL_ALL"_T);
 			    ImGui::SameLine();
@@ -412,7 +412,7 @@ namespace big
 		    "GRIEFING"_T.data());
 
 		components::options_modal(
-		    "TELEPORT"_T.data(),
+		    "TELEPORT",
 		    [] {
 			    if (ImGui::BeginCombo("##apartment", apartment_names[g.session.send_to_apartment_idx]))
 			    {
@@ -537,7 +537,7 @@ namespace big
 
 		ImGui::Checkbox("RANDOMIZE_CEO_COLORS"_T.data(), &g.session.randomize_ceo_colors);
 		ImGui::SameLine();
-		components::script_patch_checkbox("BLOCK_MUGGERS"_T, &g.session.block_muggers, "BLOCK_MUGGERS_DESC"_T.data());
+		components::script_patch_checkbox("BLOCK_MUGGERS"_T, &g.session.block_muggers, "BLOCK_MUGGERS_DESC"_T);
 
 		components::script_patch_checkbox("BLOCK_CEO_RAIDS"_T, &g.session.block_ceo_raids, "BLOCK_CEO_RAIDS_DESC"_T);
 

@@ -54,7 +54,7 @@ namespace big
 		if (g.spoofing.spoof_bad_sport)
 		{
 			ImGui::SameLine();
-			static const std::string badsport_options = std::string("CLEAN_PLAYER"_T.data()) + '\0' + std::string("VIEW_SPOOFING_DIRTY_PLAYER"_T.data()) + '\0' + std::string("BAD_SPORT"_T.data());
+			static const std::string badsport_options = std::string("CLEAN_PLAYER"_T) + '\0' + std::string("VIEW_SPOOFING_DIRTY_PLAYER"_T) + '\0' + std::string("BAD_SPORT"_T);
 			if (ImGui::Combo("###badsport_select", &g.spoofing.badsport_type, badsport_options.c_str()))
 			{
 				*g_pointers->m_gta.m_force_player_card_refresh = true;

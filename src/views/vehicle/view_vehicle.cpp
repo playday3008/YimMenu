@@ -13,7 +13,7 @@ namespace big
 			g_notification_service.push_success("MOBILE"_T.data(),
 			    std::vformat("VEHICLE_FIX_AMOUNT"_T.data(),
 			        std::make_format_args(amount_fixed,
-			            amount_fixed == 1 ? "VEHICLE_FIX_HAS"_T.data() : "VEHICLE_FIX_HAVE"_T.data())));
+			            amount_fixed == 1 ? "VEHICLE_FIX_HAS"_T : "VEHICLE_FIX_HAVE"_T)));
 		});
 
 		ImGui::SameLine();
@@ -67,7 +67,7 @@ namespace big
 		{
 			ImGui::BeginGroup();
 
-			components::command_checkbox<"vehgodmode">("GOD_MODE"_T.data());
+			components::command_checkbox<"vehgodmode">("GOD_MODE"_T);
 			components::command_checkbox<"hornboost">();
 			components::command_checkbox<"vehjump">();
 			components::command_checkbox<"invisveh">();
@@ -106,7 +106,7 @@ namespace big
 			components::command_checkbox<"mutesiren">();
 
 			components::command_checkbox<"speedometer">();
-			components::options_modal("Speedometer", [] {
+			components::options_modal("SPEEDO_METER"_T, [] {
 				ImGui::Text("POS_X_Y"_T.data());
 
 				float pos[2] = {g.vehicle.speedo_meter.x, g.vehicle.speedo_meter.y};

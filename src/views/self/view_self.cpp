@@ -107,7 +107,7 @@ namespace big
 		ImGui::Checkbox("DANCE_MODE"_T.data(), &g.self.dance_mode);
 
 		components::command_checkbox<"orbitaldrone">();
-		components::options_modal("VIEW_SELF_ORBITAL_DRONE"_T.data(), [] {
+		components::options_modal("VIEW_SELF_ORBITAL_DRONE"_T, [] {
 			ImGui::Separator();
 			ImGui::BeginGroup();
 			ImGui::Text("ORBITAL_DRONE_USAGE_DESCR"_T.data());
@@ -130,7 +130,7 @@ namespace big
 		});
 
 		ImGui::Checkbox("SETTINGS_CONTEXT_MENU"_T.data(), &g.context_menu.enabled);
-		components::options_modal("SETTINGS_CONTEXT_MENU"_T.data(), [] {
+		components::options_modal("SETTINGS_CONTEXT_MENU"_T, [] {
 			ImGui::Text("SETTINGS_CONTEXT_MENU_ENTITY_TYPES"_T.data());
 			ImGui::CheckboxFlags("SETTINGS_CONTEXT_MENU_ENTITY_TYPE_OBJECT"_T.data(),
 			    reinterpret_cast<int*>(&g.context_menu.allowed_entity_types),
@@ -169,7 +169,7 @@ namespace big
 		});
 
 		components::command_checkbox<"ptfx">();
-		components::options_modal("VIEW_SELF_PTFX"_T.data(), [] {
+		components::options_modal("VIEW_SELF_PTFX"_T, [] {
 			ImGui::SliderFloat("VIEW_SELF_PTFX_SIZE"_T.data(), &g.self.ptfx_effects.size, 0.1f, 2.f);
 			if (ImGui::BeginCombo("VIEW_SELF_ASSET"_T.data(), ptfx_named[g.self.ptfx_effects.select].friendly_name))
 			{
@@ -205,7 +205,7 @@ namespace big
 		});
 
 		ImGui::Checkbox("NEVER_WANTED"_T.data(), &g.self.never_wanted);
-		components::options_modal("POLICE"_T.data(), [] {
+		components::options_modal("POLICE"_T, [] {
 			ImGui::Checkbox("NEVER_WANTED"_T.data(), &g.self.never_wanted);
 			components::command_button<"clearwantedlvl">();
 			if (!g.self.never_wanted)

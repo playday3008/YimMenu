@@ -95,7 +95,7 @@ namespace big
 			{
 				selected_module = g_lua_manager->disable_module(id);
 			}
-			else if (is_disabled && components::button("ENABLE"_T.data()))
+			else if (is_disabled && components::button("ENABLE"_T))
 			{
 				selected_module = g_lua_manager->enable_module(id);
 			}
