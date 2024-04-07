@@ -23,6 +23,9 @@ include(cmake/imgui.cmake)
 message("\nFetching custom modules")
 include(cmake/gtav-classes.cmake)
 
+# Build options
+include(cmake/build_options.cmake)
+
 # YimMenu
 message(STATUS "YimMenu")
 file(GLOB_RECURSE SRC_MAIN
@@ -34,15 +37,8 @@ file(GLOB_RECURSE SRC_MAIN
   "${SRC_DIR}/**.asm"
 )
 
-if (MSVC)
-  set(MSVC_C_CXX_COMPILE_OPTIONS /bigobj /utf-8)
-  add_compile_options(
-    "$<$<COMPILE_LANG_AND_ID:C,MSVC>:${MSVC_C_CXX_COMPILE_OPTIONS}>"
-    "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:${MSVC_C_CXX_COMPILE_OPTIONS}>"
-  )
-else ()
-  add_compile_options(-Wa,-mbig-obj)
-endif ()
+# Actually use build options
+include(cmake/build_options_impl.cmake)
 
 add_library(YimMenu MODULE "${SRC_MAIN}")
 
@@ -62,33 +58,10 @@ target_include_directories(YimMenu PRIVATE
 target_precompile_headers(YimMenu PRIVATE "${SRC_DIR}/common.hpp")
 target_link_libraries(YimMenu PRIVATE pugixml minhook AsyncLogger dbghelp imgui cpr lua_static)
 
-# Warnings as errors
-set_property(TARGET YimMenu PROPERTY COMPILE_WARNING_AS_ERROR ON)
-
 add_compile_definitions(YimMenu
   "NOMINMAX"
   "WIN32_LEAN_AND_MEAN"
 )
-
-# Optimizations
-if(MSVC)
-  if(OPTIMIZE)
-    set(CMAKE_MODULE_LINKER_FLAGS
-      "${CMAKE_MODULE_LINKER_FLAGS} /LTCG /OPT:REF,ICF /GUARD:NO")
-
-    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
-      "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /O2 /Oi /Ot /Oy /Ob3 /sdl- /GL /GF /GS- /Gw")
-    string(REPLACE "/Ob1" "/Ob3" CMAKE_CXX_FLAGS_RELWITHDEBINFO ${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
-  endif()
-else()
-  if(OPTIMIZE)
-    set(CMAKE_MODULE_LINKER_FLAGS
-      "${CMAKE_MODULE_LINKER_FLAGS} -flto -fuse-ld=lld")
-
-    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
-      "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -O3 -march=native -flto -fuse-ld=lld")
-  endif()
-endif()
 
 # Generate a JSON compilation database
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

@@ -1,3 +1,6 @@
 {
-    "cmake.generator": "Ninja"
+    "cmake.generator": "Ninja",
+    "files.exclude": {
+        "**/_deps": true
+    }
 }
