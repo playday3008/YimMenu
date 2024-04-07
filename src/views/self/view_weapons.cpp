@@ -119,13 +119,13 @@ namespace big
 		});
 
 		components::command_checkbox<"incrdamage">();
-		ImGui::InputFloat("VIEW_WEAPON_DAMAGE"_T.data(), &g.weapons.increased_damage, .1, 10, "%.1f");
+		ImGui::InputFloat("VIEW_WEAPON_DAMAGE"_T.data(), &g.weapons.increased_damage, .1f, 10, "%.1f");
 
 
 		components::command_checkbox<"flyingaxe">();
 
 		components::command_checkbox<"modifyexplosionradius">();
-		ImGui::InputFloat("VIEW_WEAPON_EXPLOSION_RADIUS"_T.data(), &g.weapons.set_explosion_radius, .1, 200, "%.1f");
+		ImGui::InputFloat("VIEW_WEAPON_EXPLOSION_RADIUS"_T.data(), &g.weapons.set_explosion_radius, .1f, 200, "%.1f");
 
 
 		ImGui::SeparatorText("CUSTOM_WEAPONS"_T.data());

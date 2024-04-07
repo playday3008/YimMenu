@@ -100,7 +100,7 @@ namespace big
 				if (aim_lock.x == 0.f && aim_lock.y == 0.f && aim_lock.z == 0.f)
 					return;
 
-				constexpr float RADPI = 180.0f / std::numbers::pi;
+				constexpr float RADPI = 180.0f / std::numbers::pi_v<float>;
 				float magnitude       = std::hypot(camera_target.x, camera_target.y, camera_target.z);
 				float camera_heading  = atan2f(camera_target.x, camera_target.y) * RADPI;
 

@@ -250,7 +250,7 @@ namespace big
 
 			HUD::BEGIN_TEXT_COMMAND_DISPLAY_TEXT("STRING");
 			HUD::SET_TEXT_FONT(4);
-			HUD::SET_TEXT_SCALE(0.3f, 0.463);
+			HUD::SET_TEXT_SCALE(0.3f, 0.463f);
 			HUD::SET_TEXT_COLOUR(0, 150, 0, 255);
 			HUD::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(
 			    std::to_string(math::distance_between_vectors(self::pos, veh_pos)).data());

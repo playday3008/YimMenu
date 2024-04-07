@@ -229,12 +229,12 @@ namespace big
 			if (g_vehicle_ammo_settings.rocket_improve_tracking)
 			{
 				rocket_info->m_homing_rocket_params.m_should_use_homing_params_from_info              = true;
-				rocket_info->m_homing_rocket_params.m_turn_rate_modifier                              = 4.0;
-				rocket_info->m_homing_rocket_params.m_pitch_yaw_roll_clamp                            = 8.5;
-				rocket_info->m_homing_rocket_params.m_default_homing_rocket_break_lock_angle          = 0.2;
-				rocket_info->m_homing_rocket_params.m_default_homing_rocket_break_lock_angle_close    = 0.6;
-				rocket_info->m_homing_rocket_params.m_default_homing_rocket_break_lock_close_distance = 20.0;
-				rocket_info->m_homing_rocket_params.m_time_before_starting_homing                     = 0.15;
+				rocket_info->m_homing_rocket_params.m_turn_rate_modifier                              = 4.0f;
+				rocket_info->m_homing_rocket_params.m_pitch_yaw_roll_clamp                            = 8.5f;
+				rocket_info->m_homing_rocket_params.m_default_homing_rocket_break_lock_angle          = 0.2f;
+				rocket_info->m_homing_rocket_params.m_default_homing_rocket_break_lock_angle_close    = 0.6f;
+				rocket_info->m_homing_rocket_params.m_default_homing_rocket_break_lock_close_distance = 20.0f;
+				rocket_info->m_homing_rocket_params.m_time_before_starting_homing                     = 0.15f;
 				weapon_flags(m_rocket_weapon_info)[152]                                               = 1;
 			}
 			else

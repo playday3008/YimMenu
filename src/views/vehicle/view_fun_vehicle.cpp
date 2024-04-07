@@ -307,10 +307,10 @@ namespace big
 
 				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_SPEED"_T.data(), &g.vehicle.vehicle_ammo_special.speed, 10, 100, "%.1f");
 				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_RANGE"_T.data(), &g.vehicle.vehicle_ammo_special.weapon_range, 50, 100, "%.1f");
-				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_TBS"_T.data(), &g.vehicle.vehicle_ammo_special.time_between_shots, 0.001, 0.1, "%.3f");
+				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_TBS"_T.data(), &g.vehicle.vehicle_ammo_special.time_between_shots, 0.001f, 0.1f, "%.3f");
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("CUSTOM_VEH_WEAPONS_TBS_DESC"_T.data());
-				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_AWT"_T.data(), &g.vehicle.vehicle_ammo_special.alternate_wait_time, 0.001, 0.1, "%.3f");
+				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_AWT"_T.data(), &g.vehicle.vehicle_ammo_special.alternate_wait_time, 0.001f, 0.1f, "%.3f");
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("CUSTOM_VEH_WEAPONS_AWT_DESC"_T.data());
 				ImGui::EndGroup();
@@ -336,22 +336,22 @@ namespace big
 					ImGui::EndCombo();
 				}
 
-				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_RELOAD_TIME"_T.data(), &g.vehicle.vehicle_ammo_special.rocket_reload_time, 0.1, 1, "%.1f");
+				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_RELOAD_TIME"_T.data(), &g.vehicle.vehicle_ammo_special.rocket_reload_time, 0.1f, 1, "%.1f");
 				ImGui::InputFloat(std::format("{}##rocket", "CUSTOM_VEH_WEAPONS_SPEED"_T).data(),
 				    &g.vehicle.vehicle_ammo_special.rocket_launch_speed, 10, 100, "%.1f");
 				ImGui::InputFloat(std::format("{}##rocket", "CUSTOM_VEH_WEAPONS_RANGE"_T).data(),
 				    &g.vehicle.vehicle_ammo_special.rocket_range, 50, 100, "%.1f");
 				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_LOCKON_RANGE"_T.data(), &g.vehicle.vehicle_ammo_special.rocket_lock_on_range, 50, 100, "%.1f");
-				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_LOCKON_TIME"_T.data(), &g.vehicle.vehicle_ammo_special.rocket_time_before_homing, 0.01, 0.1, "%.2f");
+				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_LOCKON_TIME"_T.data(), &g.vehicle.vehicle_ammo_special.rocket_time_before_homing, 0.01f, 0.1f, "%.2f");
 				ImGui::InputFloat(std::format("{}##rocket", "CUSTOM_VEH_WEAPONS_TBS"_T).data(),
-				    &g.vehicle.vehicle_ammo_special.rocket_time_between_shots, 0.001, 0.1, "%.3f");
+				    &g.vehicle.vehicle_ammo_special.rocket_time_between_shots, 0.001f, 0.1f, "%.3f");
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("CUSTOM_VEH_WEAPONS_TBS_DESC"_T.data());
 				ImGui::InputFloat(std::format("{}##rocket", "CUSTOM_VEH_WEAPONS_AWT"_T).data(),
-				    &g.vehicle.vehicle_ammo_special.rocket_alternate_wait_time, 0.001, 0.1, "%.3f");
+				    &g.vehicle.vehicle_ammo_special.rocket_alternate_wait_time, 0.001f, 0.1f, "%.3f");
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("CUSTOM_VEH_WEAPONS_AWT_DESC"_T.data());
-				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_LIFETIME"_T.data(), &g.vehicle.vehicle_ammo_special.rocket_lifetime, 0.1, 1, "%.1f");
+				ImGui::InputFloat("CUSTOM_VEH_WEAPONS_LIFETIME"_T.data(), &g.vehicle.vehicle_ammo_special.rocket_lifetime, 0.1f, 1, "%.1f");
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("CUSTOM_VEH_WEAPONS_LIFETIME_DESC"_T.data());
 				ImGui::Checkbox("CUSTOM_VEH_WEAPONS_SMART_MISSILE"_T.data(), &g.vehicle.vehicle_ammo_special.rocket_improve_tracking);

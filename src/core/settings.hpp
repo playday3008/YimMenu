@@ -790,18 +790,18 @@ namespace big
 				eAmmoSpecialType type              = eAmmoSpecialType::None;
 				eExplosionTag explosion_tag        = eExplosionTag::EXP_TAG_ROGUE_CANNON;
 				float speed                        = 2000;
-				float time_between_shots           = 0.04;
+				float time_between_shots           = 0.04f;
 				float alternate_wait_time          = -1;
 				float weapon_range                 = 250;
-				float rocket_time_between_shots    = 0.66;
-				float rocket_alternate_wait_time   = 0.66;
+				float rocket_time_between_shots    = 0.66f;
+				float rocket_alternate_wait_time   = 0.66f;
 				float rocket_lock_on_range         = 500;
 				float rocket_range                 = 1000;
 				float rocket_reload_time           = -1;
 				eExplosionTag rocket_explosion_tag = eExplosionTag::TANKSHELL;
 				float rocket_lifetime              = 15;
 				float rocket_launch_speed          = 1200;
-				float rocket_time_before_homing    = 0.75;
+				float rocket_time_before_homing    = 0.75f;
 				bool rocket_improve_tracking       = true;
 
 				NLOHMANN_DEFINE_TYPE_INTRUSIVE(vehicle_ammo_special, enabled, type, explosion_tag, speed, time_between_shots, alternate_wait_time, weapon_range, rocket_time_between_shots, rocket_alternate_wait_time, rocket_lock_on_range, rocket_range, rocket_reload_time, rocket_explosion_tag, rocket_lifetime, rocket_launch_speed, rocket_time_before_homing, rocket_improve_tracking)
