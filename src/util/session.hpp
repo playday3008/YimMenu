@@ -205,7 +205,7 @@ namespace big::session
 		int64_t args[arg_count] = {
 		    (int64_t)eRemoteEvent::GiveCollectible,
 		    (int64_t)self::id,
-		    1 << target,
+		    1i64 << target,
 		    (int64_t)col,   // iParam0
 		    (int64_t)index, // iParam1
 		    !uncomplete,    // bParam2

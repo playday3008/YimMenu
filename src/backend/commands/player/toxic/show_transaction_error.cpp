@@ -21,7 +21,7 @@ namespace big
 			const size_t arg_count  = 9;
 			int64_t args[arg_count] = {(int64_t)eRemoteEvent::TransactionError,
 			    (int64_t)self::id,
-			    1 << player->id(),
+			    1i64 << player->id(),
 			    1,
 			    0,
 			    0,

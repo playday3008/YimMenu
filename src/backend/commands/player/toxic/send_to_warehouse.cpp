@@ -18,9 +18,9 @@ namespace big
 		{
 			const size_t arg_count = 7;
 			int64_t args[arg_count] = {(int64_t)eRemoteEvent::TeleportToWarehouse,
-			    self::id,
-			    1 << player->id(),
-				(int64_t) player->id(),
+			    (int64_t)self::id,
+			    1i64 << player->id(),
+				(int64_t)player->id(),
 			    1,
 			    (int64_t)_args.get<int>(0)};
 

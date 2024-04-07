@@ -43,7 +43,7 @@ namespace big
 				int64_t args[arg_count]{
 				    (int64_t)eRemoteEvent::KickFromInterior,
 				    (int64_t)self::id,
-					1 << player->id(),
+					1i64 << player->id(),
 				    (int64_t)scr_globals::globalplayer_bd.as<GlobalPlayerBD*>()
 				        ->Entries[player->id()]
 				        .SimpleInteriorData.Index,

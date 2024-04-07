@@ -20,7 +20,7 @@ namespace big
 			const size_t arg_count  = 16;
 			int64_t args[arg_count] = {(int64_t)eRemoteEvent::InteriorControl,
 			    (int64_t)self::id,
-			    1 << player->id(),
+			    1i64 << player->id(),
 			    (int64_t)_args.get<int>(0),
 			    (int64_t)self::id,
 			    (int64_t) false,

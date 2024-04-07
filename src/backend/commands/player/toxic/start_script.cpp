@@ -21,7 +21,7 @@ namespace big
 		virtual void execute(player_ptr player, const command_arguments& _args, const std::shared_ptr<command_context> ctx) override
 		{
 			const size_t arg_count  = 26;
-			int64_t args[arg_count] = {(int64_t)eRemoteEvent::StartScriptBegin, (int64_t)self::id, 1 << player->id()};
+			int64_t args[arg_count] = {(int64_t)eRemoteEvent::StartScriptBegin, (int64_t)self::id, 1i64 << player->id()};
 
 			args[2] = scriptId;
 			strcpy((char*)&args[2 + 3], "0");
@@ -35,7 +35,7 @@ namespace big
 			for (int i = 0; i < 2; i++)
 			{
 				const size_t arg_count_2    = 26;
-				int64_t args_2[arg_count_2] = {(int64_t)eRemoteEvent::StartScriptProceed, (int64_t)self::id, 1 << player->id()};
+				int64_t args_2[arg_count_2] = {(int64_t)eRemoteEvent::StartScriptProceed, (int64_t)self::id, 1i64 << player->id()};
 				args_2[2 + 17]              = 1337;
 				g_pointers->m_gta.m_trigger_script_event(1, args_2, arg_count_2, 1 << player->id(), (int)eRemoteEvent::StartScriptProceed);
 
