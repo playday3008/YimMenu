@@ -52,7 +52,7 @@ namespace rage
 	class netConnectionManager;
 	class datBitBuffer;
 	class rlMetric;
-	class rlTaskStatus;
+	struct rlTaskStatus;
 	class netEventMgr;
 	class json_serializer;
 	class netGameEvent;

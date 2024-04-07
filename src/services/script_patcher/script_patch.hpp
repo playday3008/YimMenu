@@ -3,7 +3,7 @@
 
 namespace big
 {
-	struct script_data;
+	class script_data;
 
 	class script_patch
 	{

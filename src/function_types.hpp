@@ -29,7 +29,7 @@ namespace rage
 	class snSession;
 	class snPlayer;
 	class CDynamicEntity;
-	class netTimeSyncMsg;
+	struct netTimeSyncMsg;
 	class snConnectToPeerTaskData;
 	class snConnectToPeerTaskResult;
 	class rlScHandle;
