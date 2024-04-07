@@ -547,7 +547,7 @@ namespace big
 					throw std::runtime_error("Failed to cache nodes");
 				}
 
-				for (int j = 0; j < tree->m_child_node_count; j++)
+				for (uint32_t j = 0; j < tree->m_child_node_count; j++)
 				{
 					const uintptr_t addr = (uintptr_t)tree->m_child_nodes[j];
 

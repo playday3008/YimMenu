@@ -9,7 +9,7 @@ static const GUID g_yim_device = {0xdcb7ef33, 0xcd8a, 0x4231, {0x80, 0x51, 0x66,
 
 class IDirectSoundCaptureBuffer
 {
-	inline int GetActualReadPos()
+	inline DWORD GetActualReadPos()
 	{
 		return read_position + (audio_page * 32000);
 	}
@@ -31,7 +31,7 @@ class IDirectSoundCaptureBuffer
 		return (HRESULT)0L;// DS_OK
 	}
 
-	virtual HRESULT GetCurrentPosition(int* capture, int* read)
+	virtual HRESULT GetCurrentPosition(DWORD* capture, DWORD* read)
 	{
 		if (capture)
 			*capture = 0;
@@ -42,12 +42,12 @@ class IDirectSoundCaptureBuffer
 		return (HRESULT)0L;// DS_OK
 	}
 
-	virtual HRESULT GetFormat(void* out, int length, int* out_length)
+	virtual HRESULT GetFormat(void* out, DWORD length, DWORD* out_length)
 	{
 		return (HRESULT)0L;// DS_OK
 	}
 
-	virtual HRESULT GetStatus(int* status)
+	virtual HRESULT GetStatus(DWORD* status)
 	{
 		*status = 1;       // DSCBSTATUS_CAPTURING
 		return (HRESULT)0L;// DS_OK
@@ -89,15 +89,15 @@ class IDirectSoundCaptureBuffer
 		return (HRESULT)0L;// DS_OK
 	}
 
-	virtual HRESULT Start(int flags)
+	virtual HRESULT Start(DWORD flags)
 	{
 		if (big::g_file_manager.get_project_file("./audio.wav").exists())
 		{
 			std::ifstream wave_stream(big::g_file_manager.get_project_file("./audio.wav").get_path(), std::ios::in | std::ios::binary);
 
 			// https://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html
-			int header_size = 0;
-			int data_size   = 0;
+			DWORD header_size = 0;
+			DWORD data_size   = 0;
 			wave_stream.seekg(4, std::ios_base::cur);          // RIFF
 			wave_stream.seekg(4, std::ios_base::cur);          // chunk size
 			wave_stream.seekg(4, std::ios_base::cur);          // Wave ID
@@ -170,9 +170,9 @@ class IDirectSoundCaptureBuffer
 	}
 
 	char* audio_buffer                                       = nullptr;
-	int audio_size                                           = 0;
+	DWORD audio_size                                         = 0;
 	int audio_page                                           = 0;
-	int read_position                                        = 0;
+	DWORD read_position                                      = 0;
 	bool running                                             = false;
 	std::chrono::high_resolution_clock::time_point last_read = std::chrono::high_resolution_clock::time_point();
 };

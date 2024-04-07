@@ -429,7 +429,7 @@ namespace big
 			LOG_FIELD_B(CDynamicEntityGameStateDataNode, unk_00C4);
 			LOG_FIELD_B(CDynamicEntityGameStateDataNode, unk_00C5);
 			LOG_FIELD(CDynamicEntityGameStateDataNode, m_decor_count);
-			for (int i = 0; i < ((CDynamicEntityGameStateDataNode*)node)->m_decor_count; i++)
+			for (uint32_t i = 0; i < ((CDynamicEntityGameStateDataNode*)node)->m_decor_count; i++)
 			{
 				LOG_FIELD(CDynamicEntityGameStateDataNode, m_decors[i].m_type);
 				LOG_FIELD_H(CDynamicEntityGameStateDataNode, m_decors[i].m_name_hash);
@@ -505,7 +505,7 @@ namespace big
 			LOG_FIELD(CPedGameStateDataNode, m_num_weapon_components);
 			if (((CPedGameStateDataNode*)node)->m_num_weapon_components <= 12)
 			{
-				for (int i = 0; i < ((CPedGameStateDataNode*)node)->m_num_weapon_components; i++)
+				for (uint32_t i = 0; i < ((CPedGameStateDataNode*)node)->m_num_weapon_components; i++)
 				{
 					LOG_FIELD_B(CPedGameStateDataNode, m_weapon_component_something[i]);
 					LOG_FIELD_H(CPedGameStateDataNode, m_weapon_component_hash[i]);
@@ -514,7 +514,7 @@ namespace big
 			LOG_FIELD(CPedGameStateDataNode, m_num_equiped_gadgets);
 			if (((CPedGameStateDataNode*)node)->m_num_equiped_gadgets <= 3)
 			{
-				for (int i = 0; i < ((CPedGameStateDataNode*)node)->m_num_equiped_gadgets; i++)
+				for (uint32_t i = 0; i < ((CPedGameStateDataNode*)node)->m_num_equiped_gadgets; i++)
 				{
 					LOG_FIELD_H(CPedGameStateDataNode, m_gadget_hash[i]);
 				}
@@ -667,7 +667,7 @@ namespace big
 			LOG_FIELD(CPickupCreationDataNode, m_num_weapon_components);
 			if (((CPickupCreationDataNode*)node)->m_num_weapon_components <= 12)
 			{
-				for (int i = 0; i < ((CPickupCreationDataNode*)node)->m_num_weapon_components; i++)
+				for (uint32_t i = 0; i < ((CPickupCreationDataNode*)node)->m_num_weapon_components; i++)
 				{
 					LOG_FIELD_H(CPickupCreationDataNode, m_weapon_component[i]);
 				}
@@ -887,7 +887,7 @@ namespace big
 			LOG_FIELD(CVehicleGadgetDataNode, m_gadget_count);
 			if (((CVehicleGadgetDataNode*)node)->m_gadget_count <= 2)
 			{
-				for (int i = 0; i < ((CVehicleGadgetDataNode*)node)->m_gadget_count; i++)
+				for (uint32_t i = 0; i < ((CVehicleGadgetDataNode*)node)->m_gadget_count; i++)
 				{
 					LOG_FIELD(CVehicleGadgetDataNode, m_gadget_data[i].m_gadget_type);
 				}
@@ -1046,7 +1046,7 @@ namespace big
 		case sync_node_id("CVehicleComponentReservationDataNode"):
 			LOG_FIELD_B(CVehicleComponentReservationDataNode, m_has_component_reservations);
 			LOG_FIELD(CVehicleComponentReservationDataNode, m_num_peds_using_component);
-			for (int i = 0; i < ((CVehicleComponentReservationDataNode*)node)->m_num_peds_using_component; i++)
+			for (uint32_t i = 0; i < ((CVehicleComponentReservationDataNode*)node)->m_num_peds_using_component; i++)
 				LOG_FIELD_NI(CVehicleComponentReservationDataNode, m_peds_using_component[i]);
 			break;
 		case sync_node_id("CPlayerAmbientModelStreamingNode"):
@@ -1228,7 +1228,7 @@ namespace big
 					return true;
 				}
 
-				for (int i = 0; i < creation_node->m_num_weapon_components; i++)
+				for (uint32_t i = 0; i < creation_node->m_num_weapon_components; i++)
 				{
 					uint64_t buffer[20]{};
 					if (!WEAPON::GET_WEAPON_COMPONENT_HUD_STATS(creation_node->m_weapon_component[i], (Any*)buffer)) // trying to save a pointer here
@@ -1532,7 +1532,7 @@ namespace big
 					notify::crash_blocked(sender, "mount flag");
 					return true;
 				}
-				for (int i = 0; i < game_state_node->m_num_equiped_gadgets; i++)
+				for (uint32_t i = 0; i < game_state_node->m_num_equiped_gadgets; i++)
 				{
 					if (game_state_node->m_gadget_hash[i] != "gadget_parachute"_J && game_state_node->m_gadget_hash[i] != "gadget_nightvision"_J)
 					{
@@ -1593,7 +1593,7 @@ namespace big
 			case sync_node_id("CVehicleGadgetDataNode"):
 			{
 				const auto gadget_node = (CVehicleGadgetDataNode*)(node);
-				for (int i = 0; i < gadget_node->m_gadget_count; i++)
+				for (uint32_t i = 0; i < gadget_node->m_gadget_count; i++)
 				{
 					if (gadget_node->m_gadget_data[i].m_gadget_type > 7)
 					{

@@ -72,7 +72,7 @@ namespace big
 			std::vector<int32_t> script_event_args;
 
 			script_event_args.reserve(args_count);
-			for (int i = 0; i < args_count; i++)
+			for (uint32_t i = 0; i < args_count; i++)
 				script_event_args.push_back(args[i]);
 
 			auto event_ret = g_lua_manager->trigger_event<menu_event::ScriptedGameEventReceived, bool>((int)player->m_player_id, script_event_args);
@@ -433,7 +433,7 @@ namespace big
 		    && (!g.debug.logs.script_event.filter_player || g.debug.logs.script_event.player_id == player->m_player_id))
 		{
 			std::string script_args = "{ ";
-			for (int i = 0; i < args_count; i++)
+			for (uint32_t i = 0; i < args_count; i++)
 			{
 				if (i)
 					script_args += ", ";

@@ -119,7 +119,7 @@ namespace big
 		auto num_tunables = *(uint32_t*)data;
 		data += sizeof(uint32_t);
 
-		for (int i = 0; i < num_tunables; i++)
+		for (uint32_t i = 0; i < num_tunables; i++)
 		{
 			auto save_struct = (tunable_save_struct*)data;
 			m_tunables.emplace(save_struct->hash, (void*)(g_pointers->m_gta.m_script_globals[1] + save_struct->offset));

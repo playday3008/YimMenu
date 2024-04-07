@@ -85,7 +85,7 @@ namespace big
 		rage::eNetMessage msgType;
 		player_ptr player;
 
-		for (uint32_t i = 0; i < gta_util::get_network()->m_game_session_ptr->m_player_count; i++)
+		for (int32_t i = 0; i < gta_util::get_network()->m_game_session_ptr->m_player_count; i++)
 		{
 			if (gta_util::get_network()->m_game_session_ptr->m_players[i]->m_player_data.m_peer_id_2 == frame->m_peer_id)
 			{

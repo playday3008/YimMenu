@@ -55,7 +55,7 @@ namespace big
 			handler_replacements[og_handler] = replacement_handler;
 		}
 
-		for (int i = 0; i < m_program->m_native_count; i++)
+		for (uint32_t i = 0; i < m_program->m_native_count; i++)
 		{
 			if (auto it = handler_replacements.find((rage::scrNativeHandler)program->m_native_entrypoints[i]);
 			    it != handler_replacements.end())
