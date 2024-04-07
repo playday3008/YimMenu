@@ -142,7 +142,7 @@ BOOL APIENTRY DllMain(HMODULE hmod, DWORD reason, PVOID)
 		    0,
 		    [](PVOID) -> DWORD {
 			    auto handler = exception_handler();
-			    std::srand(std::chrono::system_clock::now().time_since_epoch().count());
+			    std::srand(std::random_device{}());
 
 			    while (!FindWindow("grcWindow", nullptr))
 				    std::this_thread::sleep_for(100ms);
