@@ -25,9 +25,9 @@ namespace big
 	{
 		m_offset = m_offset + ((16 - (m_offset % 16)) % 16); // align
 
-		*m_memory.add(m_offset).as<int16_t*>() = 0xB848;
+		*m_memory.add(m_offset).as<int16_t*>() = 0xB848i16;
 		*m_memory.add(m_offset).add(2).as<void**>() = func;
-		*m_memory.add(m_offset).add(10).as<int16_t*>() = 0xE0FF;
+		*m_memory.add(m_offset).add(10).as<int16_t*>() = 0xE0FFi16;
 
 		m_offset += 12;
 
