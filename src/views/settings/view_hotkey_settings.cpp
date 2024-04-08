@@ -46,7 +46,7 @@ namespace big
 			g_hotkey_service->update_hotkey("invisveh", g.settings.hotkeys.invisveh);
 		if (ImGui::Hotkey("VIEW_HOTKEY_SETTINGS_TOGGLE_LOCAL_VEHICLE_INVISIBILITY"_T.data(), &g.settings.hotkeys.localinvisveh))
 			g_hotkey_service->update_hotkey("localinvisveh", g.settings.hotkeys.localinvisveh);
-		if (ImGui::Hotkey("FILL_AMMO"_T.data(), &g.settings.hotkeys.fill_ammo));
+		if (ImGui::Hotkey("FILL_AMMO"_T.data(), &g.settings.hotkeys.fill_ammo))
 			g_hotkey_service->update_hotkey("fillammo", g.settings.hotkeys.fill_ammo);
 		if (ImGui::Hotkey("VIEW_HOTKEY_SETTINGS_RAGE_QUIT"_T.data(), &g.settings.hotkeys.fast_quit))
 			g_hotkey_service->update_hotkey("fastquit", g.settings.hotkeys.fast_quit);

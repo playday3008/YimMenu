@@ -170,8 +170,7 @@ namespace big
 			ImGui::TreePop();
 		}
 
-		if (ImGui::Checkbox("REPLACE_GAME_MATCHMAKING"_T.data(), &g.session_browser.replace_game_matchmaking))
-			;
+		ImGui::Checkbox("REPLACE_GAME_MATCHMAKING"_T.data(), &g.session_browser.replace_game_matchmaking);
 
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("REPLACE_GAME_MATCHMAKING_DESC"_T.data());
