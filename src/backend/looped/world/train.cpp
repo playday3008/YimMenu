@@ -12,7 +12,7 @@ namespace big
 	{
 		if (self::veh && VEHICLE::IS_THIS_MODEL_A_TRAIN(ENTITY::GET_ENTITY_MODEL(self::veh)))
 		{
-			int trainSpeed = ENTITY::GET_ENTITY_SPEED(self::veh);
+			float trainSpeed = ENTITY::GET_ENTITY_SPEED(self::veh);
 
 			if (g.world.train.drive_train)
 			{

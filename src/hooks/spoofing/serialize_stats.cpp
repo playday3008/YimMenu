@@ -34,7 +34,7 @@ namespace big
 			if (g.spoofing.spoof_kd_ratio)
 			{
 				if (entry->m_hash == "MPPLY_KILLS_PLAYERS"_J)
-					entry->m_int_value = g.spoofing.kd_ratio;// TODO precision loss
+					entry->m_int_value = (int)(g.spoofing.kd_ratio); // Ratio of x/1 is still x
 
 				if (entry->m_hash == "MPPLY_DEATHS_PLAYER"_J)
 					entry->m_int_value = 1;

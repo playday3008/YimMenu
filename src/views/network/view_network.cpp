@@ -36,7 +36,7 @@ namespace big
 			static char username[20];
 			static char base64[500]{};
 
-			ImGui::PushItemWidth(ImGui::GetWindowWidth() * 0.5);
+			ImGui::PushItemWidth(ImGui::GetWindowWidth() * 0.5f);
 
 			ImGui::InputScalar("##inputrid", ImGuiDataType_U64, &rid);
 			ImGui::SameLine();
@@ -263,7 +263,7 @@ namespace big
 			ImGui::SameLine();
 			if (ImGui::Checkbox("FORCE"_T.data(), &g.session.wanted_level_all))
 			{
-				scr_globals::globalplayer_bd.as<GlobalPlayerBD*>()->Entries[self::id].RemoteWantedLevelPlayer = __rdtsc() + 32;
+				scr_globals::globalplayer_bd.as<GlobalPlayerBD*>()->Entries[self::id].RemoteWantedLevelPlayer = (Player)(__rdtsc() + 32);
 				scr_globals::globalplayer_bd.as<GlobalPlayerBD*>()->Entries[self::id].RemoteWantedLevelAmount = global_wanted_level;
 			}
 

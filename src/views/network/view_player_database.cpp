@@ -37,7 +37,7 @@ namespace big
 
 		if (lower_search.empty() || name.find(lower_search) != std::string::npos)
 		{
-			ImGui::PushID(player->rockstar_id);
+			ImGui::PushID(static_cast<int>(player->rockstar_id));
 
 			float circle_size = 7.5f;
 			auto cursor_pos   = ImGui::GetCursorScreenPos();

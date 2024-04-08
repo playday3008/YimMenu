@@ -22,10 +22,10 @@ namespace big
 
 		bool m_timer = false;
 		std::chrono::system_clock::time_point m_time_stamp;
-		std::chrono::milliseconds m_duration;
+		std::chrono::duration<float, std::milli> m_duration;
 
 		bool m_charging             = false;
-		double m_charge_intensity   = 1;
+		float m_charge_intensity    = 1;
 		int m_charge_ptfx           = 0;
 		float m_explosion_intensity = 0;
 
@@ -117,7 +117,7 @@ namespace big
 		*/
 		void charge_launch()
 		{
-			if (ENTITY::IS_ENTITY_IN_AIR(self::ped) || ENTITY::GET_ENTITY_HEIGHT_ABOVE_GROUND(self::ped) > 5 || m_duration.count() < 0.2)
+			if (ENTITY::IS_ENTITY_IN_AIR(self::ped) || ENTITY::GET_ENTITY_HEIGHT_ABOVE_GROUND(self::ped) > 5 || m_duration.count() < 0.2f)
 				return;
 
 			if (!ENTITY::IS_ENTITY_PLAYING_ANIM(self::ped, "anim@amb@inspect@crouch@male_a@base", "base", 3))
@@ -130,7 +130,7 @@ namespace big
 			if (m_explosion_intensity > 10)
 				m_explosion_intensity = 10;
 
-			if (g.self.super_hero_fly.ptfx && m_charge_intensity > 0.4)
+			if (g.self.super_hero_fly.ptfx && m_charge_intensity > 0.4f)
 			{
 				STREAMING::REQUEST_NAMED_PTFX_ASSET("scr_rcbarry1");
 				GRAPHICS::USE_PARTICLE_FX_ASSET("scr_rcbarry1");
@@ -147,7 +147,7 @@ namespace big
 				    0,
 				    0);
 
-				if ((((int)(std::round(m_charge_intensity * 10)) % 5)) == 1)
+				if ((((int)(std::roundf(m_charge_intensity * 10)) % 5)) == 1)
 				{
 					for (int i = 0; i < m_explosion_intensity; i++)
 					{
@@ -249,7 +249,7 @@ namespace big
 			PAD::DISABLE_CONTROL_ACTION(0, (int)ControllerInputs::INPUT_COVER, false);
 
 			if (m_timer)
-				m_duration = std::chrono::duration_cast<std::chrono::milliseconds> (std::chrono::system_clock::now() - m_time_stamp);
+				m_duration = std::chrono::duration_cast<std::chrono::duration<float, std::milli>>(std::chrono::system_clock::now() - m_time_stamp);
 
 			//Timer is used for both the reset and the charged launch
 			if (PAD::IS_DISABLED_CONTROL_JUST_RELEASED(0, (int)ControllerInputs::INPUT_COVER))
@@ -258,7 +258,7 @@ namespace big
 				m_charging = false;
 
 				//Check whether the button was released quickly to reset instead of initiate landing
-				if (m_flying && m_duration.count() <= 0.2)
+				if (m_flying && m_duration.count() <= 0.2f)
 				{
 					reset();
 				}
@@ -269,7 +269,7 @@ namespace big
 					script::get_current()->yield(10ms);
 				}
 
-				m_duration = std::chrono::milliseconds::zero();
+				m_duration = std::chrono::duration<float, std::milli>::zero();
 			}
 
 			//Timer is started once the button is pressed and a marker is drawn if player is flying to visualize landing coords.
@@ -320,23 +320,23 @@ namespace big
 				if (PAD::IS_CONTROL_PRESSED(0, (int)ControllerInputs::INPUT_MOVE_UP_ONLY))
 				{
 					fly_nav =
-					    ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(m_veh_handle, 0.0, (1.0 * g.self.super_hero_fly.fly_speed), 0.f);
+					    ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(m_veh_handle, 0.f, (1.f * g.self.super_hero_fly.fly_speed), 0.f);
 					moved = true;
 				}
 				if (PAD::IS_CONTROL_PRESSED(0, (int)ControllerInputs::INPUT_MOVE_LEFT_ONLY))
 				{
-					fly_nav = ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(m_veh_handle, (-1.0 * g.self.super_hero_fly.fly_speed), 0.0, 0.f);
+					fly_nav = ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(m_veh_handle, (-1.f * g.self.super_hero_fly.fly_speed), 0.f, 0.f);
 					moved = true;
 				}
 				if (PAD::IS_CONTROL_PRESSED(0, (int)ControllerInputs::INPUT_MOVE_RIGHT_ONLY))
 				{
-					fly_nav = ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(m_veh_handle, (1.0 * g.self.super_hero_fly.fly_speed), 0.0, 0.f);
+					fly_nav = ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(m_veh_handle, (1.f * g.self.super_hero_fly.fly_speed), 0.f, 0.f);
 					moved = true;
 				}
 				if (PAD::IS_CONTROL_PRESSED(0, (int)ControllerInputs::INPUT_MOVE_DOWN_ONLY))
 				{
 					fly_nav =
-					    ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(m_veh_handle, 0.0, (-1.0 * g.self.super_hero_fly.fly_speed), 0.f);
+					    ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(m_veh_handle, 0.f, (-1.f * g.self.super_hero_fly.fly_speed), 0.f);
 					moved = true;
 				}
 				if (PAD::IS_CONTROL_PRESSED(0, (int)ControllerInputs::INPUT_SPRINT))

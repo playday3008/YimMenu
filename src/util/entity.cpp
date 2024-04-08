@@ -266,19 +266,19 @@ namespace big::entity
 		return false;
 	}
 
-	double distance_to_middle_of_screen(const rage::fvector2& screen_pos)
+	float distance_to_middle_of_screen(const rage::fvector2& screen_pos)
 	{
-		double cumulative_distance{};
+		float cumulative_distance{};
 
-		if (screen_pos.x > 0.5)
-			cumulative_distance += screen_pos.x - 0.5;
+		if (screen_pos.x > 0.5f)
+			cumulative_distance += screen_pos.x - 0.5f;
 		else
-			cumulative_distance += 0.5 - screen_pos.x;
+			cumulative_distance += 0.5f - screen_pos.x;
 
-		if (screen_pos.y > 0.5)
-			cumulative_distance += screen_pos.y - 0.5;
+		if (screen_pos.y > 0.5f)
+			cumulative_distance += screen_pos.y - 0.5f;
 		else
-			cumulative_distance += 0.5 - screen_pos.y;
+			cumulative_distance += 0.5f - screen_pos.y;
 
 		return cumulative_distance;
 	}

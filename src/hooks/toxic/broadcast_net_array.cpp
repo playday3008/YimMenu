@@ -69,8 +69,8 @@ namespace big
 
 		if (need_to_randomize_replay_protection)
 		{
-			*scr_globals::gsbd_fm_events.at(9).as<uint32_t*>()  = __rdtsc();
-			*scr_globals::gsbd_fm_events.at(10).as<uint32_t*>() = __rdtsc();
+			*scr_globals::gsbd_fm_events.at(9).as<uint32_t*>()  = (uint32_t)(__rdtsc());
+			*scr_globals::gsbd_fm_events.at(10).as<uint32_t*>() = (uint32_t)(__rdtsc());
 			broadcast_net_array::m_patch->apply();
 		}
 

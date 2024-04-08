@@ -222,7 +222,7 @@ namespace big
 		    "VIEW_VEHICLE_CONTROL_OUTSIDE_RIGHT"_T.data(),
 		};
 
-		static int movespeed = 1;
+		static float movespeed = 1;
 
 		if (ImGui::RadioButton("VEHICLE_CONTROLLER_ENTER_VEHICLE_SPEED_WALKING"_T.data(), movespeed == 1))
 			movespeed = 1;

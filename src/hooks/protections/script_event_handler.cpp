@@ -73,7 +73,7 @@ namespace big
 
 			script_event_args.reserve(args_count);
 			for (uint32_t i = 0; i < args_count; i++)
-				script_event_args.push_back(args[i]);
+				script_event_args.push_back((int32_t)(args[i]));
 
 			auto event_ret = g_lua_manager->trigger_event<menu_event::ScriptedGameEventReceived, bool>((int)player->m_player_id, script_event_args);
 			if (event_ret.has_value())

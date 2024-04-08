@@ -164,8 +164,8 @@ namespace big
 
 	inline bool is_invalid_override_pos(float x, float y)
 	{
-		std::uint32_t x_pos = (((x + 149) + 8192) / 75);
-		std::uint32_t y_pos = (((y + 149) + 8192) / 75);
+		std::uint32_t x_pos = (std::uint32_t)(((x + 149) + 8192) / 75);
+		std::uint32_t y_pos = (std::uint32_t)(((y + 149) + 8192) / 75);
 		bool is_x_invalid   = x_pos >= UCHAR_MAX;
 		bool is_y_invalid   = y_pos >= UCHAR_MAX;
 
@@ -1349,8 +1349,8 @@ namespace big
 					get_player_sector_pos(node->m_root->m_next_sync_node, player_sector_pos_x, player_sector_pos_y, object);
 
 					const auto sector_node = (CSectorDataNode*)(node);
-					int posX               = (sector_node->m_pos_x - 512.0f) * 54.0f;
-					int posY               = (sector_node->m_pos_y - 512.0f) * 54.0f;
+					float posX               = (sector_node->m_pos_x - 512.0f) * 54.0f;
+					float posY               = (sector_node->m_pos_y - 512.0f) * 54.0f;
 					if (is_invalid_override_pos(posX + player_sector_pos_x, posY + player_sector_pos_y))
 					{
 						std::stringstream crash_reason;
@@ -1365,7 +1365,7 @@ namespace big
 			{
 				const auto game_state_node = (CPlayerGameStateDataNode*)(node);
 				if (game_state_node->m_is_overriding_population_control_sphere
-				    && is_invalid_override_pos(game_state_node->m_population_control_sphere_x,game_state_node->m_population_control_sphere_y))
+				    && is_invalid_override_pos(game_state_node->m_population_control_sphere_x, game_state_node->m_population_control_sphere_y))
 				{
 					if (gta_util::get_network()->m_game_session_ptr->is_host())
 						notify::crash_blocked(sender, "invalid sector position (player game state node)");

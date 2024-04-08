@@ -122,7 +122,7 @@ namespace big::pathfind
 		}
 	}
 
-	inline bool find_random_location_in_vicinity(Vector3 coords, Vector3& outcoords, float& outheading, int flag, int vicinity, bool favour_heading_to_original_coords = false)
+	inline bool find_random_location_in_vicinity(Vector3 coords, Vector3& outcoords, float& outheading, int flag, float vicinity, bool favour_heading_to_original_coords = false)
 	{
 		outcoords = coords;
 
@@ -184,8 +184,8 @@ namespace big::pathfind
 	/*
 	Will give you two vectors representing the road extremes of the road closest to the given coords.
 	*/
-	inline bool find_closest_road(Vector3 coords, Vector3* south_end, Vector3* north_end, int* south_bound_lanes = nullptr, int* north_bound_lanes = nullptr, float* width_between_directional_lanes = nullptr, bool ignore_disabled_nodes = true, float min_lenght = 10.f, float min_lanes = 1)
+	inline bool find_closest_road(Vector3 coords, Vector3* south_end, Vector3* north_end, int* south_bound_lanes = nullptr, int* north_bound_lanes = nullptr, float* width_between_directional_lanes = nullptr, bool ignore_disabled_nodes = true, float min_length = 10.f, int min_lanes = 1)
 	{
-		return PATHFIND::GET_CLOSEST_ROAD(coords.x, coords.y, coords.z, min_lenght, min_lanes, south_end, north_end, south_bound_lanes, north_bound_lanes, width_between_directional_lanes, ignore_disabled_nodes);
+		return PATHFIND::GET_CLOSEST_ROAD(coords.x, coords.y, coords.z, min_length, min_lanes, south_end, north_end, south_bound_lanes, north_bound_lanes, width_between_directional_lanes, ignore_disabled_nodes);
 	}
 }

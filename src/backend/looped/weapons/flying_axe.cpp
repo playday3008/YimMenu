@@ -27,7 +27,7 @@ namespace big
 			float angle = get_around_position_iterator * angleIncrement;
 			get_around_position_iterator = (get_around_position_iterator + 1) % 8;
 
-			float angleInRadians = angle * (std::numbers::pi / 180.0f);
+			float angleInRadians = angle * (std::numbers::pi_v<float> / 180.0f);
 			float x              = far_distance * cos(angleInRadians);
 			float y              = far_distance * sin(angleInRadians);
 
@@ -68,7 +68,7 @@ namespace big
 		void function_axe_reaction(int ent) {
 			if (ent != self::veh) {
 				float axe_speed  = ENTITY::GET_ENTITY_SPEED(entity_axe);
-				float push_force = axe_speed * 3.5;
+				float push_force = axe_speed * 3.5f;
 				if (ENTITY::IS_ENTITY_TOUCHING_ENTITY(entity_axe, ent)) {
 					if (NETWORK::NETWORK_HAS_CONTROL_OF_ENTITY(ent)) {
 
@@ -114,7 +114,7 @@ namespace big
 						    coordinates_to_spawn.x,
 						    coordinates_to_spawn.y,
 						    coordinates_to_spawn.z,
-						    ENTITY::GET_ENTITY_HEADING(self::ped),
+						    (BOOL)(ENTITY::GET_ENTITY_HEADING(self::ped)),
 						    true,
 						    false);
 

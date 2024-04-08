@@ -51,9 +51,9 @@ namespace big
 				    0.f,
 				    0.f,
 				    g.self.ptfx_effects.size,
-				    0.f,
-				    0.f,
-				    0.f,
+				    0,
+				    0,
+				    0,
 				    0);
 			}
 		}

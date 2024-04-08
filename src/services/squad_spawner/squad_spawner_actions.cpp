@@ -58,7 +58,7 @@ namespace big
 			}
 			else if (VEHICLE::IS_THIS_MODEL_A_HELI(rage::joaat(s.m_vehicle_model)))
 			{
-				TASK::TASK_HELI_MISSION(0, s.m_veh_handle, 0, s.current_target_ped, 0, 0, 0, 6, 200.f, 30.f, -1, 50.f, 20.f, -1, 128 | 4096);
+				TASK::TASK_HELI_MISSION(0, s.m_veh_handle, 0, s.current_target_ped, 0, 0, 0, 6, 200.f, 30.f, -1, 50, 20, -1, 128 | 4096);
 				VEHICLE::SET_HELI_BLADES_FULL_SPEED(s.m_veh_handle);
 			}
 			else if (VEHICLE::IS_THIS_MODEL_A_PLANE(rage::joaat(s.m_vehicle_model)))

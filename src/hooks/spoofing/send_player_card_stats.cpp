@@ -8,7 +8,7 @@ namespace big
 	rage::netGameEvent* hooks::send_player_card_stats(rage::netGameEvent* a1, CPlayerCardStats* stats)
 	{
 		if (g.spoofing.spoof_rank)
-			stats->m_rank = g.spoofing.rank;
+			stats->m_rank = (float)(g.spoofing.rank);
 
 		if (g.spoofing.spoof_kd_ratio)
 			stats->m_kd_ratio = g.spoofing.kd_ratio;

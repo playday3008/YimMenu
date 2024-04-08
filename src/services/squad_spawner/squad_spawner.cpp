@@ -51,16 +51,16 @@ namespace big
 
 			if (s.should_override_health())
 			{
-				PED::SET_PED_MAX_HEALTH(handle, s.m_ped_health);
-				ENTITY::SET_ENTITY_HEALTH(handle, s.m_ped_health, 0, 0);
+				PED::SET_PED_MAX_HEALTH(handle, (int)(s.m_ped_health));
+				ENTITY::SET_ENTITY_HEALTH(handle, (int)(s.m_ped_health), 0, 0);
 			}
 			if (s.should_override_armor())
 			{
-				PED::SET_PED_ARMOUR(handle, s.m_ped_armor);
+				PED::SET_PED_ARMOUR(handle, (int)(s.m_ped_armor));
 			}
 
 			WEAPON::GIVE_WEAPON_TO_PED(handle, rage::joaat(s.m_weapon_model), 9999, false, true);
-			PED::SET_PED_ACCURACY(handle, s.m_ped_accuracy);
+			PED::SET_PED_ACCURACY(handle, (int)(s.m_ped_accuracy));
 			PED::SET_PED_COMBAT_ABILITY(handle, (int)s.m_combat_ability_level);
 			ENTITY::SET_ENTITY_INVINCIBLE(handle, s.m_ped_invincibility);
 			HUD::SET_PED_HAS_AI_BLIP(handle, true);

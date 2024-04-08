@@ -587,7 +587,7 @@ namespace big::ped
 	* Will make the ped enter the vehicle with animation if vehicle is in vicinity
 	* Param movespeed: 1 = walk, 2 = run, 3 = sprint
 	*/
-	inline void ped_enter_vehicle_animated(Ped ped, Vehicle veh, eVehicleSeats seat, int movespeed)
+	inline void ped_enter_vehicle_animated(Ped ped, Vehicle veh, eVehicleSeats seat, float movespeed)
 	{
 		if (entity::take_control_of(ped))
 		{

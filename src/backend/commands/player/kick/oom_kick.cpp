@@ -25,7 +25,7 @@ namespace big
 			packet msg{};
 
 			msg.write_message(rage::eNetMessage::MsgRadioStationSyncRequest);
-			auto msg_id = player->get_session_player()->m_msg_id;
+			auto msg_id = (uint32_t)(player->get_session_player()->m_msg_id);
 
 			for (int j = 0; j < 2000; j++)
 			{

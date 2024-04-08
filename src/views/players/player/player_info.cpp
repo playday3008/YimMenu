@@ -58,8 +58,8 @@ namespace big
 			{
 				ped_damage_bits = ped->m_damage_bits;
 				ped_task_flag   = ped->m_ped_task_flag;
-				ped_health      = ped->m_health;
-				ped_maxhealth   = ped->m_maxhealth;
+				ped_health      = (uint32_t)(ped->m_health);
+				ped_maxhealth   = (uint32_t)(ped->m_maxhealth);
 			}
 
 			components::options_modal(

@@ -296,7 +296,7 @@ namespace big
 
 		auto is_still       = properties.child("IsStill").text().as_bool();
 		auto can_ragdoll    = properties.child("CanRagdoll").text().as_bool();
-		auto armour         = properties.child("Armour").text().as_float();
+		auto armour         = properties.child("Armour").text().as_int();
 		auto current_weapon = properties.child("CurrentWeapon").text().as_uint();
 
 		if (is_still)
@@ -371,7 +371,7 @@ namespace big
 		auto frozenpos              = entity_node.child("FrozenPos").text().as_bool();
 		auto visible                = entity_node.child("IsVisible").text().as_bool();
 		auto max_health             = entity_node.child("MaxHealth").text().as_int();
-		auto health                 = entity_node.child("Health").text().as_float();
+		auto health                 = entity_node.child("Health").text().as_int();
 		auto gravity                = entity_node.child("HasGravity").text().as_bool();
 		auto on_fire                = entity_node.child("IsOnFire").text().as_bool();
 		auto invincible             = entity_node.child("IsInvincible").text().as_bool();

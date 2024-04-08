@@ -69,8 +69,8 @@ namespace big
 					}
 					else
 					{
-						other               = ENTITY::GET_ENTITY_COORDS(ent_to_add, true);
-						const int temp_dist = (float)math::distance_between_vectors(location, other);
+						other                 = ENTITY::GET_ENTITY_COORDS(ent_to_add, true);
+						const float temp_dist = math::distance_between_vectors(location, other);
 
 						if (ents.size() == 0)
 						{

@@ -222,7 +222,7 @@ namespace big
 				    hitComponent,
 				    overrideDefaultDamage,
 				    weaponType,
-				    weaponDamage,
+				    (float)weaponDamage,
 				    tyreIndex,
 				    suspensionIndex,
 				    damageFlags,

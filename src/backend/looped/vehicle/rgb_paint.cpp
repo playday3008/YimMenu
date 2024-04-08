@@ -6,7 +6,7 @@
 
 namespace big
 {
-	float red = 255.f, green = 0.f, blue = 0.f;
+	int red = 255, green = 0, blue = 0;
 	void looped::vehicle_rainbow_paint()
 	{
 		static std::chrono::system_clock::time_point last_rgb_run_time;
@@ -44,9 +44,9 @@ namespace big
 					red += g.vehicle.rainbow_paint.speed;
 					blue -= g.vehicle.rainbow_paint.speed;
 				}
-				red   = std::clamp(red, 0.f, 255.f);
-				green = std::clamp(green, 0.f, 255.f);
-				blue  = std::clamp(blue, 0.f, 255.f);
+				red   = std::clamp(red, 0, 255);
+				green = std::clamp(green, 0, 255);
+				blue  = std::clamp(blue, 0, 255);
 			}
 
 			if (g.vehicle.rainbow_paint.primary)

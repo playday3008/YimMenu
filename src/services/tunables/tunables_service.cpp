@@ -96,14 +96,14 @@ namespace big
 		auto data      = std::make_unique<uint8_t[]>(data_size);
 		auto data_ptr  = data.get();
 
-		*(uint32_t*)data_ptr = m_tunables.size();
+		*(uint32_t*)data_ptr = (uint32_t)(m_tunables.size());
 		data_ptr += sizeof(uint32_t);
 
 		for (auto& [hash, ptr] : m_tunables)
 		{
 			auto save_struct    = (tunable_save_struct*)data_ptr;
 			save_struct->hash   = hash;
-			save_struct->offset = ((std::int64_t*)ptr) - g_pointers->m_gta.m_script_globals[1];
+			save_struct->offset = (uint32_t)(((std::int64_t*)ptr) - g_pointers->m_gta.m_script_globals[1]);
 			data_ptr += sizeof(tunable_save_struct);
 		}
 

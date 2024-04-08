@@ -116,19 +116,19 @@ namespace big
 		}
 	}
 
-	double context_menu_service::distance_to_middle_of_screen(const rage::fvector2& screen_pos)
+	float context_menu_service::distance_to_middle_of_screen(const rage::fvector2& screen_pos)
 	{
-		double cum_dist{};
+		float cum_dist{};
 
-		if (screen_pos.x > 0.5)
-			cum_dist += screen_pos.x - 0.5;
+		if (screen_pos.x > 0.5f)
+			cum_dist += screen_pos.x - 0.5f;
 		else
-			cum_dist += 0.5 - screen_pos.x;
+			cum_dist += 0.5f - screen_pos.x;
 
-		if (screen_pos.y > 0.5)
-			cum_dist += screen_pos.y - 0.5;
+		if (screen_pos.y > 0.5f)
+			cum_dist += screen_pos.y - 0.5f;
 		else
-			cum_dist += 0.5 - screen_pos.y;
+			cum_dist += 0.5f - screen_pos.y;
 
 		return cum_dist;
 	}

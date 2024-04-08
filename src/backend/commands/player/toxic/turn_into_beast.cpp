@@ -125,14 +125,14 @@ namespace big
 			for (int i = 0; i < 15; i++)
 			{
 				*script_local(stack, idx).as<int*>()                    = 1;
-				*script_local(stack, idx).at(1).as<int*>()              = 2;         // stage
-				*script_local(stack, idx).at(1).at(6).as<int*>()        = __rdtsc(); // participant idx
-				*script_local(stack, idx).at(1).at(7).as<Player*>()     = __rdtsc(); // beast player idx
-				*script_local(stack, idx).at(1).at(2).as<int*>()        = INT_MAX;   // stopwatch time
-				*script_local(stack, idx).at(1).at(2).at(1).as<bool*>() = true;      // stopwatch initialized
-				*script_local(stack, idx).at(1).at(4).at(1).as<bool*>() = false;     // destroy old stage 1 stopwatch
-				*script_local(stack, idx).at(1).at(9).as<int*>()        = 2;         // some distance check
-				*script_local(stack, idx).at(83).as<int*>()             = 0;         // transformed bitset
+				*script_local(stack, idx).at(1).as<int*>()              = 2;                    // stage
+				*script_local(stack, idx).at(1).at(6).as<int*>()        = (int)(__rdtsc());     // participant idx
+				*script_local(stack, idx).at(1).at(7).as<Player*>()     = (Player)(__rdtsc());  // beast player idx
+				*script_local(stack, idx).at(1).at(2).as<int*>()        = INT_MAX;              // stopwatch time
+				*script_local(stack, idx).at(1).at(2).at(1).as<bool*>() = true;                 // stopwatch initialized
+				*script_local(stack, idx).at(1).at(4).at(1).as<bool*>() = false;                // destroy old stage 1 stopwatch
+				*script_local(stack, idx).at(1).at(9).as<int*>()        = 2;                    // some distance check
+				*script_local(stack, idx).at(83).as<int*>()             = 0;                    // transformed bitset
 				script::get_current()->yield(350ms);
 			}
 

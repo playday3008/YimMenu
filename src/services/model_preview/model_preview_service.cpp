@@ -186,10 +186,10 @@ namespace big
 				ENTITY::SET_ENTITY_COORDS(m_current_ent, location.x, location.y, location.z, 0, 0, 0, 0);
 
 				auto now = std::chrono::steady_clock::now();
-				auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(now - m_rotation_start_time).count() / 1000.0; // Convert to seconds
+				auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<float>>(now - m_rotation_start_time).count();
 
-				m_heading = (elapsed_time / 10.0) * 360.0; // Rotate 360 degrees every 10 seconds
-				m_heading = fmod(m_heading, 360.0);        // Ensure rotation is always between 0 and 360
+				m_heading = (elapsed_time / 10.f) * 360.f; // Rotate 360 degrees every 10 seconds
+				m_heading = fmod(m_heading, 360.f);        // Ensure rotation is always between 0 and 360
 
 				script::get_current()->yield();
 			}

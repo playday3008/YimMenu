@@ -18,7 +18,7 @@ namespace big
 	std::optional<command_arguments> float_command::parse_args(const std::vector<std::string>& args, const std::shared_ptr<command_context> ctx)
 	{
 		command_arguments result(1);
-		float value = std::atof(args[0].c_str());
+		float value = std::strtof(args[0].c_str(), nullptr);
 
 		if (value < m_lower_bound || value > m_upper_bound)
 		{

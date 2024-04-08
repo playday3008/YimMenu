@@ -72,7 +72,7 @@ namespace big
 					Hash weapon_hash;
 					WEAPON::GET_CURRENT_PED_WEAPON(self::ped, &weapon_hash, false);
 
-					MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS(weapon_position.x, weapon_position.y, weapon_position.z, end.x, end.y, end.z, WEAPON::GET_WEAPON_DAMAGE(weapon_hash, 0), true, weapon_hash, self::ped, true, false, -1.0);
+					MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS(weapon_position.x, weapon_position.y, weapon_position.z, end.x, end.y, end.z, (int)(WEAPON::GET_WEAPON_DAMAGE(weapon_hash, 0)), true, weapon_hash, self::ped, true, false, -1.f);
 				}
 			}
 		}

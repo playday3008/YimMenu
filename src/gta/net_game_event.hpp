@@ -286,13 +286,13 @@ namespace rage
 		{
 			auto integer = Read<int>(length);
 
-			float max = (1 << length) - 1;
+			float max = (float)((1 << length) - 1);
 			return ((float)integer / max) * divisor;
 		}
 
 		inline void WriteFloat(int length, float divisor, float value)
 		{
-			float max   = (1 << length) - 1;
+			float max   = (float)((1 << length) - 1);
 			int integer = (int)((value / divisor) * max);
 
 			Write<int>(length, integer);
@@ -302,13 +302,13 @@ namespace rage
 		{
 			auto integer = ReadSigned<int>(length);
 
-			float max = (1 << (length - 1)) - 1;
+			float max = (float)((1 << (length - 1)) - 1);
 			return ((float)integer / max) * divisor;
 		}
 
 		inline void WriteSignedFloat(int length, float divisor, float value)
 		{
-			float max   = (1 << (length - 1)) - 1;
+			float max   = (float)((1 << (length - 1)) - 1);
 			int integer = (int)((value / divisor) * max);
 
 			WriteSigned<int>(length, integer);

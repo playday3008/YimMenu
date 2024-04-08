@@ -12,7 +12,7 @@ namespace big
 		static char dst_text[256];
 		static char src_text[256];
 		static size_t selected_index = -1;
-		static float width           = *g_pointers->m_gta.m_resolution_x / 5.0;
+		static float width           = *g_pointers->m_gta.m_resolution_x / 5.f;
 
 		ImGui::SetNextItemWidth(width);
 		ImGui::InputText("VIEW_MODEL_SWAPPER_DEST"_T.data(), dst_text, IM_ARRAYSIZE(dst_text));

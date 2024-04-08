@@ -71,7 +71,7 @@ namespace big
 
 		//Autonomy
 		bool m_driver_performing_task;
-		int m_distance_to_destination;
+		float m_distance_to_destination;
 		char m_currentask[100];
 
 		void vehicle_operation(std::function<void()> operation);

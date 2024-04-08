@@ -178,14 +178,14 @@ namespace big::fuzzer
 
 	inline float truncate_float(float value, int length, float divisor)
 	{
-		float max   = (1 << length) - 1;
+		float max   = (float)((1 << length) - 1);
 		int integer = truncate((int)((value / divisor) * max), length);
 		return ((float)integer / max) * divisor;
 	}
 
 	inline float truncate_float_signed(float value, int length, float divisor)
 	{
-		float max   = (1 << (length - 1)) - 1;
+		float max   = (float)((1 << (length - 1)) - 1);
 		int integer = truncate((int)((value / divisor) * max), length);
 		return ((float)integer / max) * divisor;
 	}
