@@ -333,7 +333,7 @@ namespace big::fuzzer
 		auto n = fuzz_bits(bits, count - 1);
 
 		if (rand(5) == 0)
-			n = -n;
+			n = ~n + 1;
 
 		return n;
 	}
