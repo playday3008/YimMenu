@@ -33,7 +33,7 @@ namespace big
 					return true;
 				}
 			}
-			catch (std::exception& e)
+			catch (std::exception&)
 			{
 				return false;
 			}
@@ -53,7 +53,7 @@ namespace big
 				result             = obj["Accounts"].at(0)["RockstarAccount"]["Name"];
 				return true;
 			}
-			catch (std::exception& e)
+			catch (std::exception&)
 			{
 				return false;
 			}
@@ -84,7 +84,7 @@ namespace big
 			result = nlohmann::json::parse(response.text);
 			return true;
 		}
-		catch (std::exception& e)
+		catch (std::exception&)
 		{
 			return false;
 		}

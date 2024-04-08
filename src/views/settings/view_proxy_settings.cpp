@@ -46,7 +46,8 @@ namespace big
 				}
 				catch (const std::exception& e)
 				{
-					g_notification_service.push_error("PROXY_SETTINGS"_T.data(), "PROXY_SETTINGS_TEST_CURRENT_FAIL"_T.data());
+					g_notification_service.push_error("PROXY_SETTINGS"_T.data(),
+						std::format("{} ({})", "PROXY_SETTINGS_TEST_CURRENT_FAIL"_T, e.what()).c_str());
 				}
 			});
 		}

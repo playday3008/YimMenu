@@ -217,7 +217,6 @@ namespace big
 
 		Hash veh_model_hash  = rage::joaat(s.m_vehicle_model);
 		s.current_target_ped = g_pointers->m_gta.m_ptr_to_handle(s.target->get_ped());
-		float heading;
 
 		//Check if squad size is suitable in case a vehicle is defined
 		if (s.does_squad_have_vehicle())

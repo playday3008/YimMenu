@@ -66,7 +66,7 @@ namespace big
 
 		uint32_t damageTime;
 		bool willKill;
-		uint32_t f120;
+		//uint32_t f120;
 		bool hasVehicleData;
 
 		uint16_t f112_1;

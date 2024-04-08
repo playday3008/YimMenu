@@ -42,7 +42,8 @@ namespace big
 		}
 		catch (std::exception& e)
 		{
-			g_notification_service.push_warning("PERSIST_CAR_TITLE"_T.data(), "Failed to load JSON file");
+			g_notification_service.push_warning("PERSIST_CAR_TITLE"_T.data(),
+				std::format("Failed to load JSON file: {}", e.what()).c_str());
 			return NULL;
 		}
 
@@ -64,7 +65,8 @@ namespace big
 		}
 		catch (std::exception& e)
 		{
-			g_notification_service.push_warning("PERSIST_CAR_TITLE"_T.data(), "Failed to load JSON file");
+			g_notification_service.push_warning("PERSIST_CAR_TITLE"_T.data(),
+				std::format("Failed to load JSON file: {}", e.what()).c_str());
 			return NULL;
 		}
 
