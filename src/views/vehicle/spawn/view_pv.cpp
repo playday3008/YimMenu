@@ -113,7 +113,7 @@ namespace big
 
 		g_mobile_service->refresh_personal_vehicles();
 
-		auto num_of_rows = 0;
+		size_t num_of_rows = 0;
 
 		std::set<int> indexes_to_use;
 

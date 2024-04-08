@@ -68,7 +68,7 @@ namespace big
 			DATAFILE::DATAFILE_DELETE(0);
 
 		sCloudFile* cloud_file = nullptr;
-		g_pointers->m_gta.m_load_cloud_file(&cloud_file, buffer.data(), buffer.length(), "to load it from a file I guess?");
+		g_pointers->m_gta.m_load_cloud_file(&cloud_file, buffer.data(), (int)(buffer.length()), "to load it from a file I guess?");
 		g_pointers->m_gta.m_set_as_active_cloud_file(g_pointers->m_gta.m_main_file_object, &cloud_file);
 
 		while (!SCRIPT::HAS_SCRIPT_WITH_NAME_HASH_LOADED("fm_race_creator"_J))

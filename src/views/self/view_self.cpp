@@ -332,7 +332,7 @@ namespace big
 
 		if (g.self.hud.color_override)
 		{
-			ImGui::Combo("VIEW_SELF_COLOR_INDEX"_T.data(), &color_select_index, hud_colors.data(), hud_colors.size());
+			ImGui::Combo("VIEW_SELF_COLOR_INDEX"_T.data(), &color_select_index, hud_colors.data(), (int)(hud_colors.size()));
 
 			auto& ovr_color = g.self.hud.hud_color_overrides[color_select_index];
 

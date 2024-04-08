@@ -177,7 +177,7 @@ namespace big
 		std::vector<std::string> saved_outfits;
 		for (const auto& directory_entry : std::filesystem::directory_iterator(saved_outfit_path.get_path()))
 			saved_outfits.push_back(directory_entry.path().filename().generic_string());
-		static int selected_index = -1;
+		static size_t selected_index = -1;
 
 		ImGui::SetNextItemWidth(300);
 

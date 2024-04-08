@@ -98,7 +98,7 @@ namespace big
 
 		static bool included_entity_types[3];
 		static bool own_vehicle, deleting, force;
-		static int quantity, remaining;
+		static size_t quantity, remaining;
 
 		ImGui::Text("VIEW_WORLD_INCLUDE"_T.data());
 		ImGui::Checkbox("VEHICLES"_T.data(), &included_entity_types[0]);

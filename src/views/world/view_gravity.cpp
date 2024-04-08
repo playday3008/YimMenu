@@ -13,7 +13,7 @@ namespace big
 
 			static int selected_lunar_preset = 0;
 
-			if (ImGui::Combo("GRAVITY_LUNAR_PRESETS"_T.data(), &selected_lunar_preset, gravity_presets.data(), gravity_presets.size()))
+			if (ImGui::Combo("GRAVITY_LUNAR_PRESETS"_T.data(), &selected_lunar_preset, gravity_presets.data(), (int)(gravity_presets.size())))
 			{
 				g.world.gravity.current_gravity = gravity_preset_values[selected_lunar_preset];
 			}

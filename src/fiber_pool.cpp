@@ -53,12 +53,12 @@ namespace big
 		}
 	}
 
-	int fiber_pool::get_total_fibers()
+	size_t fiber_pool::get_total_fibers()
 	{
 		return m_num_fibers;
 	}
 
-	int fiber_pool::get_used_fibers()
+	size_t fiber_pool::get_used_fibers()
 	{
 		return m_jobs.size();
 	}

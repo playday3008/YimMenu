@@ -11,24 +11,22 @@ namespace big::fuzzer
 {
 	// helpers
 
-	// [0, max_value)
-	inline int rand(int max_value)
+	// [min_value, max_value]
+	template <typename T>
+	inline T rand(T min_value, T max_value)
 	{
-		std::random_device seed;
-		std::mt19937 gen{seed()};
-		std::uniform_int_distribution<int> dist{0, max_value - 1};
+		static std::random_device seed;
+		static std::mt19937 gen{seed()};
+		std::uniform_int_distribution<T> dist{min_value, max_value};
 
 		return dist(gen);
 	}
 
-	// [min_value, max_value]
-	inline int rand(int min_value, int max_value)
+	// [0, max_value)
+	template <typename T>
+	inline T rand(T max_value)
 	{
-		std::random_device seed;
-		std::mt19937 gen{seed()};
-		std::uniform_int_distribution<int> dist{min_value, max_value};
-
-		return dist(gen);
+		return rand<T>(0, max_value - 1);
 	}
 
 	inline bool is_fuzzer_enabled()
@@ -283,7 +281,7 @@ namespace big::fuzzer
 		else
 		{
 			if (rand(4))
-				hash = rand(0, UINT_MAX); // not much we can do here
+				hash = rand(0u, UINT_MAX); // not much we can do here
 		}
 
 		return hash;

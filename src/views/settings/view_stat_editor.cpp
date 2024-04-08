@@ -521,7 +521,7 @@ namespace big::helper
 		STATS::STAT_GET_DATE(get_text_stat_hash(stat), (Any*)dates, 7, -1);
 		while (strs.size() < 7)//Writing will succeed only when size is greater than or equal to 7
 			strs.push_back(dates[strs.size()]);
-		STATS::STAT_SET_DATE(get_text_stat_hash(stat), (Any*)strs.data(), strs.size(), TRUE);
+		STATS::STAT_SET_DATE(get_text_stat_hash(stat), (Any*)strs.data(), (int)(strs.size()), TRUE);
 	}
 
 	void stat_set_string(std::string stat, std::string value)

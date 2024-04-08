@@ -252,12 +252,12 @@ namespace big
 
 	inline bool is_valid_clan_tag(char* data, bool system_clan)
 	{
-		int length = strlen(data);
+		size_t length = strlen(data);
 
 		if (length <= (system_clan ? 2 : 3))
 			return false;
 
-		for (int i = 0; i < length; i++)
+		for (size_t i = 0; i < length; i++)
 		{
 			if (data[i] >= '0' && data[i] <= '9')
 				continue;

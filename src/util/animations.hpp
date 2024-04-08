@@ -71,12 +71,12 @@ namespace big::animations
 		return all_anims.size() > 0;
 	}
 
-	inline int anim_dict_count()
+	inline size_t anim_dict_count()
 	{
 		return all_dicts.size();
 	}
 
-	inline int total_anim_count()
+	inline size_t total_anim_count()
 	{
 		return all_anims.size();
 	}

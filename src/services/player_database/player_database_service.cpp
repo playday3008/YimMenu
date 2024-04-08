@@ -370,7 +370,7 @@ namespace big
 				contexts_per_player[i] = contexts[i];
 			}
 
-			if (g_pointers->m_sc.m_start_get_presence_attributes(0, bucket.data(), bucket.size(), contexts_per_player, 9, &status))
+			if (g_pointers->m_sc.m_start_get_presence_attributes(0, bucket.data(), (int)(bucket.size()), contexts_per_player, 9, &status))
 			{
 				while (status.status == 1)
 				{

@@ -91,7 +91,7 @@ namespace big
 	{
 		std::wstring game_module_path(MAX_PATH, '\0');
 
-		if (GetModuleFileNameW(nullptr, game_module_path.data(), game_module_path.size()))
+		if (GetModuleFileNameW(nullptr, game_module_path.data(), (DWORD)(game_module_path.size())))
 		{
 			const auto game_folder = std::filesystem::path(game_module_path).parent_path();
 
