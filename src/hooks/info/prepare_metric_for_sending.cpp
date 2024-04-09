@@ -100,7 +100,7 @@ namespace big
 				std::string result = remove_module_from_mmlist(data, encoded_module_name + "00");
 				if(result.size() != data.size())
 					LOG(INFO) << "Removed YimMenu DLL from MM metric";
-				strncpy(reinterpret_cast<char*>(metric) + 0x18, result.c_str(), 0x900);
+				::strncpy_s(reinterpret_cast<char*>(metric) + 0x18, 0x900, result.c_str(), result.size());
 				return g_hooking->get_original<prepare_metric_for_sending>()(serializer, unk, time, metric);
 			}
 			return false;

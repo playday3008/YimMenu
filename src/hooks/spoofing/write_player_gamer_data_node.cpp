@@ -17,13 +17,13 @@ namespace big
 			node->m_clan_data.m_clan_member_count = 15;
 			node->m_clan_data.m_clan_created_time = 420;
 
-			strcpy(node->m_clan_data.m_clan_tag, g.spoofing.crew_tag.c_str());
+			::strncpy_s(node->m_clan_data.m_clan_tag, sizeof(node->m_clan_data.m_clan_tag), g.spoofing.crew_tag.c_str(), g.spoofing.crew_tag.size());
 			node->m_clan_data.m_is_system_clan = g.spoofing.rockstar_crew;
 			node->m_clan_data.m_is_clan_open   = g.spoofing.square_crew_tag;
 
 			if (g.spoofing.rockstar_crew)
 			{
-				strcpy(node->m_clan_data.m_clan_name, "Rockstar");
+				::strcpy_s(node->m_clan_data.m_clan_name, sizeof(node->m_clan_data.m_clan_name), "Rockstar");
 			}
 		}
 	}

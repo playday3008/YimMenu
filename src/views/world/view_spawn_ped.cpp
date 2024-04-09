@@ -395,7 +395,7 @@ namespace big
 
 									if (selectable_clicked)
 									{
-										strncpy(ped_model_buf, item.m_name, 64);
+										::strncpy_s(ped_model_buf, sizeof(ped_model_buf), item.m_name, sizeof(item.m_name));
 										ped_model_dropdown_open    = false;
 										ped_model_dropdown_focused = false;
 									}

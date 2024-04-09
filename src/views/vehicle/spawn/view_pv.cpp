@@ -47,7 +47,7 @@ namespace big
 			{
 				ImGui::SetNextItemWidth(300.f);
 
-				strncpy(plate_buf, g.clone_pv.plate.c_str(), 9);
+				strncpy_s(plate_buf, sizeof(plate_buf), g.clone_pv.plate.c_str(), g.clone_pv.plate.size());
 				components::input_text_with_hint("PLATE"_T, "PLATE_NUMBER"_T, plate_buf, sizeof(plate_buf), ImGuiInputTextFlags_None, [] {
 					g.clone_pv.plate = plate_buf;
 				});
@@ -214,7 +214,7 @@ namespace big
 							}
 							else
 							{
-								strcpy(search, "");
+								::strcpy_s(search, sizeof(search), "");
 								personal_veh->summon();
 							}
 

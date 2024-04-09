@@ -49,7 +49,7 @@ namespace big
 		{
 			ImFontConfig fnt_cfg{};
 			fnt_cfg.FontDataOwnedByAtlas = false;
-			strcpy(fnt_cfg.Name, "Fnt20px");
+			::strcpy_s(fnt_cfg.Name, sizeof(fnt_cfg.Name), "Fnt20px");
 
 			io.Fonts->AddFontFromMemoryTTF(const_cast<uint8_t*>(font_storopia),
 			    sizeof(font_storopia),
@@ -69,7 +69,7 @@ namespace big
 		{
 			ImFontConfig fnt_cfg{};
 			fnt_cfg.FontDataOwnedByAtlas = false;
-			strcpy(fnt_cfg.Name, std::format("Fnt{}px", (int)size).c_str());
+			::strcpy_s(fnt_cfg.Name, sizeof(fnt_cfg.Name), std::format("Fnt{:.0f}px", size).c_str());
 
 			*font_ptr = io.Fonts->AddFontFromMemoryTTF(const_cast<uint8_t*>(font_storopia),
 			    sizeof(font_storopia),
@@ -88,7 +88,7 @@ namespace big
 		{
 			ImFontConfig font_icons_cfg{};
 			font_icons_cfg.FontDataOwnedByAtlas = false;
-			std::strcpy(font_icons_cfg.Name, "Icons");
+			::strcpy_s(font_icons_cfg.Name, sizeof(font_icons_cfg.Name), "Icons");
 			g.window.font_icon = ImGui::GetIO().Fonts->AddFontFromMemoryTTF(const_cast<uint8_t*>(font_icons), sizeof(font_icons), 24.f, &font_icons_cfg);
 		}
 

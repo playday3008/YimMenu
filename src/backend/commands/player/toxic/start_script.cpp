@@ -24,7 +24,7 @@ namespace big
 			int64_t args[arg_count] = {(int64_t)eRemoteEvent::StartScriptBegin, (int64_t)self::id, 1i64 << player->id()};
 
 			args[2] = scriptId;
-			strcpy((char*)&args[2 + 3], "0");
+			::strcpy_s((char*)&args[2 + 3], (arg_count - 2 - 3 - (arg_count - 16)) * sizeof(*args), "0");
 			args[2 + 16] = -1;
 			args[2 + 17] = 1337;
 			args[2 + 19] = arg19;

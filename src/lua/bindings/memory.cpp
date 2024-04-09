@@ -38,7 +38,7 @@ namespace lua::memory
 
 	void pointer::set_string(const std::string& string, int max_length)
 	{
-		strncpy((char*)m_address, string.data(), max_length);
+		::strncpy_s((char*)m_address, max_length, string.data(), string.size());
 	}
 
 	bool pointer::is_null()

@@ -58,7 +58,7 @@ namespace big
 			int64_t args[arg_count] = {(int64_t)eRemoteEvent::StartScriptBegin, (int64_t)self::id, 1i64 << m_target->get()->id()};
 
 			args[2] = scripts::launcher_index_from_hash(m_script_hash);
-			strcpy((char*)&args[2 + 3], "0");
+			::strcpy_s((char*)&args[2 + 3], (arg_count - 2 - 3 - (arg_count - 16)) * sizeof(*args), "0");
 			args[2 + 16] = -1;
 			args[2 + 17] = 1337;
 			args[24] = scr_globals::gpbd_fm_3.as<GPBD_FM_3*>()->Entries[m_target->get()->id()].ScriptEventReplayProtectionCounter;

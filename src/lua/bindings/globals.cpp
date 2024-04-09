@@ -106,7 +106,7 @@ namespace lua::globals
 	// Sets a string global value.
 	static void set_string(int global, const std::string& str, int max_length)
 	{
-		strncpy(big::script_global(global).as<char*>(), str.data(), max_length);
+		::strncpy_s(big::script_global(global).as<char*>(), max_length, str.data(), str.size());
 	}
 
 	// Lua API: Function

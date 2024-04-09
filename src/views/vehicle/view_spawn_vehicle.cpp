@@ -24,7 +24,7 @@ namespace big
 		components::command_checkbox<"spawnmaxed">();
 
 		static char plate_buf[9] = {0};
-		strncpy(plate_buf, g.spawn_vehicle.plate.c_str(), 9);
+		::strncpy_s(plate_buf, sizeof(plate_buf), g.spawn_vehicle.plate.c_str(), g.spawn_vehicle.plate.size());
 
 		ImGui::SetNextItemWidth(300.f);
 		components::input_text_with_hint("PLATE"_T, "PLATE_NUMBER"_T, plate_buf, sizeof(plate_buf), ImGuiInputTextFlags_None, [] {

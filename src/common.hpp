@@ -3,6 +3,8 @@
 
 // clang-format off
 
+#define __STDC_WANT_LIB_EXT1__ 1
+
 #include <sdkddkver.h>
 #include <winsock2.h>
 #include <windows.h>
@@ -11,6 +13,13 @@
 #include <cinttypes>
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
+
+#if !defined(__STDC_LIB_EXT1__) && (defined(_MSC_VER) && __STDC_WANT_SECURE_LIB__ != 1)
+#define strcpy_s(dest, destsz, src) strcpy(dest, src)
+#define strncpy_s(dest, destsz, src, count) strncpy(dest, src, destsz)
+#define sprintf_s(buffer, bufsz, format, ...) sprintf(buffer, format, __VA_ARGS__)
+#endif
 
 #include <chrono>
 #include <ctime>

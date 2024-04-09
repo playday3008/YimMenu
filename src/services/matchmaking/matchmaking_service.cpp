@@ -26,7 +26,7 @@ namespace big
 		}
 
 		NetworkGameFilterMatchmakingComponent component{};
-		strcpy(component.m_filter_name, "Group");
+		::strcpy_s(component.m_filter_name, sizeof(component.m_filter_name), "Group");
 		component.m_game_mode      = 0;
 		component.m_num_parameters = 0;
 

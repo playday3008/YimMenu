@@ -19,6 +19,6 @@ namespace lua::gui
 
 	void input_string::set_value(std::string val)
 	{
-		strncpy(m_value, val.c_str(), sizeof(m_value));
+		::strncpy_s(m_value, sizeof(m_value), val.c_str(), val.size());
 	}
 }

@@ -234,10 +234,10 @@ namespace big
 
 			auto ped = ped_item{};
 
-			std::strncpy(ped.m_name, name, sizeof(ped.m_name));
+			::strcpy_s(ped.m_name, sizeof(ped.m_name), name);
 
 			const auto ped_type = item.child("Pedtype").text().as_string();
-			std::strncpy(ped.m_ped_type, ped_type, sizeof(ped.m_ped_type));
+			::strcpy_s(ped.m_ped_type, sizeof(ped.m_ped_type), ped_type);
 
 			ped.m_hash = hash;
 
@@ -283,18 +283,18 @@ namespace big
 						mapped_vehicles.emplace_back(hash);
 
 						auto veh = vehicle_item{};
-						std::strncpy(veh.m_name, name.c_str(), sizeof(veh.m_name));
+						::strncpy_s(veh.m_name, sizeof(veh.m_name), name.c_str(), name.size());
 
 						const auto manufacturer_display = item.child("vehicleMakeName").text().as_string();
-						std::strncpy(veh.m_display_manufacturer, manufacturer_display, sizeof(veh.m_display_manufacturer));
+						::strcpy_s(veh.m_display_manufacturer, sizeof(veh.m_display_manufacturer), manufacturer_display);
 
 						const auto game_name = item.child("gameName").text().as_string();
-						std::strncpy(veh.m_display_name, game_name, sizeof(veh.m_display_name));
+						::strcpy_s(veh.m_display_name, sizeof(veh.m_display_name), game_name);
 
 						const auto vehicle_class       = item.child("vehicleClass").text().as_string();
 						constexpr auto enum_prefix_len = 3;
 						if (std::strlen(vehicle_class) > enum_prefix_len)
-							std::strncpy(veh.m_vehicle_class, vehicle_class + enum_prefix_len, sizeof(veh.m_vehicle_class));
+							::strcpy_s(veh.m_vehicle_class, sizeof(veh.m_vehicle_class), vehicle_class + enum_prefix_len);
 
 						veh.m_hash = hash;
 
@@ -459,7 +459,7 @@ namespace big
 
 				auto ped = ped_item{};
 
-				std::strncpy(ped.m_name, name.c_str(), sizeof(ped.m_name));
+				::strncpy_s(ped.m_name, sizeof(ped.m_name), name.c_str(), name.size());
 
 				ped.m_hash = hash;
 
@@ -477,11 +477,15 @@ namespace big
 		g_fiber_pool->queue_job([&] {
 			for (auto& item : vehicles)
 			{
-				std::strncpy(item.m_display_manufacturer, HUD::GET_FILENAME_FOR_AUDIO_CONVERSATION(item.m_display_manufacturer), sizeof(item.m_display_manufacturer));
-				std::strncpy(item.m_display_name, HUD::GET_FILENAME_FOR_AUDIO_CONVERSATION(item.m_display_name), sizeof(item.m_display_name));
+				const auto display_manufacturer_filename = HUD::GET_FILENAME_FOR_AUDIO_CONVERSATION(item.m_display_manufacturer);
+				const auto display_name_filename         = HUD::GET_FILENAME_FOR_AUDIO_CONVERSATION(item.m_display_name);
+				::strcpy_s(item.m_display_manufacturer, sizeof(item.m_display_manufacturer), display_manufacturer_filename);
+				::strcpy_s(item.m_display_name, sizeof(item.m_display_name), display_name_filename);
+
 				char vehicle_class[32];
-				std::sprintf(vehicle_class, "VEH_CLASS_%i", VEHICLE::GET_VEHICLE_CLASS_FROM_NAME(item.m_hash));
-				std::strncpy(item.m_vehicle_class, HUD::GET_FILENAME_FOR_AUDIO_CONVERSATION(vehicle_class), sizeof(item.m_vehicle_class));
+				::sprintf_s(vehicle_class, sizeof(vehicle_class), "VEH_CLASS_%i", VEHICLE::GET_VEHICLE_CLASS_FROM_NAME(item.m_hash));
+				const auto vehicle_class_filename = HUD::GET_FILENAME_FOR_AUDIO_CONVERSATION(vehicle_class);
+				::strcpy_s(item.m_vehicle_class, sizeof(item.m_vehicle_class), vehicle_class_filename);
 			}
 			for (auto& item : weapons)
 			{
@@ -497,7 +501,7 @@ namespace big
 				if (CPedModelInfo* info = model_info::get_model<CPedModelInfo*>(it->m_hash))
 				{
 					static std::array<std::string, 30> ped_types = {"PLAYER_0", "PLAYER_1", "NETWORK_PLAYER", "PLAYER_2", "CIVMALE", "CIVFEMALE", "COP", "GANG_ALBANIAN", "GANG_BIKER_1", "GANG_BIKER_2", "GANG_BIKER_2", "GANG_RUSSIAN", "GANG_RUSSIAN_2", "GANG_RUSSIAN_2", "GANG_JAMAICAN", "GANG_AFRICAN_AMERICAN", "GANG_KOREAN", "GANG_CHINESE_JAPANESE", "GANG_PUERTO_RICAN", "DEALER", "MEDIC", "FIREMAN", "CRIMINAL", "BUM", "PROSTITUTE", "SPECIAL", "MISSION", "SWAT", "ANIMAL", "ARMY"};
-					std::strncpy(it->m_ped_type, ped_types[info->ped_type].c_str(), sizeof(it->m_ped_type));
+					::strncpy_s(it->m_ped_type, sizeof(it->m_ped_type), ped_types[info->ped_type].c_str(), ped_types[info->ped_type].size());
 					++it;
 				}
 				else

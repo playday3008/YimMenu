@@ -75,7 +75,7 @@ namespace lua::gui
 		custom_tab_count++;
 
 		big::navigation_struct new_navigation_struct{};
-		strcpy(new_navigation_struct.name, name.c_str());
+		::strncpy_s(new_navigation_struct.name, sizeof(new_navigation_struct.name), name.c_str(), name.size());
 		new_navigation_struct.hash = tab_hash;
 
 		return std::make_pair(m_id, new_navigation_struct);

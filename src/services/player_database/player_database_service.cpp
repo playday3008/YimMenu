@@ -349,24 +349,24 @@ namespace big
 			for (int i = 0; i < bucket.size(); i++)
 			{
 				contexts[i][0].m_presence_attibute_type = 1;
-				strcpy(contexts[i][0].m_presence_attribute_key, "gstype");
+				::strcpy_s(contexts[i][0].m_presence_attribute_key, sizeof(contexts[i][0].m_presence_attribute_key), "gstype");
 				contexts[i][0].m_presence_attribute_int_value = -1;
 				contexts[i][1].m_presence_attibute_type       = 3;
-				strcpy(contexts[i][1].m_presence_attribute_key, "gsinfo");
+				::strcpy_s(contexts[i][1].m_presence_attribute_key, sizeof(contexts[i][1].m_presence_attribute_key), "gsinfo");
 				contexts[i][2].m_presence_attibute_type = 1;
-				strcpy(contexts[i][2].m_presence_attribute_key, "sctv");
+				::strcpy_s(contexts[i][2].m_presence_attribute_key, sizeof(contexts[i][2].m_presence_attribute_key), "sctv");
 				contexts[i][3].m_presence_attibute_type = 1;
-				strcpy(contexts[i][3].m_presence_attribute_key, "gshost");
+				::strcpy_s(contexts[i][3].m_presence_attribute_key, sizeof(contexts[i][3].m_presence_attribute_key), "gshost");
 				contexts[i][4].m_presence_attibute_type = 3;
-				strcpy(contexts[i][4].m_presence_attribute_key, "trinfo");
+				::strcpy_s(contexts[i][4].m_presence_attribute_key, sizeof(contexts[i][4].m_presence_attribute_key), "trinfo");
 				contexts[i][5].m_presence_attibute_type = 1;
-				strcpy(contexts[i][5].m_presence_attribute_key, "trhost");
+				::strcpy_s(contexts[i][5].m_presence_attribute_key, sizeof(contexts[i][5].m_presence_attribute_key), "trhost");
 				contexts[i][6].m_presence_attibute_type = 3;
-				strcpy(contexts[i][6].m_presence_attribute_key, "mp_mis_str");
+				::strcpy_s(contexts[i][6].m_presence_attribute_key, sizeof(contexts[i][6].m_presence_attribute_key), "mp_mis_str");
 				contexts[i][7].m_presence_attibute_type = 3;
-				strcpy(contexts[i][7].m_presence_attribute_key, "mp_mis_id");
+				::strcpy_s(contexts[i][7].m_presence_attribute_key, sizeof(contexts[i][7].m_presence_attribute_key), "mp_mis_id");
 				contexts[i][8].m_presence_attibute_type = 1;
-				strcpy(contexts[i][8].m_presence_attribute_key, "mp_curr_gamemode");
+				::strcpy_s(contexts[i][8].m_presence_attribute_key, sizeof(contexts[i][8].m_presence_attribute_key), "mp_curr_gamemode");
 				contexts_per_player[i] = contexts[i];
 			}
 

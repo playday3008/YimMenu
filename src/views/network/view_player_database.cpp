@@ -60,8 +60,8 @@ namespace big
 
 				g_player_database_service->set_selected(player);
 				current_player = player;
-				strncpy(name_buf, current_player->name.data(), sizeof(name_buf));
-				strncpy(note_buffer, current_player->notes.data(), sizeof(note_buffer));
+				::strncpy_s(name_buf, sizeof(name_buf), current_player->name.data(), current_player->name.size());
+				::strncpy_s(note_buffer, sizeof(note_buffer), current_player->notes.data(), current_player->notes.size());
 			}
 
 			if (ImGui::IsItemHovered())

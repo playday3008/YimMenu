@@ -18,7 +18,7 @@ namespace big
 
 			if (components::button("CANCEL"_T))
 			{
-				strcpy(name, "");
+				::strcpy_s(name, sizeof(name), "");
 
 				ImGui::CloseCurrentPopup();
 			}
