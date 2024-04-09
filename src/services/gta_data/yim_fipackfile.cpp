@@ -3,7 +3,7 @@
 #include "gta/fidevice.hpp"
 #include "pointers.hpp"
 #include "script.hpp"
-#include "util/string_conversions.hpp"
+#include "util/strings.hpp"
 
 namespace big
 {
@@ -140,7 +140,7 @@ namespace big
 			if (rel_path.empty())
 				continue;
 
-			const auto utf8_path = string_conversions::utf_16_to_code_page(CP_UTF8, entry.path().native());
+			const auto utf8_path = strings::conversions::utf_16_to_code_page(CP_UTF8, entry.path().native());
 
 			if (utf8_path.empty())
 				continue;

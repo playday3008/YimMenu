@@ -2,6 +2,8 @@
 
 #include "fiber_pool.hpp"
 
+#include "util/strings.hpp"
+
 namespace big
 {
 	player_all_component::player_all_component(player_command* parent, const std::string& name, const std::string& label, const std::string& description, std::optional<uint8_t> num_args) :
@@ -70,7 +72,8 @@ namespace big
 
 			for (auto& plyr : g_player_service->players())
 			{
-				if (stricmp(plyr.second->get_name(), args[0].c_str()) == 0)
+				using _sv = std::string_view;
+				if (strings::comparisons::iequals(_sv(plyr.second->get_name()), _sv{args[0]}) == 0)
 				{
 					plyr_id = plyr.second->id();
 					break;

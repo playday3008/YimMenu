@@ -1,7 +1,7 @@
 #include "hooking/hooking.hpp"
 #include "logger/stack_trace.hpp"
 #include "pointers.hpp"
-#include "util/string_conversions.hpp"
+#include "util/strings.hpp"
 
 namespace big
 {
@@ -34,7 +34,7 @@ namespace big
 		if (joaated_error_code == "ERR_NET_EVENT"_J)
 			return;
 
-		LOG(WARNING) << "Error Code: " << string_conversions::utf_16_to_code_page(CP_UTF8, g_pointers->m_gta.m_get_title_caption_error_message_box(joaated_error_code));
+		LOG(WARNING) << "Error Code: " << strings::conversions::utf_16_to_code_page(CP_UTF8, g_pointers->m_gta.m_get_title_caption_error_message_box(joaated_error_code));
 
 		log_stack_trace();
 	}
