@@ -1,6 +1,10 @@
 {
     "cmake.generator": "Ninja",
-    "files.exclude": {
+    "C_Cpp.codeAnalysis.exclude": {
         "**/_deps": true
-    }
+    },
+    "C_Cpp.default.forcedInclude": [
+        "${workspaceFolder}/src/common.hpp"
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
