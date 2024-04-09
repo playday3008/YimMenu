@@ -35,7 +35,8 @@
 #include "services/vehicle/xml_vehicles_service.hpp"
 #include "services/xml_maps/xml_map_service.hpp"
 #include "thread_pool.hpp"
-#include "util/is_proton.hpp"
+#include "util/is_wine.hpp"
+#include "util/env.hpp"
 #include "version.hpp"
 
 namespace big
@@ -147,7 +148,7 @@ BOOL APIENTRY DllMain(HMODULE hmod, DWORD reason, PVOID)
 			    while (!FindWindow("grcWindow", nullptr))
 				    std::this_thread::sleep_for(100ms);
 
-			    std::filesystem::path base_dir = std::getenv("appdata");
+			    std::filesystem::path base_dir = env::get("APPDATA"sv).value_or(env::get("USERPROFILE"sv).value() + "\\AppData\\Roaming");
 			    base_dir /= "YimMenu";
 			    g_file_manager.init(base_dir);
 
@@ -159,7 +160,7 @@ BOOL APIENTRY DllMain(HMODULE hmod, DWORD reason, PVOID)
 			    LOGF(INFO, "Git Info\n\tBranch:\t{}\n\tHash:\t{}\n\tDate:\t{}", version::GIT_BRANCH, version::GIT_SHA1, version::GIT_DATE);
 
 			    // more tech debt, YAY!
-			    if (is_proton())
+			    if (is_wine())
 			    {
 				    LOG(INFO) << "Running on proton!";
 			    }

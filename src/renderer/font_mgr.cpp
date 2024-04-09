@@ -3,6 +3,7 @@
 #include "fonts/fonts.hpp"
 #include "renderer.hpp"
 #include "thread_pool.hpp"
+#include "util/env.hpp"
 
 namespace big
 {
@@ -108,7 +109,7 @@ namespace big
 
 	file font_mgr::get_available_font_file_for_alphabet_type()
 	{
-		static const auto fonts_folder = std::filesystem::path(std::getenv("SYSTEMROOT")) / "Fonts";
+		static const auto fonts_folder = std::filesystem::path(env::get("SYSTEMROOT"sv).value_or(env::get("WINDIR"sv).value())) / "Fonts";
 
 		const auto& fonts = m_fonts.find(m_require_extra);
 		if (fonts == m_fonts.end())

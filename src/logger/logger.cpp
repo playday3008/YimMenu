@@ -1,6 +1,7 @@
 #include "logger.hpp"
 
-#include "util/is_proton.hpp"
+#include "util/env.hpp"
+#include "util/term.hpp"
 
 namespace big
 {
@@ -16,7 +17,7 @@ namespace big
 	{
 		m_console_title = console_title;
 		m_file          = file;
-		if (is_proton())
+		if (term::can_do_colors() && !env::get("FORCE_COLOR"sv))
 		{
 			LOG(VERBOSE) << "Using simple logger.";
 			m_console_logger = &logger::format_console_simple;
