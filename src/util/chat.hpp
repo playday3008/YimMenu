@@ -126,20 +126,15 @@ namespace big::chat
 		auto& data = *player->get_net_data();
 		auto ip    = player->get_ip_address();
 
-		auto now        = std::chrono::system_clock::now();
-		auto ms         = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
-		auto timer      = std::chrono::system_clock::to_time_t(now);
-		auto local_time = *std::localtime(&timer);
+		auto now = std::chrono::system_clock::now();
 
-		std::string spam_reason_str = "";
+		log << "[" << std::format("{:%F %T}", now) << "] ";
 
 		switch (spam_reason)
 		{
-		case SpamReason::STATIC_DETECTION: spam_reason_str = "(Static Detection) "; break;
-		case SpamReason::TIMER_DETECTION: spam_reason_str = "(Timer Detection) "; break;
+		case SpamReason::STATIC_DETECTION: log << "(Static Detection) "; break;
+		case SpamReason::TIMER_DETECTION: log << "(Timer Detection) "; break;
 		}
-
-		log << spam_reason_str << "[" << std::put_time(&local_time, "%m/%d/%Y %I:%M:%S") << ":" << std::setfill('0') << std::setw(3) << ms.count() << " " << std::put_time(&local_time, "%p") << "] ";
 
 		if (ip)
 			log << player->get_name() << " (" << data.m_gamer_handle.m_rockstar_id << ") <" << (int)ip.value().m_field1 << "."

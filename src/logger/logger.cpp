@@ -86,18 +86,9 @@ namespace big
 	{
 		if (m_file.exists())
 		{
-			auto file_time  = std::filesystem::last_write_time(m_file.get_path());
-			auto time_t     = to_time_t(file_time);
-			auto local_time = std::localtime(&time_t);
+			auto file_time = std::filesystem::last_write_time(m_file.get_path());
 
-			m_file.move(std::format("./backup/{:0>2}-{:0>2}-{}-{:0>2}-{:0>2}-{:0>2}_{}",
-			    local_time->tm_mon + 1,
-			    local_time->tm_mday,
-			    local_time->tm_year + 1900,
-			    local_time->tm_hour,
-			    local_time->tm_min,
-			    local_time->tm_sec,
-			    m_file.get_path().filename().string().c_str()));
+			m_file.move(std::format("./backup/{0:%F}-{0:%T}_{1:}", file_time, m_file.get_path().filename().string().c_str()));
 		}
 	}
 
