@@ -94,7 +94,7 @@ namespace lua::network
 	// Table: network
 	// Name: get_selected_database_player_rockstar_id
 	// Returns: integer: Returns the rockstar id of the currently selected player in the GUI.
-	static int get_selected_database_player_rockstar_id()
+	static uint64_t get_selected_database_player_rockstar_id()
 	{
 		if (auto pers = big::g_player_database_service->get_selected())
 			return pers->rockstar_id;
