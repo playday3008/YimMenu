@@ -17,7 +17,7 @@ namespace big
 	{
 		m_console_title = console_title;
 		m_file          = file;
-		if (term::can_do_colors() && !env::get("FORCE_COLOR"sv))
+		if (!term::can_do_colors() && !env::get("FORCE_COLOR"sv))
 		{
 			LOG(VERBOSE) << "Using simple logger.";
 			m_console_logger = &logger::format_console_simple;
@@ -87,9 +87,9 @@ namespace big
 	{
 		if (m_file.exists())
 		{
-			auto file_time = std::filesystem::last_write_time(m_file.get_path());
+			auto file_time = std::chrono::time_point_cast<std::chrono::seconds>(std::filesystem::last_write_time(m_file.get_path()));
 
-			m_file.move(std::format("./backup/{0:%F}-{0:%T}_{1:}", file_time, m_file.get_path().filename().string().c_str()));
+			m_file.move(std::format("./backup/{0:%F}_{0:%H-%M-%S}_{1:}", file_time, m_file.get_path().filename().string().c_str()));
 		}
 	}
 
