@@ -35,8 +35,8 @@
 #include "services/vehicle/xml_vehicles_service.hpp"
 #include "services/xml_maps/xml_map_service.hpp"
 #include "thread_pool.hpp"
-#include "util/is_wine.hpp"
 #include "util/env.hpp"
+#include "util/wine.hpp"
 #include "version.hpp"
 
 namespace big
@@ -159,10 +159,12 @@ BOOL APIENTRY DllMain(HMODULE hmod, DWORD reason, PVOID)
 			    LOG(INFO) << "Yim's Menu Initializing";
 			    LOGF(INFO, "Git Info\n\tBranch:\t{}\n\tHash:\t{}\n\tDate:\t{}", version::GIT_BRANCH, version::GIT_SHA1, version::GIT_DATE);
 
-			    // more tech debt, YAY!
 			    if (is_wine())
 			    {
-				    LOG(INFO) << "Running on proton!";
+				    auto wine_version  = wine_get_version().value();
+				    auto wine_build_id = wine_get_build_id().value_or("Unknown");
+				    auto [wine_sysname, wine_release] = wine_get_host_version().value_or(std::make_tuple("Unknown", "Unknown"));
+				    LOGF(INFO, "Wine Version %s (Build ID: %s)\n\tHost system: %s\n\tHost version: %s\n\tIs Proton: %s", wine_version, wine_build_id, wine_sysname, wine_release, is_proton() ? "Yes" : "No");
 			    }
 			    else
 			    {
@@ -194,7 +196,9 @@ BOOL APIENTRY DllMain(HMODULE hmod, DWORD reason, PVOID)
 
 			    g_renderer.init();
 			    LOG(INFO) << "Renderer initialized.";
+
 			    auto gui_instance = std::make_unique<gui>();
+			    LOG(INFO) << "GUI initialized.";
 
 			    auto fiber_pool_instance = std::make_unique<fiber_pool>(11);
 			    LOG(INFO) << "Fiber pool initialized.";
@@ -228,8 +232,8 @@ BOOL APIENTRY DllMain(HMODULE hmod, DWORD reason, PVOID)
 			    auto xml_maps_service_instance          = std::make_unique<xml_map_service>();
 			    LOG(INFO) << "Registered service instances...";
 
-				g_notification_service.initialise();
-				LOG(INFO) << "Finished initialising services.";
+			    g_notification_service.initialise();
+			    LOG(INFO) << "Finished initialising services.";
 
 			    g_script_mgr.add_script(std::make_unique<script>(&gui::script_func, "GUI", false));
 
