@@ -12,17 +12,35 @@ namespace memory
 	{
 		std::array<signature, N> m_entries;
 
-		constexpr batch(std::array<signature, N> entries)
+		constexpr batch(std::array<signature, N> entries) :
+		    m_entries(entries)
 		{
-			m_entries = entries;
+		}
+
+		constexpr size_t size() const
+		{
+			return m_entries.size();
 		}
 	};
 
 	template<size_t N>
 	struct batch_and_hash
 	{
+		const char* m_name;
 		batch<N> m_batch;
 		uint32_t m_hash;
+
+		constexpr batch_and_hash(const char* name, batch<N> batch, uint32_t hash) :
+		    m_name(name),
+		    m_batch(batch),
+		    m_hash(hash)
+		{
+		}
+
+		constexpr size_t size() const
+		{
+			return m_batch.size();
+		}
 	};
 
 	struct signature_hasher
@@ -35,37 +53,26 @@ namespace memory
 			return (str[0] == '\0') ? hash : fnv1a_32(&str[1], (hash ^ static_cast<uint32_t>(str[0])) * FNV_PRIME_32);
 		}
 
-		template<signature sig>
-		static inline constexpr uint32_t compute_hash(uint32_t hash)
+		static inline constexpr uint32_t compute_hash(signature sig, uint32_t hash)
 		{
 			hash = fnv1a_32(sig.m_ida, hash);
 
 			return hash;
 		}
 
-		template<signature sig, signature... rest_sigs>
-		static inline constexpr uint32_t add(uint32_t hash = FNV_OFFSET_32)
+		template<size_t N, size_t count = 0>
+		static inline constexpr uint32_t add(std::array<signature, N> sigs, uint32_t hash = FNV_OFFSET_32)
 		{
-			hash = compute_hash<sig>(hash);
+			hash = compute_hash(sigs[count], hash);
 
-			if constexpr (sizeof...(rest_sigs) > 0)
+			if constexpr (count < sigs.size() - 1)
 			{
-				hash = add<rest_sigs...>(hash);
+				hash = add<N, count + 1>(sigs, hash);
 			}
 
 			return hash;
 		}
 	};
-
-	template<signature... args>
-	static inline constexpr auto make_batch(uint32_t hash = signature_hasher::FNV_OFFSET_32)
-	{
-		constexpr std::array<signature, sizeof...(args)> a1 = {args...};
-
-		constexpr memory::batch<a1.size()> h(a1);
-
-		return batch_and_hash<a1.size()>{h, signature_hasher::add<args...>()};
-	}
 
 	struct batch_runner
 	{

@@ -2,10 +2,6 @@ cmake_minimum_required(VERSION 3.20)
 
 project(YimMenu CXX ASM_MASM)
 
-if (NOT MSVC)
-  message(FATAL_ERROR "Unsupported compiler used '${CMAKE_CXX_COMPILER_ID}', YimMenu only supports MSVC.")
-endif()
-
 set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
 
 # Git commit embed
@@ -44,6 +40,8 @@ add_library(YimMenu MODULE "${SRC_MAIN}")
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(TARGET YimMenu PROPERTY CXX_STANDARD 23)
+set_property(TARGET YimMenu PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET YimMenu PROPERTY CXX_EXTENSIONS OFF)
 
 source_group(TREE ${SRC_DIR} PREFIX "src" FILES ${SRC_MAIN} )
 

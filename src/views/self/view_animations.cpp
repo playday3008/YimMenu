@@ -17,7 +17,7 @@ namespace big
 
 		if (ImGui::BeginPopupModal("##deletepedanimation", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove))
 		{
-			ImGui::Text("VIEW_SELF_ANIMATIONS_ARE_YOU_SURE_DELETE"_T.data(), deletion_ped_animation.name);
+			ImGui::Text("VIEW_SELF_ANIMATIONS_ARE_YOU_SURE_DELETE"_T.data(), deletion_ped_animation.name.c_str());
 
 			ImGui::Spacing();
 

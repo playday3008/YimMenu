@@ -16,24 +16,21 @@ namespace big
 	class pointers
 	{
 	private:
-		template<cstxpr_str batch_name, auto batch_hash, size_t offset_of_cache_begin_field, size_t offset_of_cache_end_field, memory::batch batch>
-		void write_to_cache_or_read_from_cache(cache_file& cache_file, const memory::module& mem_region)
+		template<size_t N, size_t offset_of_cache_begin_field, size_t offset_of_cache_end_field>
+		void write_to_cache_or_read_from_cache(const memory::batch_and_hash<N>& batch_and_hash, cache_file& cache_file, const memory::module& mem_region)
 		{
-			static_assert(batch_hash > 0);
-
 			constexpr size_t field_count = (offset_of_cache_end_field - offset_of_cache_begin_field) / sizeof(void*);
-			constexpr auto cache_version = batch_hash + field_count;
 
-			cache_file.set_cache_version(cache_version);
+			cache_file.set_cache_version(batch_and_hash.m_hash + field_count);
 
 			const uintptr_t pointer_to_cacheable_data_start = reinterpret_cast<uintptr_t>(this) + offset_of_cache_begin_field;
 
-			if (!is_pointers_cache_up_to_date<batch_name>(cache_file, mem_region))
+			if (!is_pointers_cache_up_to_date(batch_and_hash.m_name, cache_file, mem_region))
 			{
-				run_batch<batch_name>(batch, mem_region);
+				run_batch(batch_and_hash, mem_region);
 
 				const uintptr_t pointer_to_cacheable_data_end = reinterpret_cast<uintptr_t>(this) + offset_of_cache_end_field;
-				write_pointers_to_cache<batch_name, offset_of_cache_begin_field, offset_of_cache_end_field>(cache_file, pointer_to_cacheable_data_start, pointer_to_cacheable_data_end, mem_region);
+				write_pointers_to_cache<offset_of_cache_begin_field, offset_of_cache_end_field>(batch_and_hash.m_name, cache_file, pointer_to_cacheable_data_start, pointer_to_cacheable_data_end, mem_region);
 			}
 			else
 			{
@@ -45,8 +42,8 @@ namespace big
 
 		void load_pointers_from_cache(const cache_file& cache_file, const uintptr_t pointer_to_cacheable_data_start, const memory::module& mem_region);
 
-		template<cstxpr_str batch_name, size_t offset_of_cache_begin_field, size_t offset_of_cache_end_field>
-		void write_pointers_to_cache(cache_file& cache_file, const uintptr_t pointer_to_cacheable_data_start, const uintptr_t pointer_to_cacheable_data_end, const memory::module& mem_region)
+		template<size_t offset_of_cache_begin_field, size_t offset_of_cache_end_field>
+		void write_pointers_to_cache(const char* batch_name, cache_file& cache_file, const uintptr_t pointer_to_cacheable_data_start, const uintptr_t pointer_to_cacheable_data_end, const memory::module& mem_region)
 		{
 			constexpr size_t data_size = offset_of_cache_end_field - offset_of_cache_begin_field;
 
@@ -70,7 +67,7 @@ namespace big
 				}
 				else
 				{
-					LOG(FATAL) << "Just tried to save to cache a pointer supposedly within the " << batch_name.str << " module range but isn't! Offset from start of pointers instance: " << (field_ptr - reinterpret_cast<uintptr_t>(this));
+					LOG(FATAL) << "Just tried to save to cache a pointer supposedly within the " << batch_name << " module range but isn't! Offset from start of pointers instance: " << (field_ptr - reinterpret_cast<uintptr_t>(this));
 				}
 
 				i++;
@@ -84,14 +81,13 @@ namespace big
 			cache_file.write();
 		}
 
-		template<cstxpr_str batch_name>
-		bool is_pointers_cache_up_to_date(cache_file& cache_file, const memory::module& mem_region)
+		bool is_pointers_cache_up_to_date(const char* batch_name, cache_file& cache_file, const memory::module& mem_region)
 		{
 			cache_file.load();
 
 			if (cache_file.up_to_date(mem_region.timestamp()))
 			{
-				LOG(INFO) << batch_name.str << " pointers cache is up to date, using it.";
+				LOG(INFO) << batch_name << " pointers cache is up to date, using it.";
 
 				return true;
 			}
@@ -102,13 +98,13 @@ namespace big
 		static constexpr auto get_gta_batch();
 		static constexpr auto get_sc_batch();
 
-		template<cstxpr_str batch_name, size_t N>
-		void run_batch(const memory::batch<N>& batch, const memory::module& mem_region)
+		template<size_t N>
+		void run_batch(const memory::batch_and_hash<N>& batch_and_hash, const memory::module& mem_region)
 		{
-			if (!memory::batch_runner::run(batch, mem_region))
+			if (!memory::batch_runner::run(batch_and_hash.m_batch, mem_region))
 			{
 				const std::string error_message =
-				    std::string("Failed to find some patterns for ") + std::string(batch_name.str);
+				    std::format("Failed to find some patterns for {}", batch_and_hash.m_name);
 				throw std::runtime_error(error_message);
 			}
 		}
