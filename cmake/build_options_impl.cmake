@@ -14,9 +14,6 @@ if(MSVC)
     # Diagnostics
     /sdl- # Disable additional security features
   )
-  set(_CMAKE_ASM_MASM_COMPILE_OPTIONS ${_CMAKE_ASM_MASM_COMPILE_OPTIONS}
-    /nologo # Suppress startup banner
-  )
 
   if(ENABLE_NATIVE)
     if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
@@ -113,7 +110,7 @@ if(MSVC)
   elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     # Global compiler settings for Clang
     set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
-
+    
     )
 
     # Veriant specific compiler settings
@@ -154,7 +151,84 @@ if(MSVC)
   set(_CMAKE_CXX_COMPILE_OPTIONS ${_CMAKE_CXX_COMPILE_OPTIONS} ${_CMAKE_C_CXX_COMPILE_OPTIONS})
   set(_CMAKE_C_LINK_OPTIONS ${_CMAKE_C_LINK_OPTIONS} ${_CMAKE_C_CXX_LINK_OPTIONS})
   set(_CMAKE_CXX_LINK_OPTIONS ${_CMAKE_CXX_LINK_OPTIONS} ${_CMAKE_C_CXX_LINK_OPTIONS})
+else()
+  # Global compiler settings
+  set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+    -Wall # Enable all warnings
+    -Wextra # Enable extra warnings
+  
+    # Code generation
+    -fstack-protector-strong # Enable stack protection
+  
+    # Miscellaneous
+    -Wa,-mbig-obj
+    -fuse-ld=lld # Use lld linker
+  )
+
+  if(ENABLE_NATIVE)
+      set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+        -march=native # Enable all available instruction sets
+      )
+  elseif(ENABLE_AVX512)
+    set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+      -mavx512f # Enable AVX-512 instructions
+      -mavx512dq
+      -mavx512cd
+      -mavx512bw
+      -mavx512vl
+    )
+  elseif(ENABLE_AVX2)
+    set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+      -mavx2 # Enable AVX2 instructions
+    )
+  elseif(ENABLE_AVX)
+    set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+      -mavx # Enable AVX instructions
+    )
+  endif()
+
+  # Veriant specific compiler settings
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+      -fjmc # Enable just my code debugging
+    )
+  else()
+    # Global Release compiler settings
+    set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+      -fbuiltin # Enable builtin functions
+      -fomit-frame-pointer # Omit frame pointers
+      -flto # Enable link-time optimization
+      -fwhole-program-vtables # Use whole program vtables optimization
+      -fdata-sections # Place each function or data item into its own section
+    )
+
+    # Variant specific Release compiler settings
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+      set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+        -s
+      )
+    elseif(CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
+      set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+        -s
+      )
+    elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+      set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+
+      )
+    else()
+      message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
+    endif()
+  endif()
+
+  set(_CMAKE_C_COMPILE_OPTIONS ${_CMAKE_C_COMPILE_OPTIONS} ${_CMAKE_C_CXX_COMPILE_OPTIONS})
+  set(_CMAKE_CXX_COMPILE_OPTIONS ${_CMAKE_CXX_COMPILE_OPTIONS} ${_CMAKE_C_CXX_COMPILE_OPTIONS})
+  set(_CMAKE_C_LINK_OPTIONS ${_CMAKE_C_LINK_OPTIONS} ${_CMAKE_C_CXX_LINK_OPTIONS})
+  set(_CMAKE_CXX_LINK_OPTIONS ${_CMAKE_CXX_LINK_OPTIONS} ${_CMAKE_C_CXX_LINK_OPTIONS})
 endif()
+
+set(_CMAKE_ASM_MASM_COMPILE_OPTIONS ${_CMAKE_ASM_MASM_COMPILE_OPTIONS}
+  /nologo # Suppress startup banner
+)
 
 add_compile_options(
   "$<$<COMPILE_LANGUAGE:ASM_MASM>:${_CMAKE_ASM_MASM_COMPILE_OPTIONS}>"
