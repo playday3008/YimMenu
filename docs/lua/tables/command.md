@@ -2,7 +2,7 @@
 
 Table for calling menu commands.
 
-## Functions (2)
+## Functions (3)
 
 ### `call(command_name, _args)`
 
@@ -31,4 +31,15 @@ Call a menu command on a given player.
 
 ```lua
 command.call_player(player_idx, command_name, _args)
+```
+
+### `get_all_player_command_names()`
+
+- **Returns:**
+  - `table<integer, string>`: Table that contains the names of all the player commands.
+
+**Example Usage:**
+
+```lua
+table<integer, string> = command.get_all_player_command_names()
 ```
