@@ -110,7 +110,7 @@ if(MSVC)
   elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     # Global compiler settings for Clang
     set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
-    
+      
     )
 
     # Veriant specific compiler settings
@@ -133,6 +133,9 @@ if(MSVC)
         )
         string(REPLACE "/Ob1" "/Ob2" CMAKE_CXX_FLAGS_MINSIZEREL ${CMAKE_CXX_FLAGS_MINSIZEREL})
       elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+        set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
+        
+        )
         string(REPLACE "/Ob1" "/Ob2" CMAKE_CXX_FLAGS_RELWITHDEBINFO ${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
       else()
         message(FATAL_ERROR "Unknown build type: ${CMAKE_BUILD_TYPE}")
@@ -142,6 +145,10 @@ if(MSVC)
     # Dirty hack to disable warnings for specific targets
     target_compile_options(cpr PRIVATE
       -Wno-error
+
+      # For some reason, Clang-cl have these warnings enabled by default
+      -Wno-c++98-compat # Disable C++98 compatibility warning
+      -Wno-c++98-compat-pedantic # Disable C++98 compatibility warning
     )
   else()
     message(FATAL_ERROR "Unknown compiler: ${CMAKE_CXX_COMPILER_ID}")
@@ -154,8 +161,7 @@ if(MSVC)
 else()
   # Global compiler settings
   set(_CMAKE_C_CXX_COMPILE_OPTIONS ${_CMAKE_C_CXX_COMPILE_OPTIONS}
-    -Wall # Enable all warnings
-    -Wextra # Enable extra warnings
+    -Wall # Enable all warnings (same as /W3, see: https://github.com/llvm/llvm-project/blob/fad37526a3ea7d669af621342968029085862281/clang/include/clang/Driver/Options.td#L8215)
   
     # Code generation
     -fstack-protector-strong # Enable stack protection
